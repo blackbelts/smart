@@ -1,0 +1,32 @@
+<!--
+  Generated template for the GradesPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      <strong>Grades</strong>
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button tappable>
+        <ion-icon name="notifications"></ion-icon>
+      </button>
+      <button ion-button tappable>
+        <ion-icon name="settings"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content class="gray-bg">
+  <ion-list inset>
+    <ion-item class="bg-gray" *ngFor="let grad of allCourseGrade" (click)="goToCourseGrade(grad.id,grad.courseName)">
+      <h3>{{grad.courseName}}</h3>
+      <span item-end>{{grad.grad}}</span>
+    </ion-item>
+  </ion-list>
+</ion-content>

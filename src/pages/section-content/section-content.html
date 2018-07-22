@@ -1,0 +1,24 @@
+<!--
+  Generated template for the SectionContentPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>Contents</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item  *ngFor="let element of contents">
+      <img *ngIf="element.modicon" [src]='element.modicon' item-start (click)="openPage(element.modname, element.instance,element.name)">
+      <div *ngIf="element.modname=='label'; then label else othertypes"></div>
+      <ng-template #label><div [innerHTML]="element.description"></div></ng-template>
+      <ng-template #othertypes><h2 (click)="openPage(element.modname, element.instance,element.name)">{{element.name}}</h2>
+      </ng-template>
+      <ion-icon name="arrow-round-forward" item-end (click)="openPage(element.modname, element.instance,element.name)"></ion-icon>
+    </ion-item>
+  </ion-list>
+</ion-content>

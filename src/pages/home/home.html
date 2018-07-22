@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      <strong>Plato</strong>
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button tappable>
+        <ion-icon name="notifications"></ion-icon>
+      </button>
+      <button ion-button tappable>
+        <ion-icon name="settings"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content padding class="animated fadeIn common-bg">
+  <ion-tabs tabsPlacement="top">
+    <ion-tab [root]="tab1Root" tabTitle="Courses">
+    </ion-tab>
+    <ion-tab [root]="tab2Root" tabTitle="Timeline"></ion-tab>
+  </ion-tabs>
+</ion-content>

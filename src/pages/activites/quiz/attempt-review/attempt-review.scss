@@ -1,0 +1,19 @@
+page-attempt-review {
+    .qInfo{
+        font-size: 12px;
+    }
+    .red{
+        background-color: #e0756b
+    }
+    .green{
+        background-color: #77b300
+    }
+    .footer{
+        padding: 10px;
+        background-color: #b6a468
+    }
+    .radio-md.radio-disabled, .item-md.item-radio-disabled ion-label {
+        opacity: 0.8;
+        pointer-events: none;
+    }
+}

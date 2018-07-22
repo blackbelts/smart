@@ -1,0 +1,39 @@
+<!--
+  Generated template for the AttemptReviewPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>attempt Summary</ion-title>
+  </ion-navbar>
+
+</ion-header>
+<ion-content padding>
+  <h3>Summary of attempt</h3>
+  <ion-grid>
+    <ion-list>
+      <ion-item>
+        <ion-row>
+          <ion-col>Question</ion-col>
+          <ion-col text-center>Status</ion-col>
+          <ion-col></ion-col>
+        </ion-row>
+      </ion-item>
+      <ion-item *ngFor="let question of summery" (click)="goToQuestion(attemptId,question.page)">
+        <ion-row>
+          <ion-col text-center>{{question.slot}}</ion-col>
+          <ion-col>{{question.status}}</ion-col>
+          <ion-col text-center>
+            <ion-icon name="arrow-dropright"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+    </ion-list>
+  </ion-grid>
+  <button ion-button block (click)="returnLastquestion(lastpage,attemptId)">RETURN TO ATTEMPT</button>
+  <br>
+  <button ion-button block (click)="finishAttempt(attemptId)">SUBMIT ALL AND FINISH</button>
+</ion-content>

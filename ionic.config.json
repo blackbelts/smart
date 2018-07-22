@@ -1,0 +1,8 @@
+{
+  "name": "Plato",
+  "app_id": "b20c54fb",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
