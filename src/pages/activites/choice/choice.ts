@@ -81,7 +81,7 @@ export class ChoicePage {
               .map(res => res)
               .subscribe((contents) => {
                 this.presentToast("Your answer DELETED")
-                location.reload();
+                this.navCtrl.setRoot(this.navCtrl.getActive().component);
               });
           }
         },

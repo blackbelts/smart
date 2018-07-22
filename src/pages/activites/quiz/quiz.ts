@@ -35,9 +35,9 @@ export class QuizPage {
     public modalCtrl: ModalController
   ) {
     this.quizId = this.navParams.get('id')
-    this.quizId = 6
-/*     this.name = this.navParams.get('name')
- */    this.moodleProvider.getQuizesByCourse(10)
+    /*     this.quizId = 6*/
+    /*     this.name = this.navParams.get('name')*/
+    this.moodleProvider.getQuizesByCourse(10)
       .map(res => res)
       .subscribe((quizzes) => {
         for (let i = 0; i < quizzes.quizzes.length; i++) {
@@ -81,7 +81,7 @@ export class QuizPage {
     this.quizInfo = quiz
   }
   public buttonText
-  public progressAttempt
+  public progressAttempt = []
   presentModal() {
 
     if (this.progressAttempt.length != 0) {
@@ -91,8 +91,8 @@ export class QuizPage {
       const modal = this.modalCtrl.create(TimedQuizPage, {
         time: this.quizRules[0],
         quizid: this.quizId,
-    /*       name: this.quizInfo.name
-     */    });
+        /*name: this.quizInfo.name*/
+      });
       modal.present();
     }
 
