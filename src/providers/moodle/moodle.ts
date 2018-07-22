@@ -72,6 +72,7 @@ export class MoodleProvider {
   /************************user************************/
   /* get user information */
   getUserInformation(filed, value) {
+    console.log("test")
     let coreFun = 'core_user_get_users_by_field';
     return this.http.get(
       siteUrl + restUrl
