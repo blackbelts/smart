@@ -50,9 +50,7 @@ export class MyApp {
     });
   }
   logout() {
-    console.log("test")
     this.moodleProvider.logout();
-    console.log(this.moodleProvider.getUserId())
     this.nav.setRoot(LogInPage)
   }
   goToProfile() {

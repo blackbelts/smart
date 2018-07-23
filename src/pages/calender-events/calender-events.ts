@@ -37,7 +37,6 @@ export class CalenderEventsPage {
           }
         }
       })
-      console.log(this.events)
   }
   goToDetails(event){
     this.navCtrl.push(EventDetailsPage,{event:event})
