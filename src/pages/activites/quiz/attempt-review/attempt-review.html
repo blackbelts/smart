@@ -6,63 +6,63 @@
 -->
 <ion-header>
 
-    <ion-navbar>
-      <ion-title>Review</ion-title>
-    </ion-navbar>
-  
-  </ion-header>
-  <ion-content padding>
-    <ion-card>
-      <ion-card-header>
-        <h2>Review of attempt  {{attempt.attempt}}</h2>
-      </ion-card-header>
-      <ion-card-content>
-        <h2>Started on</h2>
-        <p [innerText]="getTime(attempt.timestart)"></p>
-        <br>
-        <h2>State</h2>
-        <p>{{attempt.state}}</p>
-        <br>
-        <h2>Completed on</h2>
-        <p [innerText]="getTime(attempt.timefinish)"></p>
-        <br>
-        <h2>Time Taken</h2>
-        <p [innerText]="calcQuizTime(attempt.timestart,attempt.timefinish)">18 Mins 22 secs</p>
-        <br>
-        <h2>Grade</h2>
-        <p>{{attempt.sumgrades}} Out of ( %)</p>
-      </ion-card-content>
-    </ion-card>
-    <div class="test" hidden></div>
-    <ion-card *ngFor="let question of allQuestionInfo">
-      <ion-card-header>
-        <ion-list radio-group>
-          <ion-item>
-            <h3 item-start>Question {{question.number}}</h3>
-            <div item-end class="qInfo">
-              <div>{{question.status}}</div>
-              <div>{{question.mark}} Out of {{question.maxmark}}</div>
-            </div>
-          </ion-item>
-        </ion-list>
-      </ion-card-header>
-      <ion-card-content>
-        <hr>
-        <!-- <ion-card>
+  <ion-navbar>
+    <ion-title>Review</ion-title>
+  </ion-navbar>
+
+</ion-header>
+<ion-content padding>
+  <ion-card>
+    <ion-card-header>
+      <h2>Review of attempt {{attempt.attempt}}</h2>
+    </ion-card-header>
+    <ion-card-content>
+      <h2>Started on</h2>
+      <p [innerText]="getTime(attempt.timestart)"></p>
+      <br>
+      <h2>State</h2>
+      <p>{{attempt.state}}</p>
+      <br>
+      <h2>Completed on</h2>
+      <p [innerText]="getTime(attempt.timefinish)"></p>
+      <br>
+      <h2>Time Taken</h2>
+      <p [innerText]="calcQuizTime(attempt.timestart,attempt.timefinish)">18 Mins 22 secs</p>
+      <br>
+      <h2>Grade</h2>
+      <p>{{attempt.sumgrades}} Out of ( %)</p>
+    </ion-card-content>
+  </ion-card>
+  <div class="test" hidden></div>
+  <ion-card *ngFor="let question of allQuestionInfo">
+    <ion-card-header>
+      <ion-list radio-group>
+        <ion-item>
+          <h3 item-start>Question {{question.number}}</h3>
+          <div item-end class="qInfo">
+            <div>{{question.status}}</div>
+            <div>{{question.mark}} Out of {{question.maxmark}}</div>
+          </div>
+        </ion-item>
+      </ion-list>
+    </ion-card-header>
+    <ion-card-content>
+      <hr>
+      <!-- <ion-card>
           <ion-card-content> -->
-            <div [innerHTML]="question.text"></div>
-            <div [innerHTML]="question.prompt"></div>
-            <br>
-          <!-- </ion-card-content>
+      <div [innerHTML]="question.text"></div>
+      <div [innerHTML]="question.prompt"></div>
+      <br>
+      <!-- </ion-card-content>
         </ion-card> -->
-        <ion-list radio-group>
-          <ion-item *ngFor="let option of question.options" [color]="option.class">
-            <ion-label  >{{option.label}}</ion-label>
-            <ion-radio [value]="option.value" [checked]="option.checked" disabled="true"></ion-radio>
-          </ion-item>
-        </ion-list>
-      </ion-card-content>
-      <div class="footer" [innerHtml]="question.feedback">
-      </div>
-    </ion-card>
-  </ion-content>	
+      <ion-list radio-group>
+        <ion-item *ngFor="let option of question.options" [color]="option.class">
+          <ion-label>{{option.label}}</ion-label>
+          <ion-radio [value]="option.value" [checked]="option.checked" disabled="true"></ion-radio>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+    <div class="footer" [innerHtml]="question.feedback">
+    </div>
+  </ion-card>
+</ion-content>

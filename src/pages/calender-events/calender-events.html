@@ -22,14 +22,15 @@
     </ion-buttons>
   </ion-navbar>
 </ion-header>
-<ion-content padding>
+<ion-content>
   <ion-list>
-    <ion-item>
+    <ion-item *ngFor="let event of events" (click)="goToDetails(event)">
       <ion-avatar item-start>
-        <img src="">
+        <img [src]="event.icon.component">
       </ion-avatar>
-      <h2>Jessie</h2>
-      <p>7/1/2018, 1:18:00 PM</p>
+      <h2>{{event.name}}</h2>
+      <p>{{event.timestart}}</p>
+      <ion-icon name="arrow-forward" item-end></ion-icon>
     </ion-item>
   </ion-list>
 

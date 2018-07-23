@@ -52,6 +52,7 @@ import { QuestionPage } from '../pages/activites/quiz/question/question';
 import { AttemptSummaryPage } from '../pages/activites/quiz/attempt-summary/attempt-summary';
 import { AttemptReviewPage } from '../pages/activites/quiz/attempt-review/attempt-review';
 import { ForumPostsPage } from '../pages/activites/forum/forum-posts/forum-posts';
+import { EventDetailsPage } from '../pages/calender-events/event-details/event-details';
 Pro.init('YOUR_APP_ID', {
   appVersion: 'APP_VERSION'
 })
@@ -103,7 +104,8 @@ Pro.init('YOUR_APP_ID', {
     QuestionPage,
     AttemptSummaryPage,
     AttemptReviewPage,
-    ForumPostsPage
+    ForumPostsPage,
+    EventDetailsPage
   ],
   imports: [
     BrowserModule,
@@ -157,7 +159,8 @@ Pro.init('YOUR_APP_ID', {
     QuestionPage,
     AttemptSummaryPage,
     AttemptReviewPage,
-    ForumPostsPage
+    ForumPostsPage,
+    EventDetailsPage
   ],
   providers: [
     StatusBar,

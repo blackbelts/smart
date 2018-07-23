@@ -225,16 +225,8 @@ export class MoodleProvider {
     * aftereventid (Default to "0") ===> The last seen event id
     * limitnum (Default to "20") === >Limit number
   */
-  calenderEventSortTime(timesortfrom, timesortto, aftereventid, limitnum) {
+  calenderEventSortTime(timesortfrom=0, timesortto=0, aftereventid=0, limitnum=20) {
     let coreFun = 'core_calendar_get_action_events_by_timesort';
-    console.log( siteUrl + restUrl
-      + 'wstoken=' + this.getToken()
-      + '&wsfunction=' + coreFun
-      + restFormat
-      + '&timesortfrom=' + timesortfrom
-      + '&timesortto=' + timesortto
-      + '&aftereventid' + aftereventid
-      + '&limitnum' + limitnum)
     return this.http.get(
       siteUrl + restUrl
       + 'wstoken=' + this.getToken()
@@ -242,8 +234,8 @@ export class MoodleProvider {
       + restFormat
       + '&timesortfrom=' + timesortfrom
       + '&timesortto=' + timesortto
-      + '&aftereventid' + aftereventid
-      + '&limitnum' + limitnum
+      + '&aftereventid=' + aftereventid
+      + '&limitnum=' + limitnum
     )
       .map((response) => {
         return JSON.parse(JSON.stringify(response));
