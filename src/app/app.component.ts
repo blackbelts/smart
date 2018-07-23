@@ -17,7 +17,7 @@ import { UserProfilePage } from '../pages/user-profile/user-profile';
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav
-  rootPage: any = CalenderEventsPage;
+  rootPage: any = LogInPage;
   pages: Array<{ title: string, component: any, icon: string }>;
 
   constructor(
