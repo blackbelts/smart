@@ -227,6 +227,14 @@ export class MoodleProvider {
   */
   calenderEventSortTime(timesortfrom, timesortto, aftereventid, limitnum) {
     let coreFun = 'core_calendar_get_action_events_by_timesort';
+    console.log( siteUrl + restUrl
+      + 'wstoken=' + this.getToken()
+      + '&wsfunction=' + coreFun
+      + restFormat
+      + '&timesortfrom=' + timesortfrom
+      + '&timesortto=' + timesortto
+      + '&aftereventid' + aftereventid
+      + '&limitnum' + limitnum)
     return this.http.get(
       siteUrl + restUrl
       + 'wstoken=' + this.getToken()
