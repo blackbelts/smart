@@ -40,7 +40,6 @@ export class EventDetailsPage {
     this.event.description=event.description
     this.event.timestart=event.timestart
     this.event.icon='../'+event.icon.component
-    console.log(this.event)
   }
 
 }
