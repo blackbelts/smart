@@ -1,6 +1,9 @@
 page-coureses {
   .item-ios,.item-md{
     margin-bottom: 5px;
-    margin-top: 10px
+    margin-top: 10px;
+  }
+  [padding] h3:first-child{
+    margin-top: 0.3rem
   }
 }

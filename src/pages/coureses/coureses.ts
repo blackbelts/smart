@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, ActionSheetController, App} from '
 import { MoodleProvider } from '../../providers/moodle/moodle';
 import { CourseSectionsPage } from '../course-sections/course-sections';
 import { GradesPage } from '../grades/grades';
+import { CourseEnrolledUsersPage } from './course-enrolled-users/course-enrolled-users';
 
 /**
  * Generated class for the CouresesPage page.
@@ -52,12 +53,13 @@ export class CouresesPage {
           icon: "trophy",
           cssClass:"left",
           handler: () => {
-
+            
           }
         },{
           text: 'Participants',
           icon: 'people',
           handler: () => {
+            this.navCtrl.push(CourseEnrolledUsersPage,{cid:course.id})
           }
         },{
           text: 'Grades',

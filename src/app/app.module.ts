@@ -53,6 +53,7 @@ import { AttemptSummaryPage } from '../pages/activites/quiz/attempt-summary/atte
 import { AttemptReviewPage } from '../pages/activites/quiz/attempt-review/attempt-review';
 import { ForumPostsPage } from '../pages/activites/forum/forum-posts/forum-posts';
 import { EventDetailsPage } from '../pages/calender-events/event-details/event-details';
+import { CourseEnrolledUsersPage } from '../pages/coureses/course-enrolled-users/course-enrolled-users';
 Pro.init('YOUR_APP_ID', {
   appVersion: 'APP_VERSION'
 })
@@ -105,7 +106,8 @@ Pro.init('YOUR_APP_ID', {
     AttemptSummaryPage,
     AttemptReviewPage,
     ForumPostsPage,
-    EventDetailsPage
+    EventDetailsPage,
+    CourseEnrolledUsersPage
   ],
   imports: [
     BrowserModule,
@@ -160,7 +162,8 @@ Pro.init('YOUR_APP_ID', {
     AttemptSummaryPage,
     AttemptReviewPage,
     ForumPostsPage,
-    EventDetailsPage
+    EventDetailsPage,
+    CourseEnrolledUsersPage
   ],
   providers: [
     StatusBar,
