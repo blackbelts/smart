@@ -41,9 +41,10 @@ export class SectionContentPage {
   }
 
   openPage(type, id,name){
+  
     switch(type){
       case 'forum':{
-        this.navCtrl.push(ForumPage, {id:id,name:name},);
+        this.navCtrl.push(ForumPage, {id:id,name:name,cId:this.courseid});
         break;
       }
       case 'chat':{

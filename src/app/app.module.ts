@@ -51,6 +51,7 @@ import { TimedQuizPage } from '../pages/activites/quiz/timed-quiz/timed-quiz';
 import { QuestionPage } from '../pages/activites/quiz/question/question';
 import { AttemptSummaryPage } from '../pages/activites/quiz/attempt-summary/attempt-summary';
 import { AttemptReviewPage } from '../pages/activites/quiz/attempt-review/attempt-review';
+import { ForumPostsPage } from '../pages/activites/forum/forum-posts/forum-posts';
 Pro.init('YOUR_APP_ID', {
   appVersion: 'APP_VERSION'
 })
@@ -101,7 +102,8 @@ Pro.init('YOUR_APP_ID', {
     TimedQuizPage,
     QuestionPage,
     AttemptSummaryPage,
-    AttemptReviewPage
+    AttemptReviewPage,
+    ForumPostsPage
   ],
   imports: [
     BrowserModule,
@@ -154,7 +156,8 @@ Pro.init('YOUR_APP_ID', {
     TimedQuizPage,
     QuestionPage,
     AttemptSummaryPage,
-    AttemptReviewPage
+    AttemptReviewPage,
+    ForumPostsPage
   ],
   providers: [
     StatusBar,

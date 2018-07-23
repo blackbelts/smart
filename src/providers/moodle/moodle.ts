@@ -68,11 +68,17 @@ export class MoodleProvider {
       return JSON.parse(JSON.stringify(response));
     });
   }
+  /* *********************LOGOUT *********************/
+  logout() {
+    this.setToken("")
+    this.setPassword("")
+    this.setUserId("")
+    this.setUserName("")
+  }
 
   /************************user************************/
   /* get user information */
   getUserInformation(filed, value) {
-    console.log("test")
     let coreFun = 'core_user_get_users_by_field';
     return this.http.get(
       siteUrl + restUrl
@@ -144,8 +150,8 @@ export class MoodleProvider {
         return JSON.parse(JSON.stringify(response));
       });
   }
-  getCourseByFiled(field,value){
-    
+  getCourseByFiled(field, value) {
+
     let coreFun = 'core_course_get_courses_by_field';
     return this.http.get(
       siteUrl + restUrl
@@ -180,13 +186,6 @@ export class MoodleProvider {
   /*Returns the complete list of grade items for users in a course*/
   getItemsGrade(couresId, userId, groupid) {
     let coreFun = 'gradereport_user_get_grade_items';
-    console.log( siteUrl + restUrl
-      + 'wstoken=' + this.getToken()
-      + '&wsfunction=' + coreFun
-      + restFormat
-      + '&courseid=' + couresId
-      + '&userid=' + userId
-      + '&groupid=' + groupid)
     return this.http.get(
       siteUrl + restUrl
       + 'wstoken=' + this.getToken()
@@ -356,7 +355,7 @@ export class MoodleProvider {
       });
   }
 
-  getUserAttempts(quizId, userid = 0,atepStatus="finished") {
+  getUserAttempts(quizId, userid = 0, atepStatus = "finished") {
     let coreFun = 'mod_quiz_get_user_attempts';
     return this.http.get(
       siteUrl + restUrl
@@ -365,7 +364,7 @@ export class MoodleProvider {
       + restFormat
       + '&quizid=' + quizId
       + '&userid=' + userid
-      + '&status='+atepStatus
+      + '&status=' + atepStatus
     )
       .map((response) => {
         return JSON.parse(JSON.stringify(response));
@@ -470,6 +469,57 @@ export class MoodleProvider {
         return JSON.parse(JSON.stringify(response));
       });
   }
+  /*3- Forum */
+  canAddForumDissuction(id) {
+    let coreFun = 'mod_forum_can_add_discussion';
+    return this.http.get(
+      siteUrl + restUrl
+      + 'wstoken=' + this.getToken()
+      + '&wsfunction=' + coreFun
+      + restFormat
+      + '&forumid=' + id)
+      .map((response) => {
+        return JSON.parse(JSON.stringify(response));
+      });
+  }
+  getForumInCourse(cId) {
+    let coreFun = 'mod_forum_get_forums_by_courses';
+    return this.http.get(
+      siteUrl + restUrl
+      + 'wstoken=' + this.getToken()
+      + '&wsfunction=' + coreFun
+      + restFormat
+      + '&courseids[0]=' + cId)
+      .map((response) => {
+        return JSON.parse(JSON.stringify(response));
+      });
+  }
+  getForumDiscussions(forumId) {
+    let coreFun = 'mod_forum_get_forum_discussions_paginated';
+    return this.http.get(
+      siteUrl + restUrl
+      + 'wstoken=' + this.getToken()
+      + '&wsfunction=' + coreFun
+      + restFormat
+      + '&forumid=' + forumId)
+      .map((response) => {
+        return JSON.parse(JSON.stringify(response));
+      });
+  }
+  getForumDisussionsPosts(discussionId) {
+
+    let coreFun = 'mod_forum_get_forum_discussion_posts';
+    return this.http.get(
+      siteUrl + restUrl
+      + 'wstoken=' + this.getToken()
+      + '&wsfunction=' + coreFun
+      + restFormat
+      + '&discussionid=' + discussionId
+      + '&sortdirection=ASC')
+      .map((response) => {
+        return JSON.parse(JSON.stringify(response));
+      });
+  }
   /*/////////////////// Moodle resources //////////////////////*/
   /* 1-Url */
   getUrl(courseid) {
@@ -499,4 +549,3 @@ export class MoodleProvider {
       });
   }
 }
-

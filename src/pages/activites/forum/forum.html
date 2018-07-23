@@ -7,35 +7,46 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>forum</ion-title>
+    <ion-title>{{forumInfo.name}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 <ion-content padding>
   <ion-card>
+    <ion-card-content [innerHTML]="forumInfo.intro"></ion-card-content>
+  </ion-card>
+  <ion-card *ngFor="let disu of forumDiscussions" (click)="goToPosts(disu)">
     <ion-item>
       <ion-avatar item-start>
-        <img src="img/marty-avatar.png">
+        <img [src]="disu.userpictureurl">
       </ion-avatar>
-      <h2>Marty McFly</h2>
-      <p>November 5, 1955</p>
+      <h2>{{disu.name}}</h2>
+      <p>{{disu.created}}</p>
     </ion-item>
     <ion-card-content>
-      <p>Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine.</p>
+      <div [innerHTML]="disu.message"></div>
     </ion-card-content>
-    <ion-row>
-      <ion-col>
-        <button ion-button icon-start clear small>
-          <ion-icon name="text"></ion-icon>
-          <div>4 Comments</div>
-        </button>
-      </ion-col>
-      <ion-col center text-center>
-        <ion-note>
-          11h ago
-        </ion-note>
-      </ion-col>
-    </ion-row>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <button ion-button clear small>
+            <ion-icon name="text"></ion-icon>
+            <div>&nbsp; {{disu.numreplies}} replies</div>
+          </button>
+        </ion-col>
+        <ion-col text-center>
+          <button ion-button clear small>
+            <ion-icon name="time"></ion-icon>
+            <div>{{disu.modified}}</div>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </ion-card>
+  <ion-fab bottom right [hidden]="canAdd">
+    <button ion-fab color="primary">
+      <ion-icon name="add-circle"></ion-icon>
+    </button>
+  </ion-fab>
 </ion-content>

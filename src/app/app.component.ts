@@ -10,6 +10,8 @@ import { MessagesPage } from '../pages/messages/messages';
 import { MyFilesPage } from '../pages/my-files/my-files';
 import { CalenderEventsPage } from '../pages/calender-events/calender-events';
 import { SiteHomePage } from '../pages/site-home/site-home';
+import { MoodleProvider } from '../providers/moodle/moodle';
+import { UserProfilePage } from '../pages/user-profile/user-profile';
 @Component({
   templateUrl: 'app.html'
 })
@@ -18,7 +20,12 @@ export class MyApp {
   rootPage: any = LogInPage;
   pages: Array<{ title: string, component: any, icon: string }>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(
+    public platform: Platform,
+    public statusBar: StatusBar,
+    public splashScreen: SplashScreen,
+    public moodleProvider: MoodleProvider
+  ) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
@@ -42,11 +49,19 @@ export class MyApp {
       this.splashScreen.hide();
     });
   }
-
+  logout() {
+    console.log("test")
+    this.moodleProvider.logout();
+    console.log(this.moodleProvider.getUserId())
+    this.nav.setRoot(LogInPage)
+  }
+  goToProfile() {
+    this.nav.push(UserProfilePage)
+  }
   openPage(page) {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
   }
-  
+
 }
