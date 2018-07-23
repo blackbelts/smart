@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { MoodleProvider } from '../../providers/moodle/moodle';
+import { UserDetailsPage } from './user-details/user-details';
 
 /**
  * Generated class for the UserProfilePage page.
@@ -24,7 +25,7 @@ export class UserProfilePage {
   }
   public user = {}
   ionViewDidLoad() {
-    this.moodle.getUserInformation("id", 13)
+    this.moodle.getUserInformation("id", this.moodle.getUserId())
       .map(res => res)
       .subscribe(info => {
         console.log(info)
@@ -32,5 +33,7 @@ export class UserProfilePage {
         console.log(this.user)
       })
   }
-
+  userDetails(user){
+    this.navCtrl.push(UserDetailsPage,{user:user})
+  }
 }

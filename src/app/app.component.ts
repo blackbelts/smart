@@ -12,13 +12,12 @@ import { CalenderEventsPage } from '../pages/calender-events/calender-events';
 import { SiteHomePage } from '../pages/site-home/site-home';
 import { MoodleProvider } from '../providers/moodle/moodle';
 import { UserProfilePage } from '../pages/user-profile/user-profile';
-import { CourseEnrolledUsersPage } from '../pages/coureses/course-enrolled-users/course-enrolled-users';
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav
-  rootPage: any = UserProfilePage;
+  rootPage: any = LogInPage;
   pages: Array<{ title: string, component: any, icon: string }>;
 
   constructor(

@@ -3,7 +3,6 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { Pro } from '@ionic/pro'
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { LogInPage } from '../pages/log-in/log-in';
@@ -54,11 +53,7 @@ import { AttemptReviewPage } from '../pages/activites/quiz/attempt-review/attemp
 import { ForumPostsPage } from '../pages/activites/forum/forum-posts/forum-posts';
 import { EventDetailsPage } from '../pages/calender-events/event-details/event-details';
 import { CourseEnrolledUsersPage } from '../pages/coureses/course-enrolled-users/course-enrolled-users';
-Pro.init('YOUR_APP_ID', {
-  appVersion: 'APP_VERSION'
-})
-
-
+import { UserDetailsPage } from '../pages/user-profile/user-details/user-details';
 @NgModule({
   declarations: [
     MyApp,
@@ -107,7 +102,8 @@ Pro.init('YOUR_APP_ID', {
     AttemptReviewPage,
     ForumPostsPage,
     EventDetailsPage,
-    CourseEnrolledUsersPage
+    CourseEnrolledUsersPage,
+    UserDetailsPage
   ],
   imports: [
     BrowserModule,
@@ -163,7 +159,8 @@ Pro.init('YOUR_APP_ID', {
     AttemptReviewPage,
     ForumPostsPage,
     EventDetailsPage,
-    CourseEnrolledUsersPage
+    CourseEnrolledUsersPage,
+    UserDetailsPage
   ],
   providers: [
     StatusBar,

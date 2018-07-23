@@ -15,9 +15,11 @@
     <ion-card-content>
       <ion-card-title text-center>
         {{user.fullname}}
+        <span>{{user.country}}, {{user.city}}</span>
+
       </ion-card-title>
     </ion-card-content>
-    <ion-item>
+    <ion-item (click)="userDetails(user)">
       <ion-icon name='person' item-start></ion-icon>
       Details
       <ion-icon name="arrow-round-forward" item-end></ion-icon>
