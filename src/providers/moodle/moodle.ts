@@ -80,6 +80,12 @@ export class MoodleProvider {
   /* get user information */
   getUserInformation(filed, value) {
     let coreFun = 'core_user_get_users_by_field';
+    console.log( siteUrl + restUrl
+      + 'wstoken=' + this.getToken()
+      + '&wsfunction=' + coreFun
+      + restFormat
+      + '&field=' + filed
+      + '&values[0]=' + value)
     return this.http.get(
       siteUrl + restUrl
       + 'wstoken=' + this.getToken()

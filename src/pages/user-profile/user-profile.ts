@@ -22,13 +22,15 @@ export class UserProfilePage {
     public moodle: MoodleProvider
   ) {
   }
-
+  public user = {}
   ionViewDidLoad() {
-    this.moodle.getUserInformation("id",13)
-    .map(res=>res)
-    .subscribe(info=>{
-      console.log(info)
-    })
+    this.moodle.getUserInformation("id", 13)
+      .map(res => res)
+      .subscribe(info => {
+        console.log(info)
+        this.user = info[0]
+        console.log(this.user)
+      })
   }
 
 }

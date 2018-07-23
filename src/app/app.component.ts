@@ -18,7 +18,7 @@ import { CourseEnrolledUsersPage } from '../pages/coureses/course-enrolled-users
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav
-  rootPage: any = LogInPage;
+  rootPage: any = UserProfilePage;
   pages: Array<{ title: string, component: any, icon: string }>;
 
   constructor(
