@@ -51,7 +51,7 @@
       </ion-grid>
     </ion-card-content>
   </ion-card>
-  <ion-card>
+  <ion-card [hidden]="firstAteempt">
     <ion-card-content>Final Grade: {{grade}} / {{quizInfo.grade}}</ion-card-content>
   </ion-card>
   <button ion-button block (click)="presentModal()">{{buttonText}}</button>

@@ -111,9 +111,10 @@ export class QuizPage {
         }
         else {
           if (this.userAttempts == 0) {
-            this.firstAteempt == true
+            this.firstAteempt = true
             this.buttonText = "START ATTEMPT QUIZ"
           } else {
+            this.firstAteempt = false
             this.buttonText = "RE-ATTEMPT QUIZ"
           }
         }
