@@ -18,8 +18,8 @@ export class MoodleProvider {
   loginUrl = '/login/token.php?';
   constructor(public http: HttpClient) {
     //this.token='c76cc96ea49993aa908db97c5cc528f8';
-/*     this.token = 'd321461d0553452dcb4620dd89842f03'
- */  }
+    this.token = 'd321461d0553452dcb4620dd89842f03'
+  }
   /************************Class Function************************/
   /* set value of the token for the user */
   setToken(token) {
@@ -80,12 +80,6 @@ export class MoodleProvider {
   /* get user information */
   getUserInformation(filed, value) {
     let coreFun = 'core_user_get_users_by_field';
-    console.log( siteUrl + restUrl
-      + 'wstoken=' + this.getToken()
-      + '&wsfunction=' + coreFun
-      + restFormat
-      + '&field=' + filed
-      + '&values[0]=' + value)
     return this.http.get(
       siteUrl + restUrl
       + 'wstoken=' + this.getToken()

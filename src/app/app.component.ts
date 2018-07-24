@@ -30,13 +30,9 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Course overview', component: HomePage, icon: 'eye' },
-      { title: 'Site home', component: SiteHomePage, icon: 'home' },
+      { title: 'Question Bank', component: HomePage, icon: 'eye' },
       { title: 'Grades', component: GradesPage, icon: 'stats' },
       { title: 'Notifications', component: NotificationsPage, icon: 'notifications' },
-      { title: 'Messages', component: MessagesPage, icon: 'mail' },
-      { title: 'Calendar events', component: CalenderEventsPage, icon: 'calendar' },
-      { title: 'My files', component: MyFilesPage, icon: 'folder' },
     ];
 
   }

@@ -18,7 +18,7 @@ import { MoodleProvider } from '../../providers/moodle/moodle';
 export class LogInPage {
   username = '7mda';
   password = 'Admin@123';
-  error='';
+  error = '';
   userId;
 
   constructor(
@@ -30,7 +30,7 @@ export class LogInPage {
   ) {
     this.menu.swipeEnable(false);
   }
-  setUser(user){
+  setUser(user) {
     this.userId = user[0].id;
     this.moodleProvider.setUserId(this.userId);
   }
@@ -39,24 +39,33 @@ export class LogInPage {
 
   // login and go to home page
   login() {
-    this.moodleProvider.loginRequest(this.username,this.password)
-    .subscribe((res)=>{
-      this.moodleProvider.setToken(res.token);
-      if(typeof this.moodleProvider.getToken() === "undefined"){
-        console.log("error");
+    this.moodleProvider.loginRequest(this.username, this.password)
+      .subscribe((res) => {
+        this.moodleProvider.setToken(res.token);
+        if (typeof this.moodleProvider.getToken() === "undefined") {
+          const toast = this.toastCtrl.create({
+            message: 'Invaild UserName OR Password',
+            duration: 3000,
+            position: 'middle'
+          });
+          toast.present();
 
-      }
-      else {
-        this.nav.setRoot(HomePage);
-        this.moodleProvider.setUserName(this.username);
-        this.moodleProvider.setPassword(this.password);
-        this.moodleProvider.getUserInformation('username',this.username)
-        .map(res=>res)
-        .subscribe((user)=>{
-          this.setUser(user);
-        });
-      }
-    });
+        }
+        else {
+          this.moodleProvider.setUserName(this.username);
+          this.moodleProvider.setPassword(this.password);
+          this.moodleProvider.getUserInformation('username', this.username)
+            .map(res => res)
+            .subscribe((user) => {
+              this.setUser(user);
+              console.log(this.userId)
+
+              this.nav.setRoot(HomePage, { "userid": this.userId });
+            });
+
+
+        }
+      });
 
 
     /*if(this.moodleProvider.loginRequest(this.username,this.password)){
@@ -84,13 +93,11 @@ export class LogInPage {
         {
           text: 'Cancel',
           handler: data => {
-            console.log('Cancel clicked');
           }
         },
         {
           text: 'Send',
           handler: data => {
-            console.log('Send clicked');
             let toast = this.toastCtrl.create({
               message: 'Email was sended successfully',
               duration: 3000,
@@ -108,7 +115,6 @@ export class LogInPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LogInPage');
   }
 
 }

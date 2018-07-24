@@ -8,7 +8,8 @@
 <ion-content padding>
   <ion-card *ngFor="let course of courses">
     <ion-item>
-      <round-progress item-start (click)="goToCourseSections(course)" [current]="course.progress" [radius]="15" [color]="'#4801b8'" [stroke]="5" [max]="max"></round-progress>
+      <round-progress item-start (click)="goToCourseSections(course)" [current]="course.progress" [radius]="15" [color]="'#4801b8'"
+        [stroke]="5" [max]="max"></round-progress>
       <h3 (click)="goToCourseSections(course)">{{course.fullname}}</h3>
       <ion-icon name="md-more" (click)="presentActionSheet(course)" item-end></ion-icon>
     </ion-item>
