@@ -28,7 +28,6 @@ export class GradesPage {
   ) {
   }
   goToCourseGrade(courseId,courseName) {
-    console.log(courseId)
     this.navCtrl.push(CourseGradePage,{courseid:courseId,courseName:courseName})
   }
   ionViewDidLoad() {
@@ -53,7 +52,6 @@ export class GradesPage {
           })
         }
       })
-      console.log(this.allCourseGrade)
   }
 
 }

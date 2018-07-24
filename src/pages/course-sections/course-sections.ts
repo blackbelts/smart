@@ -23,19 +23,32 @@ export class CourseSectionsPage {
     public navParams: NavParams,
     public moodleProvider: MoodleProvider) {
   }
-  setSections(sections){
+  setSections(sections) {
     this.sections = sections;
   }
-  goToSectionContent(section){
-    this.navCtrl.push(SectionContentPage,{section: section,courseId: this.course.id});
+  goToSectionContent(section) {
+    this.navCtrl.push(SectionContentPage, { section: section, courseId: this.course.id });
   }
   ionViewDidLoad() {
     this.course = this.navParams.get('course');
-    this.moodleProvider.getCourseContent(this.course.id, 'excludemodules', 1)
-    .map(res=>res)
-    .subscribe((sections)=>{
-      this.setSections(sections);
-    });
+    this.getSection(this.course.id)
+  }
+  public sectionsFound=false
+  getSection(id) {
+    this.moodleProvider.getCourseContent(id, 'excludemodules', 1)
+      .map(res => res)
+      .subscribe((sections) => {
+        this.setSections(sections);
+        if(this.sections.length==0){
+          this.sectionsFound=true
+        }
+      });
+  }
+  doRefresh(refresher) {
+    this.getSection(this.course.id)
+    setTimeout(() => {
+      refresher.complete();
+    }, 2000);
   }
 
 }

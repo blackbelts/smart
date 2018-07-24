@@ -66,7 +66,9 @@ export class QuestionPage {
     public moodleProvider: MoodleProvider,
   ) {
   }
+  public intiAlarm = false
   ionViewDidLoad() {
+    this.intiAlarm = true
     this.attemptId = this.navParams.get("attempt")
     this.quizName = this.navParams.get("name")
     this.lastPage = this.navParams.get("lastPage")
@@ -101,8 +103,6 @@ export class QuestionPage {
     this.moodleProvider.getAttemptData(attempt, pageNo)
       .map(res => res)
       .subscribe((atep) => {
-        this.timeInSeconds = (atep.attempt.timecheckstate - atep.attempt.timestart) - (Date.now() / 1000 - atep.attempt.timestart)
-        console.log((atep.attempt.timecheckstate - atep.attempt.timestart) - (Date.now() / 1000 - atep.attempt.timestart))
         this.attemptId = atep.attempt.id
         this.prevPageNo = this.pageNo
         this.pageNo = atep.nextpage
@@ -114,9 +114,14 @@ export class QuestionPage {
         this.que.qstate = atep.questions[0].status
         this.que.qgrade = atep.questions[0].maxmark
         this.queHtml = atep.questions[0].html
+        if (this.intiAlarm) {
+          this.timeInSeconds = (atep.attempt.timecheckstate - atep.attempt.timestart) - (Date.now() / 1000 - atep.attempt.timestart)
+          this.initTimer()
+          this.startTimer()
+          this.intiAlarm = false
+        }
         this.setOptions()
-        this.initTimer()
-        this.startTimer()
+
       })
   }
   checkPageNo(pageNo) {
@@ -182,9 +187,11 @@ export class QuestionPage {
       .subscribe((res) => {
       })
   }
+  public goSummery = false
   nextQues(attempt, pageNo) {
     if (pageNo == -1) {
       this.lastPage = this.que.qpage
+      this.goSummery = true
       this.navCtrl.push(AttemptSummaryPage, { attemptId: attempt, lastPage: this.lastPage })
     } else {
       this.getquestion(this.attemptId, pageNo)
@@ -232,7 +239,6 @@ export class QuestionPage {
         this.moodleProvider.finishQuiz(this.attemptId, 1)
           .map(res => res)
           .subscribe(res => {
-            console.log(res)
             this.navCtrl.push(AttemptReviewPage, { attemptId: this.attemptId })
           })
       }
@@ -251,6 +257,17 @@ export class QuestionPage {
     secondsString = (seconds < 10) ? "0" + seconds : seconds.toString();
     return hoursString + ':' + minutesString + ':' + secondsString;
   }
-
-
+ /*  ionViewCanLeave(): boolean {
+    // here we can either return true or false
+    // depending on if we want to leave this view
+    if (this.goSummery) {
+      this.goSummery = false
+      return true
+    }
+    else {
+      this.navCtrl.popTo(QuizPage)
+      return true
+    }
+  }
+ */
 }

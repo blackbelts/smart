@@ -12,7 +12,7 @@
 
 </ion-header>
 <ion-content padding>
-  <ion-item *ngFor="let user of users">
+  <ion-item *ngFor="let user of users" (click)="goUserProfile(user)">
     <ion-avatar item-start>
       <img [src]="user.profileimageurlsmall">
     </ion-avatar>

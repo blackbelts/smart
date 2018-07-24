@@ -16,7 +16,15 @@
     </ion-buttons>
   </ion-navbar>
 </ion-header>
+
 <ion-content padding class="animated fadeIn common-bg">
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <div [hidden]="!foundCourses" class="nodata">
+    <ion-icon name="sad"></ion-icon>
+    <h3>Sorry no courses</h3>
+  </div>
   <ion-card *ngFor="let course of courses">
     <ion-item>
       <round-progress item-start (click)="goToCourseSections(course)" [current]="course.progress" [radius]="15" [color]="'#4801b8'"
@@ -24,7 +32,7 @@
       <h3 (click)="goToCourseSections(course)">{{course.fullname}}</h3>
       <ion-icon name="md-more" (click)="presentActionSheet(course)" item-end></ion-icon>
     </ion-item>
-   <!--  <ion-card-content (click)="goToCourseSections(course)">
+    <!--  <ion-card-content (click)="goToCourseSections(course)">
       <div [innerHTML]="course.summary"></div>
     </ion-card-content> -->
   </ion-card>

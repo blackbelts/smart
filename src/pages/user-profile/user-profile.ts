@@ -24,16 +24,19 @@ export class UserProfilePage {
   ) {
   }
   public user = {}
+  userId
   ionViewDidLoad() {
-    this.moodle.getUserInformation("id", this.moodle.getUserId())
+    this.userId = this.navParams.get("id")
+    if(this.userId==undefined){
+      this.userId= this.moodle.getUserId()
+    }
+    this.moodle.getUserInformation("id",this.userId )
       .map(res => res)
       .subscribe(info => {
-        console.log(info)
         this.user = info[0]
-        console.log(this.user)
       })
   }
-  userDetails(user){
-    this.navCtrl.push(UserDetailsPage,{user:user})
+  userDetails(user) {
+    this.navCtrl.push(UserDetailsPage, { user: user })
   }
 }

@@ -497,7 +497,13 @@ ion-icon[ng-reflect-disabled="true"] {
     pointer-events: none;
   }
 }
-
+.nodata{
+  color: #888585;
+  padding-top: 50px;
+  ion-icon{
+    font-size: 10em
+  }
+}
 // google
 .google-map {
   height: 160px;

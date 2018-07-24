@@ -58,8 +58,6 @@ export class LogInPage {
             .map(res => res)
             .subscribe((user) => {
               this.setUser(user);
-              console.log(this.userId)
-
               this.nav.setRoot(HomePage, { "userid": this.userId });
             });
 

@@ -6,10 +6,6 @@ import { HomePage } from '../pages/home/home';
 import { LogInPage } from '../pages/log-in/log-in';
 import { GradesPage } from '../pages/grades/grades';
 import { NotificationsPage } from '../pages/notifications/notifications';
-import { MessagesPage } from '../pages/messages/messages';
-import { MyFilesPage } from '../pages/my-files/my-files';
-import { CalenderEventsPage } from '../pages/calender-events/calender-events';
-import { SiteHomePage } from '../pages/site-home/site-home';
 import { MoodleProvider } from '../providers/moodle/moodle';
 import { UserProfilePage } from '../pages/user-profile/user-profile';
 @Component({
@@ -34,8 +30,8 @@ export class MyApp {
       { title: 'Grades', component: GradesPage, icon: 'stats' },
       { title: 'Notifications', component: NotificationsPage, icon: 'notifications' },
     ];
-
   }
+  public test="nazeeh"
 
   initializeApp() {
     this.platform.ready().then(() => {

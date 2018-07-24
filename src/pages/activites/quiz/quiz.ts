@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, ViewController } from 'ionic-angular';
 import { MoodleProvider } from '../../../providers/moodle/moodle';
 import { TimedQuizPage } from './timed-quiz/timed-quiz';
 import { AttemptReviewPage } from './attempt-review/attempt-review';
@@ -32,11 +32,10 @@ export class QuizPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public moodleProvider: MoodleProvider,
-    public modalCtrl: ModalController
+    public modalCtrl: ModalController,
+    public ViewController: ViewController
   ) {
     this.quizId = this.navParams.get('id')
-    /*     this.quizId = 6*/
-    /*     this.name = this.navParams.get('name')*/
     this.moodleProvider.getQuizesByCourse(10)
       .map(res => res)
       .subscribe((quizzes) => {
@@ -101,21 +100,32 @@ export class QuizPage {
   showReview(attemptId) {
     this.navCtrl.push(AttemptReviewPage, { "attemptId": attemptId })
   }
+  public firstAteempt = false
   ionViewDidLoad() {
     this.moodleProvider.getUserAttempts(this.quizId, 0, "unfinished")
       .map(res => res)
       .subscribe(inprogressAteempts => {
-        console.log(inprogressAteempts)
-        console.log(inprogressAteempts.attempts.length)
         if (inprogressAteempts.attempts.length != 0) {
           this.buttonText = "CONTINUE PROGRESS ATTEMPT"
           this.progressAttempt = inprogressAteempts.attempts
         }
         else {
-          this.buttonText = "RE-ATTEMPT QUIZ"
+          if (this.userAttempts == 0) {
+            this.firstAteempt == true
+            this.buttonText = "START ATTEMPT QUIZ"
+          } else {
+            this.buttonText = "RE-ATTEMPT QUIZ"
+          }
         }
       })
-
   }
-
+  doRefresh(refresher) {
+    setTimeout(() => {
+      this.navCtrl.push(this.navCtrl.getActive().component, { "id": this.quizId }).then(() => {
+        let index = this.ViewController.index;
+        this.navCtrl.remove(index);
+      })
+      refresher.complete();
+    }, 2000);
+  }
 }

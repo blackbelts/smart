@@ -66,7 +66,7 @@ export class AttemptReviewPage {
             maxmark: '',
             text: '',
             prompt: '',
-            feedback:'',
+            feedback: '',
             options: []
           }
           this.questionInfo.slot = questions[i].slot
@@ -79,7 +79,7 @@ export class AttemptReviewPage {
           htmlObj[0].innerHTML = questions[i].html
           this.questionInfo.text = document.getElementsByClassName("qtext")[0].innerHTML
           this.questionInfo.prompt = document.getElementsByClassName("prompt")[0].innerHTML
-          this.questionInfo.feedback=document.getElementsByClassName("feedback")[0].innerHTML
+          this.questionInfo.feedback = document.getElementsByClassName("feedback")[0].innerHTML
           let p = document.getElementsByClassName("answer")[0].children
           for (let i = 0; i < document.getElementsByClassName("answer")[0].children.length; i++) {
             this.quesOption = {
@@ -115,7 +115,6 @@ export class AttemptReviewPage {
           this.allQuestionInfo.push(this.questionInfo)
 
         }
-        console.log(this.allQuestionInfo)
       })
   }
   getTime(time) {
@@ -128,4 +127,10 @@ export class AttemptReviewPage {
     let s = Math.floor((timeinseconds % 3600) % 60)
     return h + " hours " + m + " mins " + s + " secs"
   }
+ /*  ionViewCanLeave(): boolean {
+    // here we can either return true or false
+    // depending on if we want to leave this view
+    this.navCtrl.popTo(QuizPage)
+    return true
+  } */
 }

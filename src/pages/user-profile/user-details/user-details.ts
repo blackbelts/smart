@@ -20,7 +20,6 @@ export class UserDetailsPage {
   public user={}
   ionViewDidLoad() {
     this.user=this.navParams.get("user")
-    console.log(this.user)
   }
 
 }

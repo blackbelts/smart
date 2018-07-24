@@ -37,8 +37,6 @@ export class CourseGradePage {
       .subscribe(itemsGrade => {
         this.itemsGrad = itemsGrade.usergrades[0].gradeitems
         this.course = this.itemsGrad.pop()
-        console.log(this.course)
-        console.log(itemsGrade)
       })
   }
 

@@ -60,9 +60,8 @@ export class AttemptSummaryPage {
           text: 'Yes',
           handler: () => {
             this.moodleProvider.finishQuiz(this.attemptId, 1)
-              .map(res => res).
-              subscribe(res => {
-                console.log(res)
+              .map(res => res)
+              .subscribe(res => {
                 this.navCtrl.push(AttemptReviewPage, { attemptId: this.attemptId })
               })
           }

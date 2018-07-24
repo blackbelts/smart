@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { MoodleProvider } from '../../../providers/moodle/moodle';
+import { UserProfilePage } from '../../user-profile/user-profile';
 
 /**
  * Generated class for the CourseEnrolledUsersPage page.
@@ -23,20 +24,21 @@ export class CourseEnrolledUsersPage {
   ) {
   }
   public courseid
-  public users:any
+  public users: any
   ionViewDidLoad() {
-    this.courseid=this.navParams.get("cid")
-    this.courseid=10
-    console.log(this.courseid)
+    this.courseid = this.navParams.get("cid")
+    this.courseid = 10
     this.moodle.getCourseEnrolledUsers(this.courseid)
-    .map(res=>res)
-    .subscribe(users=>{
-      this.users=users
-      console.log(this.users)
-    })
+      .map(res => res)
+      .subscribe(users => {
+        this.users = users
+      })
   }
-  getLastAccess(lastaccess){
-    return "Lase access: "+new Date(lastaccess).toLocaleString()
+  getLastAccess(lastaccess) {
+    return "Lase access: " + new Date(lastaccess).toLocaleString()
+  }
+  goUserProfile(user) {
+    this.navCtrl.push(UserProfilePage, { id: user.id })
   }
 
 }

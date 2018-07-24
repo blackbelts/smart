@@ -14,6 +14,8 @@ export class HomePage {
   max = 100;
   current;
   courses = [{}];
+  public userId = this.moodleProvider.getUserId()
+  public foundCourses = false
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public moodleProvider: MoodleProvider,
@@ -76,12 +78,25 @@ export class HomePage {
     });
     actionSheet.present();
   }
+
   ionViewDidLoad() {
-    this.moodleProvider.getUserCourses(13)
+    this.getCourses(this.userId)
+  }
+  getCourses(id) {
+    this.moodleProvider.getUserCourses(id)
       .map(res => res)
       .subscribe((userCourses) => {
         this.setCoures(userCourses);
+        if (this.courses.length == 0) {
+          this.foundCourses = true
+        }
       });
-
+      
+  }
+  doRefresh(refresher){
+    this.getCourses(this.userId)
+    setTimeout(() => {
+      refresher.complete();
+    }, 2000);
   }
 }
