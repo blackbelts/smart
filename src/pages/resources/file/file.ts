@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { UtilsProvider } from '../../../providers/utils/utils';
+import { FileOpener } from '@ionic-native/file-opener';
+import { MoodleProvider } from '../../../providers/moodle/moodle';
 
 
 /**
@@ -15,13 +18,33 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'file.html',
 })
 export class FilePage {
-
+  public id
+  public name
+  public cid
+  public content
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    ) {
+    public utils: UtilsProvider,
+    private fileOpener: FileOpener,
+    public moodle: MoodleProvider
+  ) {
+    /*  this.id=this.navParams.get("id")
+     this.name=this.navParams.get("name")
+     this.cid=this.navParams.get('cId') */
+    this.id = 3
+    this.name = "test"
+    this.cid = 11
+    if (this.navParams.get("filesContents").length == 0) {
+      this.utils.showAlert("no file uploded", "ERROR");
+    }
+    else {
+      this.content = this.navParams.get("filesContents")[0]
+    }
+
   }
-  open(){
+  open() {
+    this.fileOpener.open(this.content+"&token=" + this.moodle.getToken(),this.content.mimetype)
 
   }
 

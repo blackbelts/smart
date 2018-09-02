@@ -5,6 +5,7 @@ import { ForumPage } from '../activites/forum/forum';
 import { QuizPage } from '../activites/quiz/quiz';
 import { ChoicePage } from '../activites/choice/choice';
 import { UrlPage } from '../resources/url/url';
+import { FilePage } from '../resources/file/file';
 
 /**
  * Generated class for the SectionContentPage page.
@@ -32,23 +33,27 @@ export class SectionContentPage {
     this.contents = contents[0].modules;
   }
 
-  openPage(type, id, name) {
+  openPage(ele) {
 
-    switch (type) {
+    switch (ele.modname) {
       case 'forum': {
-        this.navCtrl.push(ForumPage, { id: id, name: name, cId: this.courseid });
+        this.navCtrl.push(ForumPage, { id: ele.instance, name: ele.name, cId: this.courseid });
         break;
       }
       case 'quiz': {
-        this.navCtrl.push(QuizPage, { id: id, name: name, cId: this.courseid });
+        this.navCtrl.push(QuizPage, { id: ele.instance, name: ele.name, cId: this.courseid });
         break;
       }
       case 'choice': {
-        this.navCtrl.push(ChoicePage, { id: id, name: name, cId: this.courseid });
+        this.navCtrl.push(ChoicePage, { id: ele.instance, name: ele.name, cId: this.courseid });
         break;
       }
       case 'url': {
-        this.navCtrl.push(UrlPage, { id: id, name: name, cId: this.courseid });
+        this.navCtrl.push(UrlPage, { id: ele.instance, name: ele.name, cId: this.courseid });
+        break;
+      }
+      case 'resource': {
+        this.navCtrl.push(FilePage, { id: ele.instance, name: ele.name, cId: this.courseid,filesContents:ele.contents });
         break;
       }
 

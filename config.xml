@@ -80,7 +80,6 @@
     <plugin name="cordova-plugin-device" spec="2.0.2" />
     <plugin name="cordova-plugin-splashscreen" spec="5.0.2" />
     <plugin name="cordova-plugin-ionic-keyboard" spec="2.0.5" />
-    <plugin name="cordova-plugin-file-opener2" spec="^2.0.19" />
     <plugin name="cordova-plugin-ionic" spec="^4.1.7">
         <variable name="APP_ID" value="" />
         <variable name="CHANNEL_NAME" value="YOUR_CHANNEL_NAME" />
@@ -95,4 +94,5 @@
     </plugin>
     <engine name="android" spec="7.0.0" />
     <plugin name="cordova-plugin-inappbrowser" spec="^3.0.0" />
+    <plugin name="cordova-plugin-file-opener2" spec="^2.0.19" />
 </widget>

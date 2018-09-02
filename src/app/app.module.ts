@@ -31,6 +31,7 @@ import { ChoicePage } from '../pages/activites/choice/choice';
 import { UrlPage } from '../pages/resources/url/url';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { FilePage } from '../pages/resources/file/file';
+import {FileOpener} from '@ionic-native/file-opener'
 @NgModule({
   declarations: [
     MyApp,
@@ -97,6 +98,7 @@ import { FilePage } from '../pages/resources/file/file';
     MoodleProvider,
     UtilsProvider,
     InAppBrowser,
+    FileOpener
   ]
 })
 export class AppModule { }
