@@ -27,9 +27,8 @@ export class UrlPage {
   }
 
   ionViewDidLoad() {
-    /*     this.getUrlFromMoodle(this.navParams.get("cId"),this.navParams.get("id"))
-     */
-    this.getUrlFromMoodle(11, 3)
+    this.getUrlFromMoodle(this.navParams.get("cId"), this.navParams.get("id"))
+
   }
   getUrlFromMoodle(courseId, instance) {
     this.moodleProvider.getUrl(courseId)
@@ -38,7 +37,6 @@ export class UrlPage {
         for (let i = 0; i < urls.urls.length; i++) {
           if (urls.urls[i].id == instance) {
             this.setUrl(urls.urls[i])
-            console.log(this.url)
           }
         }
       });
@@ -46,11 +44,12 @@ export class UrlPage {
   setUrl(url) {
     this.url = url
   }
-  openLink(url){
-    const options:InAppBrowserOptions={
-      zoom: 'no'
+  openLink(url) {
+    const options: InAppBrowserOptions = {
+      zoom: 'no',
+      hardwareback: 'no'
     }
-    const browser = this.iab.create(url,'_self',options)
+    const browser = this.iab.create(url, '_self', options)
     browser.show()
   }
 

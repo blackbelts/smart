@@ -63,7 +63,9 @@ export class SectionContentPage {
       .map(res => res)
       .subscribe((contents) => {
         contents[0].modules.forEach(module => {
-          if (module.modname == "forum" || module.modname == "quiz" || module.modname == "choice" || module.modname == "url") {
+          if (module.modname == "forum" || module.modname == "quiz"
+            || module.modname == "choice" || module.modname == "url"
+            || module.modname == "resource") {
             this.contents.push(module)
           }
         });

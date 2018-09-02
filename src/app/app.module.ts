@@ -30,6 +30,7 @@ import { UtilsProvider } from '../providers/utils/utils';
 import { ChoicePage } from '../pages/activites/choice/choice';
 import { UrlPage } from '../pages/resources/url/url';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { FilePage } from '../pages/resources/file/file';
 @NgModule({
   declarations: [
     MyApp,
@@ -53,7 +54,8 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
     CourseEnrolledUsersPage,
     UserDetailsPage,
     ChoicePage,
-    UrlPage
+    UrlPage,
+    FilePage
   ],
   imports: [
     BrowserModule,
@@ -84,7 +86,8 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
     CourseEnrolledUsersPage,
     UserDetailsPage,
     ChoicePage,
-    UrlPage
+    UrlPage,
+    FilePage
   ],
   providers: [
     StatusBar,
