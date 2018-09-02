@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { MoodleProvider } from '../../providers/moodle/moodle';
 import { ForumPage } from '../activites/forum/forum';
 import { QuizPage } from '../activites/quiz/quiz';
+import { ChoicePage } from '../activites/choice/choice';
+import { UrlPage } from '../resources/url/url';
 
 /**
  * Generated class for the SectionContentPage page.
@@ -38,10 +40,18 @@ export class SectionContentPage {
         break;
       }
       case 'quiz': {
-        this.navCtrl.push(QuizPage, { id: id, name: name });
+        this.navCtrl.push(QuizPage, { id: id, name: name, cId: this.courseid });
         break;
       }
-      
+      case 'choice': {
+        this.navCtrl.push(ChoicePage, { id: id, name: name, cId: this.courseid });
+        break;
+      }
+      case 'url': {
+        this.navCtrl.push(UrlPage, { id: id, name: name, cId: this.courseid });
+        break;
+      }
+
     }
   }
   public contentFound = false
@@ -53,7 +63,7 @@ export class SectionContentPage {
       .map(res => res)
       .subscribe((contents) => {
         contents[0].modules.forEach(module => {
-          if (module.modname == "forum" || module.modname == "quiz") {
+          if (module.modname == "forum" || module.modname == "quiz" || module.modname == "choice" || module.modname == "url") {
             this.contents.push(module)
           }
         });

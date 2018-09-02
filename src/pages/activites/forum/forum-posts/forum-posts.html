@@ -19,7 +19,7 @@
         <img [src]="post.userpictureurl">
       </ion-avatar>
       <h2>{{post.subject}}</h2>
-      <p>{{post.created}}</p>
+      <p>{{post.created*1000|date:'d/M, h:mm a'}}</p>
     </ion-item>
     <ion-card-content>
       <div [innerHTML]="post.message"></div>

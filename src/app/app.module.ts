@@ -26,6 +26,10 @@ import { AttemptReviewPage } from '../pages/activites/quiz/attempt-review/attemp
 import { ForumPostsPage } from '../pages/activites/forum/forum-posts/forum-posts';
 import { CourseEnrolledUsersPage } from '../pages/coureses/course-enrolled-users/course-enrolled-users';
 import { UserDetailsPage } from '../pages/user-profile/user-details/user-details';
+import { UtilsProvider } from '../providers/utils/utils';
+import { ChoicePage } from '../pages/activites/choice/choice';
+import { UrlPage } from '../pages/resources/url/url';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 @NgModule({
   declarations: [
     MyApp,
@@ -47,7 +51,9 @@ import { UserDetailsPage } from '../pages/user-profile/user-details/user-details
     AttemptReviewPage,
     ForumPostsPage,
     CourseEnrolledUsersPage,
-    UserDetailsPage
+    UserDetailsPage,
+    ChoicePage,
+    UrlPage
   ],
   imports: [
     BrowserModule,
@@ -76,7 +82,9 @@ import { UserDetailsPage } from '../pages/user-profile/user-details/user-details
     AttemptReviewPage,
     ForumPostsPage,
     CourseEnrolledUsersPage,
-    UserDetailsPage
+    UserDetailsPage,
+    ChoicePage,
+    UrlPage
   ],
   providers: [
     StatusBar,
@@ -84,6 +92,8 @@ import { UserDetailsPage } from '../pages/user-profile/user-details/user-details
     IonicErrorHandler,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     MoodleProvider,
+    UtilsProvider,
+    InAppBrowser,
   ]
 })
 export class AppModule { }

@@ -1,0 +1,35 @@
+<!--
+  Generated template for the ChoicePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{name}}</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <ion-card>
+    <ion-card-content>
+      <div [innerHTML]="choiceInfo.intro"></div>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-content>
+      <ion-list radio-group (ionChange)="choiceAnswer($event)">
+        <ion-item  *ngFor="let option of choiceOptions">
+          <ion-label>{{option.text}}</ion-label>
+          <ion-radio [checked]="option.checked" [value]="option.id" [disabled]="option.disabled"></ion-radio>
+        </ion-item>
+      </ion-list>
+      <button ion-button block (click)="saveChoice()">Save My Choice</button>
+      <button ion-button clear block class="remove" (click)="removeChoice()">Remove My Choice</button>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-content>
+      <div id="container" style="display: block;"	></div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

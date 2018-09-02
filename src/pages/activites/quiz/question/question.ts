@@ -257,17 +257,17 @@ export class QuestionPage {
     secondsString = (seconds < 10) ? "0" + seconds : seconds.toString();
     return hoursString + ':' + minutesString + ':' + secondsString;
   }
- /*  ionViewCanLeave(): boolean {
-    // here we can either return true or false
-    // depending on if we want to leave this view
-    if (this.goSummery) {
-      this.goSummery = false
-      return true
-    }
-    else {
-      this.navCtrl.popTo(QuizPage)
-      return true
-    }
-  }
- */
+  /*  ionViewCanLeave(): boolean {
+     // here we can either return true or false
+     // depending on if we want to leave this view
+     if (this.goSummery) {
+       this.goSummery = false
+       return true
+     }
+     else {
+       this.navCtrl.popTo(QuizPage)
+       return true
+     }
+   }
+  */
 }

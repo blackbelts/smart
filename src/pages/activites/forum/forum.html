@@ -38,7 +38,7 @@
         <ion-col text-center>
           <button ion-button clear small>
             <ion-icon name="time"></ion-icon>
-            <div>{{disu.modified}}</div>
+            <div> {{disu.modified*1000|date:'d/M, h:mm a'}}</div>
           </button>
         </ion-col>
       </ion-row>

@@ -5,54 +5,68 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
   <ion-navbar>
     <ion-title>{{quizInfo.name}}</ion-title>
   </ion-navbar>
-
 </ion-header>
-
-
 <ion-content padding>
-  <ion-refresher (ionRefresh)="doRefresh($event)">
-    <ion-refresher-content></ion-refresher-content>
-  </ion-refresher>
-  <div hidden [innerHtml]="text">
-  </div>
-  <ion-card>
-    <ion-card-content>
-      <p [innerHTML]="quizInfo.intro"></p>
-    </ion-card-content>
-  </ion-card>
-  <ion-card>
-    <ion-card-content [innerHTML]="quizRulesText">
-    </ion-card-content>
-  </ion-card>
+  <div [hidden]="showContent">
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <div hidden [innerHtml]="text">
+    </div>
+    <ion-card>
+      <ion-card-content>
+        <p [innerHTML]="quizInfo.intro"></p>
+      </ion-card-content>
+    </ion-card>
+    <ion-card [hidden]='quizRulesText == ""'>
+      <ion-card-content [innerHTML]="quizRulesText">
+      </ion-card-content>
+    </ion-card>
 
-  <ion-card [hidden]="firstAteempt">
-    <ion-card-content>
-      <ion-grid>
-        <ion-list>
-          <ion-item>
-            <ion-row>
-              <ion-col>#</ion-col>
-              <ion-col>State</ion-col>
-              <ion-col>Grade/{{quizInfo.grade}}</ion-col>
-            </ion-row>
-          </ion-item>
-          <ion-item *ngFor="let attempt of userAttempts">
-            <ion-row (click)="showReview(attempt.id)">
-              <ion-col>{{attempt.attempt}}</ion-col>
-              <ion-col>{{attempt.state}}</ion-col>
-              <ion-col text-center>{{attempt.sumgrades}}</ion-col>
-            </ion-row>
-          </ion-item>
-        </ion-list>
-      </ion-grid>
-    </ion-card-content>
-  </ion-card>
-  <ion-card [hidden]="firstAteempt">
-    <ion-card-content>Final Grade: {{grade}} / {{quizInfo.grade}}</ion-card-content>
-  </ion-card>
-  <button ion-button block (click)="presentModal()">{{buttonText}}</button>
+    <ion-card [hidden]="firstAteempt">
+      <ion-card-content>
+        <ion-grid>
+          <ion-list>
+            <ion-item>
+              <ion-row>
+                <ion-col>#</ion-col>
+                <ion-col>State</ion-col>
+                <ion-col>Grade/{{quizInfo.grade}}</ion-col>
+              </ion-row>
+            </ion-item>
+            <ion-item *ngFor="let attempt of userAttempts">
+              <ion-row (click)="showReview(attempt.id)">
+                <ion-col>{{attempt.attempt}}</ion-col>
+                <ion-col>{{attempt.state}}</ion-col>
+                <ion-col text-center>{{attempt.sumgrades}}</ion-col>
+              </ion-row>
+            </ion-item>
+          </ion-list>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+    <ion-card [hidden]="firstAteempt">
+      <ion-card-content>Final Grade: {{grade}} / {{quizInfo.grade}}</ion-card-content>
+    </ion-card>
+    <button ion-button block (click)="presentModal()" [hidden]="quizOpenTimeStart||quizTimeFinish||canAttempt">{{buttonText}}</button>
+    <ion-card [hidden]="!quizOpenTimeStart">
+      <ion-card-content>
+        You Can start Quiz on {{quizInfo.timeopen*1000|date:'M/d/yy,h:mm a'}}
+      </ion-card-content>
+    </ion-card>
+    <ion-card [hidden]="!quizTimeFinish">
+      <ion-card-content>
+        You Can't attempt Quiz, It closed at {{quizInfo.timeclose*1000|date:'M/d/yy,h:mm a'}}
+      </ion-card-content>
+    </ion-card>
+    <ion-card [hidden]="!canAttempt">
+      <ion-card-content>
+        No more attempts are Allowed
+      </ion-card-content>
+    </ion-card>
+  </div>
+
 </ion-content>

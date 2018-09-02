@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, AlertController, MenuController, ToastController } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { MoodleProvider } from '../../providers/moodle/moodle';
+import { Observable } from 'rxjs/Observable';
+import { UtilsProvider } from '../../providers/utils/utils';
 
 /**
  * Generated class for the LogInPage page.
@@ -19,6 +21,7 @@ export class LogInPage {
   username = '7mda';
   password = 'Admin@123';
   error = '';
+  public auth: Observable<any>
   userId;
 
   constructor(
@@ -26,9 +29,12 @@ export class LogInPage {
     public forgotCtrl: AlertController,
     public menu: MenuController,
     public toastCtrl: ToastController,
-    public moodleProvider: MoodleProvider
+    public moodleProvider: MoodleProvider,
+    public utils: UtilsProvider,
   ) {
-    this.menu.swipeEnable(false);
+    window.addEventListener('beforeunload', () => {
+      this.moodleProvider.getUserCourses("2")
+    });
   }
   setUser(user) {
     this.userId = user[0].id;
@@ -39,6 +45,7 @@ export class LogInPage {
 
   // login and go to home page
   login() {
+    this.utils.presentLoadingDefault()
     this.moodleProvider.loginRequest(this.username, this.password)
       .subscribe((res) => {
         this.moodleProvider.setToken(res.token);
@@ -49,6 +56,8 @@ export class LogInPage {
             position: 'middle'
           });
           toast.present();
+          this.utils.loading.dismiss()
+
 
         }
         else {
@@ -59,9 +68,9 @@ export class LogInPage {
             .subscribe((user) => {
               this.setUser(user);
               this.nav.setRoot(HomePage, { "userid": this.userId });
+              this.utils.loading.dismiss()
+
             });
-
-
         }
       });
 

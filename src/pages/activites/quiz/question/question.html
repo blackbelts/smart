@@ -40,7 +40,7 @@
       </ion-card>
       <ion-list radio-group (ionChange)="getSelectedValue($event)">
         <ion-item *ngFor="let option of que.resultOptions">
-          <ion-label>{{option.label}}</ion-label>
+          <ion-label [innerHTML]="option.label"></ion-label>
           <ion-radio [value]="option.value" [checked]="option.checked"></ion-radio>
         </ion-item>
       </ion-list>

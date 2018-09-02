@@ -4,6 +4,7 @@ import { MoodleProvider } from '../../../providers/moodle/moodle';
 import { TimedQuizPage } from './timed-quiz/timed-quiz';
 import { AttemptReviewPage } from './attempt-review/attempt-review';
 import { QuestionPage } from './question/question';
+import { UtilsProvider } from '../../../providers/utils/utils';
 
 /**
  * Generated class for the QuizPage page.
@@ -27,16 +28,21 @@ export class QuizPage {
   public userAttempts
   public grade
   public hasgrade: boolean
-
+  public showContent: boolean
+  public canAttempt: boolean
+  public numberOfAttempts
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public moodleProvider: MoodleProvider,
     public modalCtrl: ModalController,
-    public ViewController: ViewController
+    public ViewController: ViewController,
+    public utils: UtilsProvider
   ) {
+    this.showContent = true
+    this.utils.presentLoadingDefault();
     this.quizId = this.navParams.get('id')
-    this.moodleProvider.getQuizesByCourse(10)
+    this.moodleProvider.getQuizesByCourse(this.navParams.get("cId"))
       .map(res => res)
       .subscribe((quizzes) => {
         for (let i = 0; i < quizzes.quizzes.length; i++) {
@@ -55,11 +61,20 @@ export class QuizPage {
       .map(res => res)
       .subscribe((attempts) => {
         this.setUserAttempts(attempts.attempts)
+        console.log(this.numberOfAttempts+"   "+ attempts.attempts.length)
+        console.log(this.numberOfAttempts == attempts.attempts.length)
+        if (this.numberOfAttempts == attempts.attempts.length) {
+          this.canAttempt = true
+        } else {
+          this.canAttempt = false
+        }
       });
     this.moodleProvider.getQuizGrade(this.quizId)
       .map(res => res)
       .subscribe((grade) => {
         this.setQuizGrade(grade)
+        this.utils.loading.dismiss()
+        this.showContent = false
       });
   }
   setQuizGrade(grade) {
@@ -73,22 +88,51 @@ export class QuizPage {
     this.quizRules = rules
     this.quizRulesText = ""
     for (let property in rules) {
-      this.quizRulesText += "<div>" + rules[property] + "</div>"
+      this.quizRulesText += "<div>" + rules[property] + "</div><hr>"
     }
   }
+  public quizOpenTimeStart: boolean
+  public quizTimeFinish: boolean
   setQuiz(quiz) {
     this.quizInfo = quiz
+    this.numberOfAttempts = quiz.attempts
+    if (quiz.timeopen != 0) {
+      if (new Date(quiz.timeopen * 1000) <= new Date(Date.now())) {
+        this.quizOpenTimeStart = false
+      } else {
+        this.quizOpenTimeStart = true
+      }
+    }
+    if (quiz.timeclose != 0) {
+      if (new Date(quiz.timeclose * 1000) >= new Date(Date.now())) {
+        this.quizTimeFinish = false
+      } else {
+        this.quizTimeFinish = true
+      }
+    }
+
   }
-  public buttonText
+  public buttonText = "START ATTEMPT QUIZ"
   public progressAttempt = []
   presentModal() {
 
     if (this.progressAttempt.length != 0) {
       this.navCtrl.push(QuestionPage, { attempt: this.progressAttempt[0].id })
     }
+    /*  else if(this.){
+ 
+     } */
     else {
+      let time
+      this.quizRules.forEach(rule => {
+        rule.indexOf("Time limit")
+        console.log(rule.indexOf("Time limit"))
+        if (rule.indexOf("Time limit") != -1) {
+          time = rule
+        }
+      });
       const modal = this.modalCtrl.create(TimedQuizPage, {
-        time: this.quizRules[0],
+        time: time,
         quizid: this.quizId,
         /*name: this.quizInfo.name*/
       });
@@ -100,7 +144,8 @@ export class QuizPage {
   showReview(attemptId) {
     this.navCtrl.push(AttemptReviewPage, { "attemptId": attemptId })
   }
-  public firstAteempt = false
+  public firstAteempt = true;
+
   ionViewDidLoad() {
     this.moodleProvider.getUserAttempts(this.quizId, 0, "unfinished")
       .map(res => res)

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import { MoodleProvider } from '../../../../providers/moodle/moodle';
 import { QuestionPage } from '../question/question';
+import { UtilsProvider } from '../../../../providers/utils/utils';
 
 /**
  * Generated class for the TimedQuizPage page.
@@ -24,7 +25,8 @@ export class TimedQuizPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public viewCtrl: ViewController,
-    public moodleProvider: MoodleProvider
+    public moodleProvider: MoodleProvider,
+    public utils: UtilsProvider
   ) {
   }
 
@@ -37,8 +39,12 @@ export class TimedQuizPage {
     this.moodleProvider.startQuizAttempt(this.quizid)
       .map(res => res)
       .subscribe((attempt) => {
-        this.setAttempt(attempt)
-        this.navCtrl.push(QuestionPage, { attempt: this.attempt.attempt.id, name: this.quizName })
+        if (attempt.exception != undefined) {
+          this.utils.showAlert(attempt.message,"warning")
+        } else {
+          this.setAttempt(attempt)
+          this.navCtrl.push(QuestionPage, { attempt: this.attempt.attempt.id, name: this.quizName })
+        }
       })
   }
   setAttempt(attempt) {

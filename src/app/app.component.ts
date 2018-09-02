@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
+import { Nav, Platform, MenuController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
@@ -8,6 +8,8 @@ import { GradesPage } from '../pages/grades/grades';
 import { NotificationsPage } from '../pages/notifications/notifications';
 import { MoodleProvider } from '../providers/moodle/moodle';
 import { UserProfilePage } from '../pages/user-profile/user-profile';
+import { ForumPage } from '../pages/activites/forum/forum';
+import { UrlPage } from '../pages/resources/url/url';
 @Component({
   templateUrl: 'app.html'
 })
@@ -20,7 +22,9 @@ export class MyApp {
     public platform: Platform,
     public statusBar: StatusBar,
     public splashScreen: SplashScreen,
-    public moodleProvider: MoodleProvider
+    public moodleProvider: MoodleProvider,
+    public menu: MenuController,
+
   ) {
     this.initializeApp();
 
@@ -31,8 +35,7 @@ export class MyApp {
       { title: 'Notifications', component: NotificationsPage, icon: 'notifications' },
     ];
   }
-  public test="nazeeh"
-
+  public username: string
   initializeApp() {
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
@@ -43,6 +46,7 @@ export class MyApp {
   }
   logout() {
     this.moodleProvider.logout();
+    this.test = "Welcome"
     this.nav.setRoot(LogInPage)
   }
   goToProfile() {
@@ -53,5 +57,10 @@ export class MyApp {
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
   }
-
+  public test = "Welcome"
+  menuOpened() {
+    this.username = this.moodleProvider.getUserName()
+    this.test=""
+  }
+  
 }

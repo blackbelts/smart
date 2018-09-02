@@ -29,8 +29,9 @@ export class ForumPage {
   }
 
   ionViewDidLoad() {
-    this.forumId = this.navParams.get("id");
+    this.forumId = this.navParams.get("id")
     this.courseId = this.navParams.get("cId")
+    
     this.moodle.canAddForumDissuction(this.forumId)
       .map(res => res)
       .subscribe(status => {

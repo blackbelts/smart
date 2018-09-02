@@ -18,7 +18,7 @@ export class MoodleProvider {
   loginUrl = '/login/token.php?';
   constructor(public http: HttpClient) {
     //this.token='c76cc96ea49993aa908db97c5cc528f8';
-    this.token = 'd321461d0553452dcb4620dd89842f03'
+        this.token = 'd321461d0553452dcb4620dd89842f03'
   }
   /************************Class Function************************/
   /* set value of the token for the user */
@@ -137,6 +137,13 @@ export class MoodleProvider {
   */
   getCourseContent(courseId, optionFiled, value) {
     let coreFun = 'core_course_get_contents';
+    console.log(siteUrl + restUrl
+      + 'wstoken=' + this.getToken()
+      + '&wsfunction=' + coreFun
+      + restFormat
+      + '&courseid=' + courseId
+      + '&options[0][name]=' + optionFiled
+      + '&options[0][value]=' + value)
     return this.http.get(
       siteUrl + restUrl
       + 'wstoken=' + this.getToken()
@@ -305,8 +312,25 @@ export class MoodleProvider {
   }
   /*////////////////Moodle Activity /////////////*/
   /* 1- Moodle choice Activity */
+  getChoiceByCourse(cid) {
+    let coreFun = 'mod_choice_get_choices_by_courses'
+    return this.http.get(
+      siteUrl + restUrl
+      + 'wstoken=' + this.getToken()
+      + '&wsfunction=' + coreFun
+      + restFormat
+      + '&courseids[0]=' + cid)
+      .map((response) => {
+        return JSON.parse(JSON.stringify(response));
+      });
+  }
   getModChoiceOptions(choiceId) {
     let coreFun = 'mod_choice_get_choice_options';
+    console.log(siteUrl + restUrl
+      + 'wstoken=' + this.getToken()
+      + '&wsfunction=' + coreFun
+      + restFormat
+      + '&choiceid=' + choiceId)
     return this.http.get(
       siteUrl + restUrl
       + 'wstoken=' + this.getToken()
@@ -346,6 +370,13 @@ export class MoodleProvider {
   /* 2- Quiz */
   getQuizesByCourse(courseId) {
     let coreFun = 'mod_quiz_get_quizzes_by_courses';
+    console.log(
+      siteUrl + restUrl
+      + 'wstoken=' + this.getToken()
+      + '&wsfunction=' + coreFun
+      + restFormat
+      + '&courseids[0]=' + courseId
+    )
     return this.http.get(
       siteUrl + restUrl
       + 'wstoken=' + this.getToken()
@@ -358,6 +389,11 @@ export class MoodleProvider {
   }
   getQuizAccessInfo(quizId) {
     let coreFun = 'mod_quiz_get_quiz_access_information';
+    console.log(siteUrl + restUrl
+      + 'wstoken=' + this.getToken()
+      + '&wsfunction=' + coreFun
+      + restFormat
+      + '&quizid=' + quizId)
     return this.http.get(
       siteUrl + restUrl
       + 'wstoken=' + this.getToken()
@@ -401,6 +437,11 @@ export class MoodleProvider {
 
   startQuizAttempt(quizid) {
     let coreFun = 'mod_quiz_start_attempt';
+    console.log(siteUrl + restUrl
+      + 'wstoken=' + this.getToken()
+      + '&wsfunction=' + coreFun
+      + restFormat
+      + '&quizid=' + quizid)
     return this.http.get(
       siteUrl + restUrl
       + 'wstoken=' + this.getToken()
@@ -498,6 +539,13 @@ export class MoodleProvider {
   }
   getForumInCourse(cId) {
     let coreFun = 'mod_forum_get_forums_by_courses';
+    console.log(
+      siteUrl + restUrl
+      + 'wstoken=' + this.getToken()
+      + '&wsfunction=' + coreFun
+      + restFormat
+      + '&courseids[0]=' + cId
+    )
     return this.http.get(
       siteUrl + restUrl
       + 'wstoken=' + this.getToken()
@@ -523,6 +571,12 @@ export class MoodleProvider {
   getForumDisussionsPosts(discussionId) {
 
     let coreFun = 'mod_forum_get_forum_discussion_posts';
+    console.log(siteUrl + restUrl
+      + 'wstoken=' + this.getToken()
+      + '&wsfunction=' + coreFun
+      + restFormat
+      + '&discussionid=' + discussionId
+      + '&sortdirection=ASC')
     return this.http.get(
       siteUrl + restUrl
       + 'wstoken=' + this.getToken()
