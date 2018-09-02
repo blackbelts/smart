@@ -44,7 +44,8 @@ export class FilePage {
 
   }
   open() {
-    this.fileOpener.open(this.content+"&token=" + this.moodle.getToken(),this.content.mimetype)
+    console.log(this.content.fileurl+"&token=" + this.moodle.getToken())
+    this.fileOpener.open(this.content.fileurl+"&token=" + this.moodle.getToken(),this.content.mimetype)
 
   }
 
