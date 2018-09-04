@@ -6,6 +6,7 @@ import { QuizPage } from '../activites/quiz/quiz';
 import { ChoicePage } from '../activites/choice/choice';
 import { UrlPage } from '../resources/url/url';
 import { FilePage } from '../resources/file/file';
+import { LabelPage } from '../resources/label/label';
 
 /**
  * Generated class for the SectionContentPage page.
@@ -53,8 +54,12 @@ export class SectionContentPage {
         break;
       }
       case 'resource': {
-        this.navCtrl.push(FilePage, { id: ele.instance, name: ele.name, cId: this.courseid,filesContents:ele.contents });
+        this.navCtrl.push(FilePage, { id: ele.instance, name: ele.name, cId: this.courseid, filesContents: ele.contents });
         break;
+      }
+      case 'label': {
+        this.navCtrl.push(LabelPage, { id: ele.instance, name: ele.name, cId: this.courseid, description: ele.description });
+
       }
 
     }
@@ -70,7 +75,7 @@ export class SectionContentPage {
         contents[0].modules.forEach(module => {
           if (module.modname == "forum" || module.modname == "quiz"
             || module.modname == "choice" || module.modname == "url"
-            || module.modname == "resource") {
+            || module.modname == "resource" || module.modname == 'label') {
             this.contents.push(module)
           }
         });

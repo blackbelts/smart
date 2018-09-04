@@ -44,7 +44,7 @@ export class FilePage {
 
   }
   open() {
-    console.log(this.content.fileurl+"&token=" + this.moodle.getToken())
+    console.log(this.content.fileurl+"&token=" + this.moodle.getToken(),this.content.mimetype)
     this.fileOpener.open(this.content.fileurl+"&token=" + this.moodle.getToken(),this.content.mimetype).catch(er=>{
       this.utils.showAlert(er,"error")
     })

@@ -10,6 +10,7 @@ import { MoodleProvider } from '../providers/moodle/moodle';
 import { UserProfilePage } from '../pages/user-profile/user-profile';
 import { ForumPage } from '../pages/activites/forum/forum';
 import { UrlPage } from '../pages/resources/url/url';
+import { FeedbackPage } from '../pages/activites/feedback/feedback';
 @Component({
   templateUrl: 'app.html'
 })
@@ -60,7 +61,7 @@ export class MyApp {
   public test = "Welcome"
   menuOpened() {
     this.username = this.moodleProvider.getUserName()
-    this.test=""
+    this.test = ""
   }
-  
+
 }

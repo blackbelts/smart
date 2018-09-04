@@ -18,13 +18,7 @@
   <ion-list>
     <ion-item *ngFor="let element of contents">
       <img *ngIf="element.modicon" [src]='element.modicon' item-start (click)="openPage(element)">
-      <div *ngIf="element.modname=='label'; then label else othertypes"></div>
-      <ng-template #label>
-        <div [innerHTML]="element.description"></div>
-      </ng-template>
-      <ng-template #othertypes>
-        <h2 (click)="openPage(element)">{{element.name}}</h2>
-      </ng-template>
+      <h2 (click)="openPage(element)">{{element.name}}</h2>
       <ion-icon name="arrow-round-forward" item-end (click)="openPage(element)"></ion-icon>
     </ion-item>
   </ion-list>

@@ -31,7 +31,10 @@ import { ChoicePage } from '../pages/activites/choice/choice';
 import { UrlPage } from '../pages/resources/url/url';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { FilePage } from '../pages/resources/file/file';
-import {FileOpener} from '@ionic-native/file-opener'
+import { FileOpener } from '@ionic-native/file-opener'
+import { BookPage } from '../pages/resources/book/book';
+import { FeedbackPage } from '../pages/activites/feedback/feedback';
+import { LabelPage } from '../pages/resources/label/label';
 @NgModule({
   declarations: [
     MyApp,
@@ -56,7 +59,10 @@ import {FileOpener} from '@ionic-native/file-opener'
     UserDetailsPage,
     ChoicePage,
     UrlPage,
-    FilePage
+    FilePage,
+    BookPage,
+    FeedbackPage,
+    LabelPage
   ],
   imports: [
     BrowserModule,
@@ -88,7 +94,10 @@ import {FileOpener} from '@ionic-native/file-opener'
     UserDetailsPage,
     ChoicePage,
     UrlPage,
-    FilePage
+    FilePage,
+    BookPage,
+    FeedbackPage,
+    LabelPage
   ],
   providers: [
     StatusBar,

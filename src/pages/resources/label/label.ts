@@ -14,12 +14,13 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'label.html',
 })
 export class LabelPage {
+  public description
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LabelPage');
+    this.description = this.navParams.get("description")
   }
 
 }
