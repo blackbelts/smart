@@ -26,7 +26,10 @@ export class LabelPage {
     document.getElementById("hiddenContent").insertAdjacentHTML('afterbegin', description)
     let imgObjs = document.getElementById("hiddenContent").getElementsByTagName("img")
     for (let i = 0; i < imgObjs.length; i++) {
-      imgObjs[i].src = imgObjs[i].src + "?token=" + this.mod.getToken()
+      if (imgObjs[i].src.search(this.mod.getSiteUrl()) != -1) {
+        let slicedSrc = imgObjs[i].src.slice(this.mod.getSiteUrl().length)
+        imgObjs[i].src = this.mod.getSiteUrl() + "/webservice" + slicedSrc + "?token=" + this.mod.getToken()
+      }
       console.log(imgObjs[i].src)
     }
   }
