@@ -11,6 +11,7 @@ import { UserProfilePage } from '../pages/user-profile/user-profile';
 import { ForumPage } from '../pages/activites/forum/forum';
 import { UrlPage } from '../pages/resources/url/url';
 import { FeedbackPage } from '../pages/activites/feedback/feedback';
+import { LabelPage } from '../pages/resources/label/label';
 @Component({
   templateUrl: 'app.html'
 })
