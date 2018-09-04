@@ -30,8 +30,6 @@ export class LabelPage {
         let slicedSrc = imgObjs[i].src.slice(this.mod.getSiteUrl().length)
         imgObjs[i].src = this.mod.getSiteUrl() + "/webservice" + slicedSrc + "?token=" + this.mod.getToken()
       }
-      console.log(imgObjs[i].src)
     }
   }
-
 }
