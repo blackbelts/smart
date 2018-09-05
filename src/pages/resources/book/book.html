@@ -6,19 +6,17 @@
 -->
 <ion-header>
   <ion-navbar>
-    <ion-title>Book</ion-title>
+    <ion-title>{{introBookInfo.name}}</ion-title>
   </ion-navbar>
 </ion-header>
 <ion-content padding>
   <ion-card>
-    <ion-card-content>description</ion-card-content>
+    <ion-card-content [innerHTML]="introBookInfo.intro"></ion-card-content>
   </ion-card>
   <br>
   <ion-icon name="arrow-back"></ion-icon>
-  <br>
-  <br>
+
   <div class="chapter">
-      <object type="text/html" data="file:///home/nazeeh/Downloads/index.html" ></object>
   </div>
   <br>
   <ion-icon name="arrow-back"></ion-icon>

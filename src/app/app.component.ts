@@ -12,12 +12,13 @@ import { ForumPage } from '../pages/activites/forum/forum';
 import { UrlPage } from '../pages/resources/url/url';
 import { FeedbackPage } from '../pages/activites/feedback/feedback';
 import { LabelPage } from '../pages/resources/label/label';
+import { BookPage } from '../pages/resources/book/book';
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav
-  rootPage: any = LogInPage;
+  rootPage: any = BookPage;
   pages: Array<{ title: string, component: any, icon: string }>;
 
   constructor(

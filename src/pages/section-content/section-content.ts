@@ -7,6 +7,7 @@ import { ChoicePage } from '../activites/choice/choice';
 import { UrlPage } from '../resources/url/url';
 import { FilePage } from '../resources/file/file';
 import { LabelPage } from '../resources/label/label';
+import { BookPage } from '../resources/book/book';
 
 /**
  * Generated class for the SectionContentPage page.
@@ -59,7 +60,9 @@ export class SectionContentPage {
       }
       case 'label': {
         this.navCtrl.push(LabelPage, { id: ele.instance, name: ele.name, cId: this.courseid, description: ele.description });
-
+      }
+      case 'book': {
+        this.navCtrl.push(BookPage, { book: ele, cId: this.courseid })
       }
 
     }
@@ -75,7 +78,8 @@ export class SectionContentPage {
         contents[0].modules.forEach(module => {
           if (module.modname == "forum" || module.modname == "quiz"
             || module.modname == "choice" || module.modname == "url"
-            || module.modname == "resource" || module.modname == 'label') {
+            || module.modname == "resource" || module.modname == 'label'
+            || module.modname == "book") {
             this.contents.push(module)
           }
         });

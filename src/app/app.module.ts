@@ -35,6 +35,10 @@ import { FileOpener } from '@ionic-native/file-opener'
 import { BookPage } from '../pages/resources/book/book';
 import { FeedbackPage } from '../pages/activites/feedback/feedback';
 import { LabelPage } from '../pages/resources/label/label';
+import { FileTransfer } from '@ionic-native/file-transfer';
+import { File } from '@ionic-native/file';
+
+
 @NgModule({
   declarations: [
     MyApp,
@@ -107,7 +111,9 @@ import { LabelPage } from '../pages/resources/label/label';
     MoodleProvider,
     UtilsProvider,
     InAppBrowser,
-    FileOpener
+    FileOpener,
+    FileTransfer,
+    File
   ]
 })
 export class AppModule { }

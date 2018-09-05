@@ -18,7 +18,7 @@ export class MoodleProvider {
   loginUrl = '/login/token.php?';
   constructor(public http: HttpClient) {
     //this.token='c76cc96ea49993aa908db97c5cc528f8';
-        this.token = 'd321461d0553452dcb4620dd89842f03'
+    this.token = 'd321461d0553452dcb4620dd89842f03'
   }
   /************************Class Function************************/
   /* set value of the token for the user */
@@ -616,4 +616,23 @@ export class MoodleProvider {
         return JSON.parse(JSON.stringify(response));
       });
   }
+  /* Book */
+  getCourseBooks(cid) {
+    let coreFun = 'mod_book_get_books_by_courses';
+    console.log(siteUrl + restUrl
+      + 'wstoken=' + this.getToken()
+      + '&wsfunction=' + coreFun
+      + restFormat
+      + '&courseids[0]=' + cid)
+    return this.http.get(
+      siteUrl + restUrl
+      + 'wstoken=' + this.getToken()
+      + '&wsfunction=' + coreFun
+      + restFormat
+      + '&courseids[0]=' + cid)
+      .map((response) => {
+        return JSON.parse(JSON.stringify(response));
+      });
+  }
 }
+
