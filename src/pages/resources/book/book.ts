@@ -31,11 +31,9 @@ export class BookPage {
   ) {
     this.allBookInfo = this.navParams.get("book")
     this.courseId = this.navParams.get("cId")
-    console.log(this.courseId)
     this.moodle.getCourseBooks(11)
       .map(res => res)
       .subscribe((books) => {
-        console.log(typeof books.books)
         books.books.forEach(book => {
           if (4 == book.id)
          /*  if (this.allBookInfo.instance == book.id) */ {
@@ -43,10 +41,10 @@ export class BookPage {
           }
         });
       })
-    console.log(this.allBookInfo)
   }
   download(url) {
     const fileTransfer: FileTransferObject = this.transfer.create();
+    console.log(url)
     fileTransfer.download(url, this.file.dataDirectory + "test.html")
       .then(() => {
         this.utils.showAlert("done", "ok!");
@@ -56,7 +54,7 @@ export class BookPage {
       });
   }
   ionViewDidLoad() {
-    this.download('167.99.243.240/moodle/webservice/pluginfile.php/183/mod_book/chapter/5/index.html?token=d321461d0553452dcb4620dd89842f03')
+    this.download('http://167.99.243.240/moodle/webservice/pluginfile.php/183/mod_book/chapter/5/index.html?token=d321461d0553452dcb4620dd89842f03')
   }
 
 }
