@@ -17,7 +17,7 @@ import { LabelPage } from '../pages/resources/label/label';
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav
-  rootPage: any = LogInPage;
+  rootPage: any = LabelPage;
   pages: Array<{ title: string, component: any, icon: string }>;
 
   constructor(
