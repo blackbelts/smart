@@ -45,7 +45,7 @@ export class BookPage {
   download(url) {
     const fileTransfer: FileTransferObject = this.transfer.create();
     console.log(url)
-    fileTransfer.download(url, this.file.dataDirectory + "test.html")
+    fileTransfer.download(url, this.file.applicationDirectory + "test.html")
       .then(() => {
         this.utils.showAlert("done", "ok!");
       })
