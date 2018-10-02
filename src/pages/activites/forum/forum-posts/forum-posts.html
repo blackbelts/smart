@@ -24,7 +24,7 @@
     <ion-card-content>
       <div [innerHTML]="post.message"></div>
     </ion-card-content>
-    <button ion-button clear block [hidden]="!post.canreply">
+    <button ion-button clear block [hidden]="!post.canreply" (click)="replay(post.id,post.subject)">
       <ion-icon name="undo"></ion-icon>
       <div>&nbsp;reply</div>
     </button>

@@ -13,12 +13,13 @@ import { UrlPage } from '../pages/resources/url/url';
 import { FeedbackPage } from '../pages/activites/feedback/feedback';
 import { LabelPage } from '../pages/resources/label/label';
 import { BookPage } from '../pages/resources/book/book';
+import { CalenderEventsPage } from '../pages/calender-events/calender-events';
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav
-  rootPage: any = BookPage;
+  rootPage: any = LogInPage;
   pages: Array<{ title: string, component: any, icon: string }>;
 
   constructor(
@@ -36,6 +37,7 @@ export class MyApp {
       { title: 'Question Bank', component: HomePage, icon: 'eye' },
       { title: 'Grades', component: GradesPage, icon: 'stats' },
       { title: 'Notifications', component: NotificationsPage, icon: 'notifications' },
+      {title:"Calendar Events", component:CalenderEventsPage,icon:'calendar'}
     ];
   }
   public username: string

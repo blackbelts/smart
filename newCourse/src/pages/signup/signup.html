@@ -1,0 +1,68 @@
+<!--
+  Generated template for the SignupPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<!--
+  Generated template for the SignupPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>انشاء حساب جديد</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <form >
+    <ion-list>
+
+      <ion-item>
+        <ion-label fixed>الاسم</ion-label>
+        <ion-input type="text" [(ngModel)]="account.name" name="name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label fixed>رقم التليفون</ion-label>
+        <ion-input type="text" [(ngModel)]="account.number" name="identity"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label fixed>رقم الهويه</ion-label>
+        <ion-input type="text" [(ngModel)]="account.number" name="number"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label fixed>التوقيع</ion-label>
+        <ion-input type="text" [(ngModel)]="account.sign" name="sign"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label fixed>الرقم السرى</ion-label>
+        <ion-input type="password" [(ngModel)]="account.password" name="password"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label fixed>تاكيد الرقم السرى</ion-label>
+        <ion-input type="password" [(ngModel)]="account.password" name="rePassword"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label fixed>تاريخ الميلاد</ion-label>
+        <ion-datetime displayFormat="MM/DD/YYYY"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label>النوع</ion-label>
+        <ion-select>
+          <ion-option value="f">انثى</ion-option>
+          <ion-option value="m">ذكر</ion-option>
+        </ion-select>
+      </ion-item>
+      <div padding>
+        <button ion-button class="signUpBtn" block>انشاء حساب</button>
+      </div>
+    </ion-list>
+  </form>
+</ion-content>
+
+

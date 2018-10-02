@@ -525,6 +525,28 @@ export class MoodleProvider {
       });
   }
   /*3- Forum */
+  addForumDiscussion(fid, subject, mesg) {
+    let coreFun = 'mod_forum_add_discussion';
+    console.log(siteUrl + restUrl
+      + 'wstoken=' + this.getToken()
+      + '&wsfunction=' + coreFun
+      + restFormat
+      + '&forumid=' + fid
+      + '&subject=' + subject
+      + '&message=' + mesg)
+    return this.http.get(
+      siteUrl + restUrl
+      + 'wstoken=' + this.getToken()
+      + '&wsfunction=' + coreFun
+      + restFormat
+      + '&forumid=' + fid
+      + '&subject=' + subject
+      + '&message=' + mesg
+    )
+      .map((response) => {
+        return JSON.parse(JSON.stringify(response));
+      });
+  }
   canAddForumDissuction(id) {
     let coreFun = 'mod_forum_can_add_discussion';
     return this.http.get(
@@ -564,6 +586,21 @@ export class MoodleProvider {
       + '&wsfunction=' + coreFun
       + restFormat
       + '&forumid=' + forumId)
+      .map((response) => {
+        return JSON.parse(JSON.stringify(response));
+      });
+  }
+  addForumDisussionsPosts(postid, subject, mseg) {
+    let coreFun = 'mod_forum_add_discussion_post';
+    return this.http.get(
+      siteUrl + restUrl
+      + 'wstoken=' + this.getToken()
+      + '&wsfunction=' + coreFun
+      + restFormat
+      + '&postid=' + postid
+      + '&subject=' + subject
+      + '&message=' + mseg
+    )
       .map((response) => {
         return JSON.parse(JSON.stringify(response));
       });

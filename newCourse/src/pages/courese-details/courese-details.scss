@@ -1,0 +1,19 @@
+page-courese-details {
+  .item-detail {
+    width: 100%;
+    background: white;
+    position: absolute;
+  }
+  h2{
+    color:  map_get($colors,theme_color) !important;
+  }
+  .toolbar-background {
+    background-color:  map_get($colors,theme_color) !important;
+  }
+  ion-icon{
+    color: #fff
+  }
+  .toolbar-title-ios,.toolbar-title-md{
+    color: #fff
+  }
+}

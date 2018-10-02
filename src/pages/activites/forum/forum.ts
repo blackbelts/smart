@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { MoodleProvider } from '../../../providers/moodle/moodle';
 import { ForumPostsPage } from './forum-posts/forum-posts';
-
+import { AddDiscussionPage } from './add-discussion/add-discussion';
 /**
  * Generated class for the ForumPage page.
  *
@@ -24,14 +24,14 @@ export class ForumPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public moodle: MoodleProvider
+    public moodle: MoodleProvider,
+    public modal: ModalController
   ) {
   }
 
   ionViewDidLoad() {
     this.forumId = this.navParams.get("id")
     this.courseId = this.navParams.get("cId")
-    
     this.moodle.canAddForumDissuction(this.forumId)
       .map(res => res)
       .subscribe(status => {
@@ -51,10 +51,17 @@ export class ForumPage {
       .map(res => res)
       .subscribe(discussions => {
         this.forumDiscussions = discussions.discussions
+        console.log(this.forumDiscussions)
       })
   }
 
   goToPosts(disu) {
     this.navCtrl.push(ForumPostsPage, { discussion: disu })
+  }
+  openModelForAdd() {
+    console.log("clicked")
+    let modal = this.modal.create(AddDiscussionPage,{fid:this.forumId,cId:this.courseId})
+    modal.present()
+
   }
 }

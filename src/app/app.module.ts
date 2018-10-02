@@ -37,6 +37,9 @@ import { FeedbackPage } from '../pages/activites/feedback/feedback';
 import { LabelPage } from '../pages/resources/label/label';
 import { FileTransfer } from '@ionic-native/file-transfer';
 import { File } from '@ionic-native/file';
+import { RichTextComponent } from '../components/rich-text/rich-text';
+import { AddDiscussionPage } from '../pages/activites/forum/add-discussion/add-discussion';
+import { CalenderEventsPage } from '../pages/calender-events/calender-events';
 
 
 @NgModule({
@@ -66,7 +69,11 @@ import { File } from '@ionic-native/file';
     FilePage,
     BookPage,
     FeedbackPage,
-    LabelPage
+    LabelPage,
+    AddDiscussionPage,
+    RichTextComponent,
+    CalenderEventsPage
+
   ],
   imports: [
     BrowserModule,
@@ -101,7 +108,10 @@ import { File } from '@ionic-native/file';
     FilePage,
     BookPage,
     FeedbackPage,
-    LabelPage
+    LabelPage,
+    AddDiscussionPage,
+    CalenderEventsPage
+
   ],
   providers: [
     StatusBar,
@@ -113,7 +123,7 @@ import { File } from '@ionic-native/file';
     InAppBrowser,
     FileOpener,
     FileTransfer,
-    File
+    File,
   ]
 })
 export class AppModule { }
