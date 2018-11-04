@@ -4,6 +4,7 @@ import { HomePage } from '../home/home';
 import { MoodleProvider } from '../../providers/moodle/moodle';
 import { Observable } from 'rxjs/Observable';
 import { UtilsProvider } from '../../providers/utils/utils';
+import { NewHomePage } from '../new-home/new-home';
 
 /**
  * Generated class for the LogInPage page.
@@ -67,9 +68,8 @@ export class LogInPage {
             .map(res => res)
             .subscribe((user) => {
               this.setUser(user);
-              this.nav.setRoot(HomePage, { "userid": this.userId });
+              this.nav.setRoot(NewHomePage, { "userid": this.userId });
               this.utils.loading.dismiss()
-
             });
         }
       });

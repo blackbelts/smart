@@ -40,6 +40,8 @@ import { File } from '@ionic-native/file';
 import { RichTextComponent } from '../components/rich-text/rich-text';
 import { AddDiscussionPage } from '../pages/activites/forum/add-discussion/add-discussion';
 import { CalenderEventsPage } from '../pages/calender-events/calender-events';
+import { NewHomePage } from '../pages/new-home/new-home';
+
 
 
 @NgModule({
@@ -72,8 +74,8 @@ import { CalenderEventsPage } from '../pages/calender-events/calender-events';
     LabelPage,
     AddDiscussionPage,
     RichTextComponent,
-    CalenderEventsPage
-
+    CalenderEventsPage,
+    NewHomePage
   ],
   imports: [
     BrowserModule,
@@ -110,8 +112,8 @@ import { CalenderEventsPage } from '../pages/calender-events/calender-events';
     FeedbackPage,
     LabelPage,
     AddDiscussionPage,
-    CalenderEventsPage
-
+    CalenderEventsPage,
+    NewHomePage
   ],
   providers: [
     StatusBar,

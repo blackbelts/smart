@@ -14,6 +14,7 @@ import { FeedbackPage } from '../pages/activites/feedback/feedback';
 import { LabelPage } from '../pages/resources/label/label';
 import { BookPage } from '../pages/resources/book/book';
 import { CalenderEventsPage } from '../pages/calender-events/calender-events';
+import { NewHomePage } from '../pages/new-home/new-home';
 @Component({
   templateUrl: 'app.html'
 })
@@ -37,7 +38,8 @@ export class MyApp {
       { title: 'Question Bank', component: HomePage, icon: 'eye' },
       { title: 'Grades', component: GradesPage, icon: 'stats' },
       { title: 'Notifications', component: NotificationsPage, icon: 'notifications' },
-      {title:"Calendar Events", component:CalenderEventsPage,icon:'calendar'}
+      { title: "Calendar Events", component: CalenderEventsPage, icon: 'calendar' },
+      { title: "Home", component: NewHomePage, icon: 'home' }
     ];
   }
   public username: string
