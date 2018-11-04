@@ -61,9 +61,9 @@ export class SectionContentPage {
       case 'label': {
         this.navCtrl.push(LabelPage, { id: ele.instance, name: ele.name, cId: this.courseid, description: ele.description });
       }
-      case 'book': {
+      /* case 'book': {
         this.navCtrl.push(BookPage, { book: ele, cId: this.courseid })
-      }
+      } */
 
     }
   }
