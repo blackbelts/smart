@@ -24,19 +24,19 @@ export class ProfileWorkInfoPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    private storage: Storage,
+    public storage: Storage,
     public odooProv: OdooProvider,
     public utils: UtilsProvider
   ) {
     this.maps.push({ prop: "fields", prop_values: ["name", "id"] })
     this.odooProv.getOdooData(this.odooProv.getUid(), this.odooProv.getPassword(), "hr.employee.category", "search_read", this.domains, this.maps)
       .map(res => res)
-      .subscribe((res = []) => {
+      .subscribe((res:[] = []) => {
         res.forEach((element: { id: string, name: string }) => {
           this.storage.set("employeeCategory" + element.id, element.name)
         });
       })
-    this.maps.pop()
+    this.maps.pop() 
     this.domains.push({ experssion: "%3D", filed: "id", value: this.odooProv.getUid() });
     this.maps.push({ prop: "fields", prop_values: ["employee_ids"] })
     this.odooProv.getOdooData(this.odooProv.getUid(), this.odooProv.getPassword(), "res.users", "search_read", this.domains, this.maps)
