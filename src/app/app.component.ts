@@ -8,19 +8,17 @@ import { GradesPage } from '../pages/grades/grades';
 import { NotificationsPage } from '../pages/notifications/notifications';
 import { MoodleProvider } from '../providers/moodle/moodle';
 import { UserProfilePage } from '../pages/user-profile/user-profile';
-import { ForumPage } from '../pages/activites/forum/forum';
-import { UrlPage } from '../pages/resources/url/url';
-import { FeedbackPage } from '../pages/activites/feedback/feedback';
-import { LabelPage } from '../pages/resources/label/label';
-import { BookPage } from '../pages/resources/book/book';
 import { CalenderEventsPage } from '../pages/calender-events/calender-events';
 import { NewHomePage } from '../pages/new-home/new-home';
+import { OdooLoginPage } from '../pages/OdooPages/odoo-login/odoo-login';
+import { TimeManagementPage } from '../pages/OdooPages/time-management/time-management';
+import { OdooProfilrPage } from '../pages/OdooPages/odoo-profilr/odoo-profilr';
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav
-  rootPage: any = LogInPage;
+  rootPage: any = OdooLoginPage;
   pages: Array<{ title: string, component: any, icon: string }>;
 
   constructor(

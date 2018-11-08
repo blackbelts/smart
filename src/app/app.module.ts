@@ -41,7 +41,16 @@ import { RichTextComponent } from '../components/rich-text/rich-text';
 import { AddDiscussionPage } from '../pages/activites/forum/add-discussion/add-discussion';
 import { CalenderEventsPage } from '../pages/calender-events/calender-events';
 import { NewHomePage } from '../pages/new-home/new-home';
-
+import { OdooProvider } from '../providers/odoo/odoo';
+import { OdooLoginPage } from '../pages/OdooPages/odoo-login/odoo-login';
+import { OdooProfilrPage } from '../pages/OdooPages/odoo-profilr/odoo-profilr';
+import { TimeManagementPage } from '../pages/OdooPages/time-management/time-management';
+import { ProfilePrivteInfoPage } from '../pages/OdooPages/odoo-profilr/profile-privte-info/profile-privte-info';
+import { ProfileWorkInfoPage } from '../pages/OdooPages/odoo-profilr/profile-work-info/profile-work-info';
+import { ProfileAssetsPage } from '../pages/OdooPages/odoo-profilr/profile-assets/profile-assets';
+import { ProfileHrSettingsPage } from '../pages/OdooPages/odoo-profilr/profile-hr-settings/profile-hr-settings';
+import { IonicStorageModule } from '@ionic/storage';
+import { ProfileOrganizationChartPage } from '../pages/OdooPages/odoo-profilr/profile-organization-chart/profile-organization-chart';
 
 
 @NgModule({
@@ -75,13 +84,22 @@ import { NewHomePage } from '../pages/new-home/new-home';
     AddDiscussionPage,
     RichTextComponent,
     CalenderEventsPage,
-    NewHomePage
+    NewHomePage,
+    OdooLoginPage,
+    OdooProfilrPage,
+    TimeManagementPage,
+    ProfileAssetsPage,
+    ProfileHrSettingsPage,
+    ProfilePrivteInfoPage,
+    ProfileWorkInfoPage,
+    ProfileOrganizationChartPage
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     IonicModule.forRoot(MyApp),
-    RoundProgressModule
+    RoundProgressModule,
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -113,7 +131,15 @@ import { NewHomePage } from '../pages/new-home/new-home';
     LabelPage,
     AddDiscussionPage,
     CalenderEventsPage,
-    NewHomePage
+    NewHomePage,
+    OdooLoginPage,
+    OdooProfilrPage,
+    TimeManagementPage,
+    ProfileAssetsPage,
+    ProfileHrSettingsPage,
+    ProfilePrivteInfoPage,
+    ProfileWorkInfoPage,
+    ProfileOrganizationChartPage
   ],
   providers: [
     StatusBar,
@@ -126,6 +152,7 @@ import { NewHomePage } from '../pages/new-home/new-home';
     FileOpener,
     FileTransfer,
     File,
+    OdooProvider,
   ]
 })
 export class AppModule { }

@@ -1,4 +1,4 @@
-import { StatusBar } from '@ionic-native/status-bar';
+/* import { StatusBar } from '@ionic-native/status-bar'; */
 import { Component, ViewChild, ElementRef, Input } from '@angular/core';
 import { FormControl } from "@angular/forms";
 

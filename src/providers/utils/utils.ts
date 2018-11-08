@@ -1,6 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { LoadingController, AlertController } from 'ionic-angular';
+import { LoadingController, AlertController, ToastController } from 'ionic-angular';
 
 /*
   Generated class for the UtilsProvider provider.
@@ -13,7 +12,8 @@ export class UtilsProvider {
   public loading
   constructor(
     public loadingCtrl: LoadingController,
-    public alertCtrl: AlertController
+    public alertCtrl: AlertController,
+    public toastCtrl: ToastController,
   ) {
   }
   showAlert(mesg, title) {
@@ -32,5 +32,15 @@ export class UtilsProvider {
     });
     this.loading.present();
   }
-
+  showToast(mesg, duration, position) {
+    const toast = this.toastCtrl.create({
+      message: mesg,
+      duration: duration,
+      position: position
+    });
+    toast.present();
+  }
+  srcFromBase64Images(image) {
+    return "data:image/png;base64," + image
+  }
 }

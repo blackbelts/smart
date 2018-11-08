@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, AlertController, MenuController, ToastController } from 'ionic-angular';
-import { HomePage } from '../home/home';
+/* import { HomePage } from '../home/home'; */
 import { MoodleProvider } from '../../providers/moodle/moodle';
 import { Observable } from 'rxjs/Observable';
 import { UtilsProvider } from '../../providers/utils/utils';

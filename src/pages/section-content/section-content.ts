@@ -7,7 +7,7 @@ import { ChoicePage } from '../activites/choice/choice';
 import { UrlPage } from '../resources/url/url';
 import { FilePage } from '../resources/file/file';
 import { LabelPage } from '../resources/label/label';
-import { BookPage } from '../resources/book/book';
+/* import { BookPage } from '../resources/book/book'; */
 
 /**
  * Generated class for the SectionContentPage page.

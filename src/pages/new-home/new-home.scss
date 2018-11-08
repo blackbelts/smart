@@ -4,7 +4,9 @@ page-new-home {
     font-size: 1.5em
   }
   
-
+  ion-item{
+    padding-left: 0px !important
+  }
   .getting-started {
     .home-hello {
       position: relative;
@@ -12,7 +14,7 @@ page-new-home {
         margin-top: 0;
       }
     }
-
+   
     .tile {
       .item {
         padding: 0;

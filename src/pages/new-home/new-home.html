@@ -7,13 +7,15 @@
 <ion-header>
 
   <ion-navbar color="primary">
-    <ion-title><ion-icon name="home" size=""></ion-icon> Home</ion-title>
+    <ion-title>
+      <ion-icon name="home" size=""></ion-icon> Home
+    </ion-title>
   </ion-navbar>
 
 </ion-header>
 <ion-content padding>
   <ion-row>
-    <ion-col>
+    <ion-col  col-6>
       <ion-card class="tile" (click)="goToLearning()">
         <ion-card-content>
           <ion-item>
@@ -25,9 +27,9 @@
         </ion-card-content>
       </ion-card>
     </ion-col>
-    <ion-col>
+    <ion-col  col-6>
       <ion-card class="tile">
-        <ion-card-content>
+        <ion-card-content (click)="goToTimeMgmt()">
           <ion-item>
             <h1>
               <ion-icon color="primary" name="time" size="large"></ion-icon>
@@ -37,7 +39,7 @@
         </ion-card-content>
       </ion-card>
     </ion-col>
-    <ion-col>
+    <ion-col  col-6>
       <ion-card class="tile">
         <ion-card-content>
           <ion-item>
@@ -49,7 +51,7 @@
         </ion-card-content>
       </ion-card>
     </ion-col>
-    <ion-col>
+    <ion-col  col-6>
       <ion-card class="tile">
         <ion-card-content>
           <ion-item>
@@ -61,19 +63,19 @@
         </ion-card-content>
       </ion-card>
     </ion-col>
-    <ion-col>
+    <ion-col  col-6>
       <ion-card class="tile">
         <ion-card-content>
           <ion-item>
             <h1>
               <ion-icon color="primary" name="help" size="large"></ion-icon>
             </h1>
-            <h3>ASK  </h3>
+            <h3>ASK </h3>
           </ion-item>
         </ion-card-content>
       </ion-card>
     </ion-col>
-    <ion-col>
+    <ion-col  col-6>
       <ion-card class="tile">
         <ion-card-content>
           <ion-item>
@@ -85,7 +87,7 @@
         </ion-card-content>
       </ion-card>
     </ion-col>
-    <ion-col>
+    <ion-col  col-6>
       <ion-card class="tile">
         <ion-card-content>
           <ion-item>
@@ -97,7 +99,7 @@
         </ion-card-content>
       </ion-card>
     </ion-col>
-     <ion-col>
+    <ion-col  col-6>
       <ion-card class="tile">
         <ion-card-content>
           <ion-item>
@@ -109,7 +111,7 @@
         </ion-card-content>
       </ion-card>
     </ion-col>
-    <ion-col>
+    <ion-col  col-6>
       <ion-card class="tile">
         <ion-card-content>
           <ion-item>
@@ -121,8 +123,8 @@
         </ion-card-content>
       </ion-card>
     </ion-col>
-    <ion-col>
-      <ion-card class="tile">
+    <ion-col  col-6>
+      <ion-card class="tile" (click)="goToProfile()">
         <ion-card-content>
           <ion-item>
             <h1>
@@ -133,17 +135,17 @@
         </ion-card-content>
       </ion-card>
     </ion-col>
-    <ion-col (click)="logout()">
-        <ion-card class="tile">
-          <ion-card-content>
-            <ion-item>
-              <h1>
-                <ion-icon color="primary" name="exit" size="large"></ion-icon>
-              </h1>
-              <h3>Logout</h3>
-            </ion-item>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
+    <ion-col (click)="logOut()" col-6>
+      <ion-card class="tile">
+        <ion-card-content>
+          <ion-item>
+            <h1>
+              <ion-icon color="primary" name="exit" size="large"></ion-icon>
+            </h1>
+            <h3>Logout</h3>
+          </ion-item>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
   </ion-row>
 </ion-content>

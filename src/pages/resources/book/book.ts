@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+/* import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer'; */
 import { MoodleProvider } from '../../../providers/moodle/moodle';
-import { File, DirectoryEntry } from '@ionic-native/file';
+/* import { File, DirectoryEntry } from '@ionic-native/file'; */
 import { UtilsProvider } from '../../../providers/utils/utils';
 import { FileOpener } from '@ionic-native/file-opener';
 
@@ -25,9 +25,9 @@ export class BookPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    private transfer: FileTransfer,
+    /* private transfer: FileTransfer, */
     public moodle: MoodleProvider,
-    private file: File,
+    /* private file: File, */
     public utils: UtilsProvider,
     public fileOpner: FileOpener
   ) {

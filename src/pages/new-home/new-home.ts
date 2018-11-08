@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { HomePage } from '../home/home';
+import { OdooLoginPage } from '../OdooPages/odoo-login/odoo-login';
+import { TimeManagementPage } from '../OdooPages/time-management/time-management';
+import { LogInPage } from '../log-in/log-in';
+import { OdooProvider } from '../../providers/odoo/odoo';
+import { OdooProfilrPage } from '../OdooPages/odoo-profilr/odoo-profilr';
 
 /**
  * Generated class for the NewHomePage page.
@@ -16,13 +20,27 @@ import { HomePage } from '../home/home';
 })
 export class NewHomePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public odooProv: OdooProvider
+  ) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad NewHomePage');
+    console.log(this.odooProv.getUid())
+    console.log(this.odooProv.getPassword())
   }
-  goToLearning(){
-    this.navCtrl.setRoot(HomePage)
+  goToLearning() {
+    this.navCtrl.setRoot(LogInPage)
+  }
+  logOut() {
+    this.navCtrl.setRoot(OdooLoginPage)
+  }
+  goToTimeMgmt() {
+    this.navCtrl.setRoot(TimeManagementPage)
+  }
+  goToProfile() {
+    this.navCtrl.setRoot(OdooProfilrPage)
   }
 }
