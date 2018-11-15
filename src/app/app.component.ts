@@ -17,7 +17,7 @@ import { LeavesPage } from '../pages/OdooPages/time-management/leaves/leaves';
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav
-  rootPage: any = LeavesPage;
+  rootPage: any = OdooLoginPage;
   pages: Array<{ title: string, component: any, icon: string }>;
 
   constructor(

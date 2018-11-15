@@ -1,21 +1,55 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
     <ion-title>
-      Academy Pizza
+      Leaves
     </ion-title>
   </ion-navbar>
 </ion-header>
-
 <ion-content>
   <ion-list class="accordion-list">
     <!-- First Level -->
-    <ion-item >*ngFor="let item of information; let i = index" no-lines no-padding>
+    <ion-list-header *ngFor="let item of leaves; let i = index" no-lines no-padding>
       <!-- Toggle Button -->
       <button ion-item (click)="toggleSection(i)" detail-none [ngClass]="{'section-active': item.open, 'section': !item.open}">
-        <ion-icon item-left name="arrow-forward" *ngIf="!item.open"></ion-icon>
-        <ion-icon item-left name="arrow-down" *ngIf="item.open"></ion-icon>
+        <ion-icon item-left name="ios-arrow-dropdown" *ngIf="!item.open"></ion-icon>
+        <ion-icon item-left name="ios-arrow-dropup" *ngIf="item.open"></ion-icon>
         {{ item.name }}
       </button>
-    </ion-item>
+      <ion-card [hidden]=!item.open>
+        <ion-card-content>
+          <ion-item>
+            <h2>Employee:</h2>
+            <p>{{utils.returnValueOfRelation(item.employee_id)}}</p>
+          </ion-item>
+          <ion-item>
+            <h2>Request Type:</h2>
+            <p>{{item.type}}</p>
+          </ion-item>
+          <ion-item>
+            <h2>Number Of Days:</h2>
+            <p>{{item.number_of_days}}</p>
+          </ion-item>
+          <ion-item>
+            <h2>Start Date:</h2>
+            <p>{{item.date_from}}</p>
+          </ion-item>
+          <ion-item>
+            <h2>End Date:</h2>
+            <p>{{item.date_to}}</p>
+          </ion-item>
+          <ion-item>
+            <h2>Leave Type:</h2>
+            <p>{{utils.returnValueOfRelation(item.holiday_status_id)}}</p>
+          </ion-item>
+          <ion-item>
+            <h2>Status:</h2>
+            <p>{{item.state}}</p>
+          </ion-item>
+        </ion-card-content>
+      </ion-card>
+    </ion-list-header>
   </ion-list>
 </ion-content>

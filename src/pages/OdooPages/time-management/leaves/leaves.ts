@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { OdooProvider } from '../../../../providers/odoo/odoo';
+import { UtilsProvider } from '../../../../providers/utils/utils';
 
 /**
  * Generated class for the LeavesPage page.
@@ -14,106 +16,27 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'leaves.html',
 })
 export class LeavesPage {
-  information = [
-    {
-      "name": "Action",
-      "children": [
-        {
-          "name": "Special Academy Pizza",
-          "information": "Pastrami pork belly ball tip andouille corned beef jerky shankle landjaeger. Chicken chuck porchetta picanha, ham brisket tenderloin venison meatloaf landjaeger jowl.",
-          "price": "$25"
-        },
-        {
-          "name": "Pizza Ionic",
-          "information": "Pork chop meatloaf rump, meatball shoulder turducken alcatra doner sausage capicola pork strip steak turkey cupim leberkas.",
-          "price": "$19.99"
-        }
-      ]
-    },
-    {
-      "name": "Pizza",
-      "children": [
-        {
-          "name": "Traditional",
-          "children": [
-            {
-              "name": "Pizza Salami",
-              "information": "Pork chop jowl capicola porchetta, kielbasa prosciutto boudin bacon pork pig.",
-              "price": "$10"
-            },
-            {
-              "name": "Pizza Prosciutto",
-              "information": "Pork chop pastrami landjaeger chuck brisket",
-              "price": "$12"
-            }
-          ]
-        },
-        {
-          "name": "Gourmet",
-          "children": [
-            {
-              "name": "Pizza Bombay",
-              "information": "Pastrami ham hock ball tip, tongue ribeye chuck ham beef bresaola leberkas.",
-              "price": "$13"
-            },
-            {
-              "name": "Pizza Crazy Dog",
-              "information": "Andouille spare ribs meatloaf swine ground round pork loin, brisket chuck bacon tongue.",
-              "price": "$14"
-            },
-            {
-              "name": "Pizza Italia",
-              "information": "Ribeye ham t-bone, tail ground round biltong picanha sausage rump corned beef.",
-              "price": "$11"
-            },
-            {
-              "name": "Pizza Tuna",
-              "information": "Pork chop pastrami landjaeger chuck brisket",
-              "price": "$14"
-            }
-          ]
-        },
-        {
-          "name": "Bestseller",
-          "children": [
-            {
-              "name": "Pizza Academy",
-              "information": "Frankfurter tail capicola cupim shankle salami, beef ribs beef boudin porchetta ball tip leberkas turkey tenderloin.",
-              "price": "$25"
-            },
-            {
-              "name": "Pizza Ionic",
-              "information": "Shank chuck tail, kevin shankle ham hock pork loin pork hamburger beef ribs.",
-              "price": "$19.99"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Drinks",
-      "children": [
-        {
-          "name": "Special Academy Pizza",
-          "information": " Landjaeger fatback shank frankfurter, tongue shoulder ham strip steak pancetta pork short loin corned beef short ribs biltong cow",
-          "price": "$25"
-        },
-        {
-          "name": "Pizza Ionic",
-          "information": "Pork chop pastrami landjaeger chuck brisket",
-          "price": "$19.99"
-        }
-      ]
-    }
-  ]
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  public leaves
 
+  constructor(
+    public navCtrl: NavController, public navParams: NavParams,
+    public odooProv: OdooProvider, public utils: UtilsProvider
+  ) {
+    this.odooProv.getOdooData(this.odooProv.getUid(), this.odooProv.getPassword(), "hr.holidays", "search_read", [{ experssion: "%3D", filed: "employee_id.id", value: this.odooProv.getEmployeeId() }], [{ prop: "fields", prop_values: ["name", "type", "employee_id", "number_of_days", "date_from", "date_to", "holiday_status_id", "state"] }])
+      .map(res => res)
+      .subscribe(res => {
+        console.log(res)
+        this.leaves = res
+      })
+  }
   ionViewDidLoad() {
     console.log('ionViewDidLoad LeavesPage');
   }
   toggleSection(i) {
-    Object(this.information[i]).open = !Object(this.information[i]).open;
+    this.leaves[i].open = !this.leaves[i].open;
   }
+  /* toggleSection(i) {
+    this.information[i].open = !this.information[i].open;
+  } */
 
 }

@@ -1,6 +1,6 @@
 page-leaves {
     .accordion-list {
-        background: color($colors, light);
+        
         height: 100%;
     }
     .section {
@@ -9,7 +9,7 @@ page-leaves {
         margin-bottom: 4px;
     }
     .section-active {
-        background: #ffc400;
+        background:color($colors,primary);
         color: #fff;
     }
  
