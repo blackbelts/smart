@@ -16,14 +16,26 @@
 </ion-header>
 <ion-content padding>
   <ion-row>
-    <ion-col>
-      <ion-card class="tile" (click)="goToLearning()" >
+    <ion-col col-12>
+      <ion-card class="tile" (click)="goToAttendance()" >
         <ion-card-content>
           <ion-item>
             <h1 text-center>
-              <ion-icon color="primary" name="school" size="large"></ion-icon>
+              <ion-icon color="primary" name="log-in"  class="iconCustome" size="large"></ion-icon>
             </h1>
-            <h1 text-center>Learning</h1>
+            <h1 text-center>Attendance</h1>
+          </ion-item>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+    <ion-col col-12>
+      <ion-card class="tile" (click)="goToLeaves()" >
+        <ion-card-content>
+          <ion-item>
+            <h1 text-center>
+              <ion-icon color="primary" name="log-out" class="iconCustome" size="large"></ion-icon>
+            </h1>
+            <h1 text-center>Leaves</h1>
           </ion-item>
         </ion-card-content>
       </ion-card>

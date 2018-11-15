@@ -5,5 +5,50 @@
   Ionic pages and navigation.
 -->
 <ion-content padding>
+  <ion-card>
+    <ion-item>
+      <ion-avatar item-start>
+        <img [src]="utils.srcFromBase64Images(currentEmpInfo.image)">
+      </ion-avatar>
+      <h1>{{currentEmpInfo.name}}</h1>
+      <!-- <p><span *ngFor="let id of currentEmpInfo.category_ids">{{storage.get('employeeCategory'+id)}}</span></p> -->
+    </ion-item>
+    <ion-card-content>
+      <h2 class="border-bottom">Status</h2>
+      <ion-item [hidden]=!currentEmpInfo.user_id>
+        <h2>Related User :</h2>
+        <p>{{utils.returnValueOfRelation(currentEmpInfo.user_id)}}</p>
+      </ion-item>
 
+      <h2 class="border-bottom">Leaves</h2>
+      <ion-item [hidden]=!currentEmpInfo.remaining_leaves>
+        <h2>Private Address :</h2>
+        <p>{{currentEmpInfo.remaining_leaves}}</p>
+      </ion-item>
+
+      <h2 class="border-bottom">Current Contract</h2>
+      <ion-item [hidden]=!currentEmpInfo.medic_exam>
+        <h2>Medical Exam :</h2>
+        <p>{{currentEmpInfo.medic_exam}}</p>
+      </ion-item>
+      <ion-item [hidden]=!currentEmpInfo.vehicle>
+        <h2>Company Vehicle:</h2>
+        <p>{{currentEmpInfo.vehicle}}</p>
+      </ion-item>
+      <ion-item [hidden]=!currentEmpInfo.vehicle_distance>
+        <h2>Home-Work Dist.:</h2>
+        <p>{{currentEmpInfo.vehicle_distance}}</p>
+      </ion-item>
+
+      <h2 class="border-bottom">Attendance</h2>
+      <ion-item [hidden]=!currentEmpInfo.barcode>
+        <h2>Badge ID:</h2>
+        <p>{{currentEmpInfo.barcode}}</p>
+      </ion-item>
+      <ion-item>
+        <ion-label item-start> Is a Manager</ion-label>
+        <ion-checkbox disabled="true" item-end [checked]="currentEmpInfo.manual_attendance"></ion-checkbox>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

@@ -6,33 +6,60 @@
 -->
 <ion-content padding>
   <ion-card>
-
     <ion-item>
       <ion-avatar item-start>
-        <img [src]="utils.srcFromBase64Images(currentEmpInfo.image_small)">
+        <img [src]="utils.srcFromBase64Images(currentEmpInfo.image)">
       </ion-avatar>
-      <h2>{{currentEmpInfo.name}}</h2>
-      <p><span *ngFor="let id of currentEmpInfo.category_ids">{{storage.get('employeeCategory'+id)}}</span></p>
+      <h1>{{currentEmpInfo.name}}</h1>
+      <!-- <p><span *ngFor="let id of currentEmpInfo.category_ids">{{storage.get('employeeCategory'+id)}}</span></p> -->
     </ion-item>
     <ion-card-content>
-      <p>Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine... out of a
-        DeLorean?! Whoa. This is heavy.</p>
+      <h2 class="border-bottom">Contact Information</h2>
+      <ion-item [hidden]=!currentEmpInfo.address_id>
+        <h2>Work Address:</h2>
+        <p>{{currentEmpInfo.address_id}}</p>
+      </ion-item>
+      <ion-item [hidden]=!currentEmpInfo.work_location>
+        <h2>Work Location:</h2>
+        <p>{{currentEmpInfo.work_location}}</p>
+      </ion-item>
+      <ion-item [hidden]=!currentEmpInfo.work_email>
+        <h2>Work Email:</h2>
+        <p>{{currentEmpInfo.work_email}}</p>
+      </ion-item>
+      <ion-item [hidden]=!currentEmpInfo.mobile_phone>
+        <h2>Work Mobile:</h2>
+        <p>{{currentEmpInfo.mobile_phone}}</p>
+      </ion-item>
+      <ion-item [hidden]=!currentEmpInfo.work_phone>
+        <h2>Work Phone:</h2>
+        <p>{{currentEmpInfo.work_phone}}</p>
+      </ion-item>
+      <h2 class="border-bottom">Position</h2>
+      <ion-item [hidden]=!currentEmpInfo.department_id>
+        <h2>Department:</h2>
+        <p>{{utils.returnValueOfRelation(currentEmpInfo.department_id)}}</p>
+      </ion-item>
+      <ion-item [hidden]=!currentEmpInfo.job_id>
+        <h2>Job Position:</h2>
+        <p>{{utils.returnValueOfRelation(currentEmpInfo.job_id)}}</p>
+      </ion-item>
+      <ion-item [hidden]=!currentEmpInfo.parent_id>
+        <h2>Manager:</h2>
+        <p>{{utils.returnValueOfRelation(currentEmpInfo.parent_id)}}</p>
+      </ion-item>
+      <ion-item [hidden]=!currentEmpInfo.coach_id>
+        <h2>Coach:</h2>
+        <p>{{utils.returnValueOfRelation(currentEmpInfo.coach_id)}}</p>
+      </ion-item>
+      <ion-item>
+        <ion-label item-start> Is a Manager</ion-label>
+        <ion-checkbox color="dark" disabled="true" item-end [checked]="currentEmpInfo.manager"></ion-checkbox>
+      </ion-item>
+      <ion-item [hidden]=!currentEmpInfo.resource_calendar_id>
+        <h2>Working Hours:</h2>
+        <p>{{utils.returnValueOfRelation(currentEmpInfo.resource_calendar_id)}}</p>
+      </ion-item>
     </ion-card-content>
-
-    <ion-row>
-      <ion-col>
-        <ion-icon name="thumbs-up"></ion-icon>
-        <div>12 Likes</div>
-      </ion-col>
-      <ion-col>
-        <ion-icon name="text"></ion-icon>
-        <div>4 Comments</div>
-      </ion-col>
-      <ion-col center text-center>
-        <ion-note>
-          11h ago
-        </ion-note>
-      </ion-col>
-    </ion-row>
   </ion-card>
 </ion-content>

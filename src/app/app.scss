@@ -566,3 +566,9 @@ ion-icon[ng-reflect-disabled="true"] {
 .gray-bg{
   background-color: #f5efef
 }
+.border-bottom{
+  border-bottom: 1px solid color($colors, primary);
+  border-width: thin !important;
+  margin-bottom: 15px !important;
+  margin-top: 15px !important;
+}

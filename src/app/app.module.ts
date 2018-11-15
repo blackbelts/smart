@@ -51,6 +51,8 @@ import { ProfileAssetsPage } from '../pages/OdooPages/odoo-profilr/profile-asset
 import { ProfileHrSettingsPage } from '../pages/OdooPages/odoo-profilr/profile-hr-settings/profile-hr-settings';
 import { IonicStorageModule } from '@ionic/storage';
 import { ProfileOrganizationChartPage } from '../pages/OdooPages/odoo-profilr/profile-organization-chart/profile-organization-chart';
+import { AttendancePage } from '../pages/OdooPages/time-management/attendance/attendance';
+import { LeavesPage } from '../pages/OdooPages/time-management/leaves/leaves';
 
 
 @NgModule({
@@ -92,7 +94,9 @@ import { ProfileOrganizationChartPage } from '../pages/OdooPages/odoo-profilr/pr
     ProfileHrSettingsPage,
     ProfilePrivteInfoPage,
     ProfileWorkInfoPage,
-    ProfileOrganizationChartPage
+    ProfileOrganizationChartPage,
+    AttendancePage,
+    LeavesPage
   ],
   imports: [
     BrowserModule,
@@ -139,7 +143,9 @@ import { ProfileOrganizationChartPage } from '../pages/OdooPages/odoo-profilr/pr
     ProfileHrSettingsPage,
     ProfilePrivteInfoPage,
     ProfileWorkInfoPage,
-    ProfileOrganizationChartPage
+    ProfileOrganizationChartPage,
+    AttendancePage,
+    LeavesPage
   ],
   providers: [
     StatusBar,

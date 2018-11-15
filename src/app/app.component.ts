@@ -11,14 +11,13 @@ import { UserProfilePage } from '../pages/user-profile/user-profile';
 import { CalenderEventsPage } from '../pages/calender-events/calender-events';
 import { NewHomePage } from '../pages/new-home/new-home';
 import { OdooLoginPage } from '../pages/OdooPages/odoo-login/odoo-login';
-import { TimeManagementPage } from '../pages/OdooPages/time-management/time-management';
-import { OdooProfilrPage } from '../pages/OdooPages/odoo-profilr/odoo-profilr';
+import { LeavesPage } from '../pages/OdooPages/time-management/leaves/leaves';
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav
-  rootPage: any = OdooLoginPage;
+  rootPage: any = LeavesPage;
   pages: Array<{ title: string, component: any, icon: string }>;
 
   constructor(

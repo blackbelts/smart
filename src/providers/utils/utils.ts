@@ -43,4 +43,7 @@ export class UtilsProvider {
   srcFromBase64Images(image) {
     return "data:image/png;base64," + image
   }
+  returnValueOfRelation(arr = []) {
+    return arr[1];
+  }
 }

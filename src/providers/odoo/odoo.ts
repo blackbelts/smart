@@ -12,7 +12,8 @@ const odooUrl = "http://178.128.197.205/odooApi/index.php?";
 export class OdooProvider {
   private uid;
   private password;
-
+  private employeeId;
+  private res_user_id;
   constructor(public http: HttpClient) {
     this.login("ant@g.com", "123456");
   }
@@ -37,17 +38,29 @@ export class OdooProvider {
   getPassword() {
     return this.password
   }
+  /* setRes_user_id(id) {
+    this.res_user_id = id
+  }
+  getRes_user_id() {
+    return this.res_user_id
+  } */
+  setEmployeeId(empId) {
+    this.employeeId = empId
+  }
+  getEmployeeId() {
+    return this.employeeId
+  }
   getOdooData(uid, password, modal, method, domains = [], mapList = []) {
     return this.http.get(this.makeHttpUrl(uid, password, modal, method, domains, mapList))
   }
   makeHttpUrl(uid, password, modal, method, domains = [], mapList = []) {
-     console.log(odooUrl +
-       "uid=" + uid +
-       "&password=" + password +
-       "&modalname=" + modal +
-       "&method=" + method +
+    console.log(odooUrl +
+      "uid=" + uid +
+      "&password=" + password +
+      "&modalname=" + modal +
+      "&method=" + method +
       this.makeDomainQuery(domains) +
-       this.makeMappingList(mapList))
+      this.makeMappingList(mapList))
     return (
       odooUrl +
       "uid=" + uid +
