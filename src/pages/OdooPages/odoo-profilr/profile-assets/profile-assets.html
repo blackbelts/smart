@@ -24,7 +24,7 @@
             <h2>Date:</h2>
             <p>{{item.date}}</p>
           </ion-item>
-          <ion-item hidden=!item.partner_id>
+          <ion-item [hidden]=!item.partner_id>
             <h2>Vendor:</h2>
             <p>{{utils.returnValueOfRelation(item.partner_id)}}</p>
           </ion-item>
