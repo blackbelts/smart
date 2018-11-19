@@ -45,6 +45,7 @@ export class OdooLoginPage {
                 }
               }
               else {
+                console.log(res2)
                 this.utils.loading.dismiss()
                 this.utils.showToast("error found", 3000, "top")
               }

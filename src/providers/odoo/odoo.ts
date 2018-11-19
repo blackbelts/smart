@@ -13,7 +13,6 @@ export class OdooProvider {
   private uid;
   private password;
   private employeeId;
-  private res_user_id;
   constructor(public http: HttpClient) {
     this.login("ant@g.com", "123456");
   }

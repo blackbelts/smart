@@ -11,7 +11,6 @@ import { UserProfilePage } from '../pages/user-profile/user-profile';
 import { CalenderEventsPage } from '../pages/calender-events/calender-events';
 import { NewHomePage } from '../pages/new-home/new-home';
 import { OdooLoginPage } from '../pages/OdooPages/odoo-login/odoo-login';
-import { LeavesPage } from '../pages/OdooPages/time-management/leaves/leaves';
 @Component({
   templateUrl: 'app.html'
 })

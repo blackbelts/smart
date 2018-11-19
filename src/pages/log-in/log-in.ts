@@ -4,7 +4,6 @@ import { IonicPage, NavController, AlertController, MenuController, ToastControl
 import { MoodleProvider } from '../../providers/moodle/moodle';
 import { Observable } from 'rxjs/Observable';
 import { UtilsProvider } from '../../providers/utils/utils';
-import { NewHomePage } from '../new-home/new-home';
 import { HomePage } from '../home/home';
 
 /**

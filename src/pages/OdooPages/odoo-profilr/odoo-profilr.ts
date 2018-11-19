@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { OdooProvider } from '../../../providers/odoo/odoo';
-import { Domain, Map } from '../../../modals/OdooModal';
 import { ProfileWorkInfoPage } from './profile-work-info/profile-work-info';
 import { ProfilePrivteInfoPage } from './profile-privte-info/profile-privte-info';
 import { ProfileHrSettingsPage } from './profile-hr-settings/profile-hr-settings';

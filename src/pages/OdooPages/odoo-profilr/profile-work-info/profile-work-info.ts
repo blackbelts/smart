@@ -19,7 +19,6 @@ import { UtilsProvider } from "../../../../providers/utils/utils";
 export class ProfileWorkInfoPage {
   private domains: Domain[] = [];
   private maps: Map[] = [];
-  private currentuserId;
   public currentEmpInfo: {} = {};
   constructor(
     public navCtrl: NavController,
