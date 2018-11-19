@@ -5,5 +5,47 @@
   Ionic pages and navigation.
 -->
 <ion-content padding>
-
+  <ion-list class="accordion-list">
+    <!-- First Level -->
+    <ion-list-header *ngFor="let item of assets; let i = index" no-lines no-padding>
+      <!-- Toggle Button -->
+      <button ion-item (click)="toggleSection(i)" detail-none [ngClass]="{'section-active': item.open, 'section': !item.open}">
+        <ion-icon item-left name="ios-arrow-dropdown" *ngIf="!item.open"></ion-icon>
+        <ion-icon item-left name="ios-arrow-dropup" *ngIf="item.open"></ion-icon>
+        {{ item.name }}
+      </button>
+      <ion-card [hidden]=!item.open>
+        <ion-card-content>
+          <ion-item>
+            <h2>Category:</h2>
+            <p>{{utils.returnValueOfRelation(item.category_id)}}</p>
+          </ion-item>
+          <ion-item>
+            <h2>Date:</h2>
+            <p>{{item.date}}</p>
+          </ion-item>
+          <ion-item hidden=!item.partner_id>
+            <h2>Vendor:</h2>
+            <p>{{utils.returnValueOfRelation(item.partner_id)}}</p>
+          </ion-item>
+          <ion-item>
+            <h2>Gross Value:</h2>
+            <p>{{item.value}}</p>
+          </ion-item>
+          <ion-item>
+            <h2>Residual Value:</h2>
+            <p>{{item.value_residual}}</p>
+          </ion-item>
+          <ion-item>
+            <h2>Currency:</h2>
+            <p>{{utils.returnValueOfRelation(item.currency_id)}}</p>
+          </ion-item>
+          <ion-item>
+            <h2>Status:</h2>
+            <p>{{item.state}}</p>
+          </ion-item>
+        </ion-card-content>
+      </ion-card>
+    </ion-list-header>
+  </ion-list>
 </ion-content>

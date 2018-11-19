@@ -22,6 +22,7 @@ export class ProfileAssetsPage {
   private domains: Domain[] = [];
   private maps: Map[] = [];
   public currentEmpInfo: {} = {};
+  public assets
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -39,10 +40,17 @@ export class ProfileAssetsPage {
         .subscribe(res => {
           this.currentEmpInfo = res[0]
           console.log(this.currentEmpInfo)
-          this.utils.loading.dismiss();
+          this.odooProv.getOdooData(this.odooProv.getUid(), this.odooProv.getPassword(), "account.asset.asset", "search_read", [{ filed: "id", experssion: "in", value: Object(this.currentEmpInfo).assets }], [{ prop: "fields", prop_values: ["name", "category_id", "date", "partner_id", "value", "value_residual", "currency_id", "state"] }])
+            .map(asset => asset)
+            .subscribe(asset => {
+              console.log(asset)
+              this.assets = asset
+              this.utils.loading.dismiss();
+            })
         })
     })
   }
-
-
+  toggleSection(i) {
+    this.assets[i].open = !this.assets[i].open;
+  }
 }

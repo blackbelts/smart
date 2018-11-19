@@ -108,8 +108,17 @@ export class OdooProvider {
       domains.forEach(dom => {
         domainStr += "[" + i + "]" + "[0]=" +
           dom.filed + "&parmlist[0]" + "[" +
-          i + "][1]=" + dom.experssion +
-          "&parmlist[0]" + "[" + i + "][2]=" + dom.value;
+          i + "][1]=" + dom.experssion ;
+        if (Array.isArray(dom.value)) {
+          let j = 0
+          dom.value.forEach(element => {
+            domainStr +=  "&parmlist[0]"+"[" + i + "][2][" + j + "]=" + element
+            j++;
+          });
+        } else {
+          domainStr +=  "&parmlist[0][" + i + "][2]=" + dom.value
+        }
+        console.log(dom.value)
         i++;
         if (i < domains.length) domainStr += "&parmlist[0]";
       });

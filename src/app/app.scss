@@ -54,6 +54,7 @@
 .profile-bg {
   background-image: linear-gradient(135deg, color($colors, dark), color($colors, primary), color($colors, light));
 }
+
 //
 //
 .text-primary {
@@ -264,6 +265,7 @@ ion-navbar.no-border {
   .item:first-child {
     border: none;
   }
+
   .item:last-child {
     border: none;
   }
@@ -282,6 +284,7 @@ ion-navbar.no-border {
   .item:first-child,
   .item:last-child {
     border-bottom: 1px solid rgba(86, 61, 124, 0.2);
+
     .item-inner {
       border: none;
     }
@@ -303,6 +306,7 @@ ion-navbar.no-border {
       background-color: rgba(86, 61, 124, .65);
     }
   }
+
   .toolbar-title {
     img {
       vertical-align: sub;
@@ -317,7 +321,7 @@ ion-navbar.no-border {
   background: url("../assets/imgs/bg.jpg") no-repeat;
   background-size: cover;
   z-index: 0;
-    width: 100%;
+  width: 100%;
 
 
   .scroll-content {
@@ -334,7 +338,7 @@ ion-navbar.no-border {
         height: 60px;
         margin: 20px auto 0;
         border-radius: 10%;
-       // background: url("../assets/img/ionic3-ico.png") no-repeat;
+        // background: url("../assets/img/ionic3-ico.png") no-repeat;
         background-size: 100%;
       }
 
@@ -375,11 +379,13 @@ ion-navbar.no-border {
     height: 68px;
     display: inline-block;
     border-radius: 50%;
-    box-shadow: inset 0 0 10rem rgba(0,0,0,.25), 0 0 4rem rgba(255,255,255,.45);
+    box-shadow: inset 0 0 10rem rgba(0, 0, 0, .25), 0 0 4rem rgba(255, 255, 255, .45);
+
     img {
       border-radius: 50%;
     }
   }
+
   .toolbar-background {
     background-image: linear-gradient(135deg, color($colors, dark), color($colors, primary));
   }
@@ -398,6 +404,7 @@ ion-navbar.no-border {
     &:last-child {
       border-bottom: 0;
     }
+
     .item-inner {
       border-color: rgba(86, 61, 124, .1);
     }
@@ -484,6 +491,7 @@ ion-icon[ng-reflect-disabled="true"] {
 
   ion-toolbar,
   ion-navbar {
+
     .button,
     .button.activated {
       box-shadow: none;
@@ -492,18 +500,22 @@ ion-icon[ng-reflect-disabled="true"] {
 }
 
 .ios {
+
   ion-list ion-item,
   .list-hotels .hotel-bg {
     pointer-events: none;
   }
 }
-.nodata{
+
+.nodata {
   color: #888585;
   padding-top: 50px;
-  ion-icon{
+
+  ion-icon {
     font-size: 10em
   }
 }
+
 // google
 .google-map {
   height: 160px;
@@ -563,12 +575,48 @@ ion-icon[ng-reflect-disabled="true"] {
 }
 
 // Custom style
-.gray-bg{
+.gray-bg {
   background-color: #f5efef
 }
-.border-bottom{
+
+.border-bottom {
   border-bottom: 1px solid color($colors, primary);
   border-width: thin !important;
   margin-bottom: 15px !important;
   margin-top: 15px !important;
+}
+
+.accordion-list {
+
+  height: 100%;
+}
+
+.section {
+  background: #fff;
+  color: #000;
+  margin-bottom: 4px;
+}
+
+.section-active {
+  background: color($colors, primary);
+  color: #fff;
+}
+
+.child {
+  background: #e8e7e6;
+  color: #000;
+  margin-bottom: 4px;
+}
+
+.child-item {
+  background: #f3f2f1;
+  padding: 10px;
+}
+
+.label {
+  margin: 0px;
+}
+
+.list {
+  margin-bottom: 4px;
 }
