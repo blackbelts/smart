@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { OdooProvider } from '../../../../providers/odoo/odoo';
 import { UtilsProvider } from '../../../../providers/utils/utils';
-
+import { LeaveRequestPage } from './leave-request/leave-request';
 /**
  * Generated class for the LeavesPage page.
  *
@@ -20,7 +20,8 @@ export class LeavesPage {
 
   constructor(
     public navCtrl: NavController, public navParams: NavParams,
-    public odooProv: OdooProvider, public utils: UtilsProvider
+    public odooProv: OdooProvider, public utils: UtilsProvider,
+    public modalCtrl: ModalController
   ) {
     this.utils.presentLoadingDefault();
     this.odooProv.getOdooData(this.odooProv.getUid(), this.odooProv.getPassword(), "hr.holidays", "search_read", [{ experssion: "%3D", filed: "employee_id.id", value: this.odooProv.getEmployeeId() }], [{ prop: "fields", prop_values: ["name", "type", "employee_id", "number_of_days", "date_from", "date_to", "holiday_status_id", "state"] }])
@@ -35,4 +36,9 @@ export class LeavesPage {
   toggleSection(i) {
     this.leaves[i].open = !this.leaves[i].open;
   }
+  openModal() {
+    const modal = this.modalCtrl.create(LeaveRequestPage)
+    modal.present();
+  }
+  
 }

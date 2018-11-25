@@ -53,6 +53,7 @@ import { IonicStorageModule } from '@ionic/storage';
 import { ProfileOrganizationChartPage } from '../pages/OdooPages/odoo-profilr/profile-organization-chart/profile-organization-chart';
 import { AttendancePage } from '../pages/OdooPages/time-management/attendance/attendance';
 import { LeavesPage } from '../pages/OdooPages/time-management/leaves/leaves';
+import { LeaveRequestPage } from '../pages/OdooPages/time-management/leaves/leave-request/leave-request';
 
 
 @NgModule({
@@ -96,7 +97,8 @@ import { LeavesPage } from '../pages/OdooPages/time-management/leaves/leaves';
     ProfileWorkInfoPage,
     ProfileOrganizationChartPage,
     AttendancePage,
-    LeavesPage
+    LeavesPage,
+    LeaveRequestPage
   ],
   imports: [
     BrowserModule,
@@ -145,7 +147,8 @@ import { LeavesPage } from '../pages/OdooPages/time-management/leaves/leaves';
     ProfileWorkInfoPage,
     ProfileOrganizationChartPage,
     AttendancePage,
-    LeavesPage
+    LeavesPage,
+    LeaveRequestPage
   ],
   providers: [
     StatusBar,
