@@ -1,3 +1,4 @@
+import { LeaveToApprovePage } from './leaves/leave-to-approve/leave-to-approve';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AttendancePage } from './attendance/attendance';
@@ -19,7 +20,9 @@ export class TimeManagementPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
-
+  goToLeavesToApprove() {
+    this.navCtrl.push(LeaveToApprovePage)
+  }
   goToAttendance() {
     this.navCtrl.push(AttendancePage)
   }

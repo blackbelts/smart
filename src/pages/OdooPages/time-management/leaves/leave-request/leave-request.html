@@ -5,30 +5,41 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-  <ion-navbar color="primary">
-
-    <ion-title>
-      Leave Request
-    </ion-title>
-    <ion-buttons right >
-      <button ion-button (click)="dismiss()">
+    <ion-navbar color="primary">
+        <ion-title>
+            Leave Request
+        </ion-title>
+        <ion-buttons right>
+            <button ion-button (click)="dismiss()">
         <ion-icon size="large" class="font-big" name="close-circle"></ion-icon>
       </button>
-    </ion-buttons>
-  </ion-navbar>
+        </ion-buttons>
+    </ion-navbar>
 </ion-header>
 <ion-content padding>
-  <ion-list>
-
-    <ion-item>
-      <ion-label floating>Description</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
-  
-    <ion-item>
-      <ion-label floating>Password</ion-label>
-      <ion-input type="password"></ion-input>
-    </ion-item>
-  
-  </ion-list>
+    <ion-list>
+        <ion-item>
+            <ion-label floating>Description</ion-label>
+            <ion-input type="text" [(ngModel)]="leaveRequest.desc"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>Leave Type</ion-label>
+            <ion-select interface="popover" [(ngModel)]="leaveRequest.type">
+                <ion-option *ngFor="let type of leavesTypes" [value]="type.id">{{type.name}}</ion-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label>From</ion-label>
+            <ion-datetime displayFormat="YY-MM-DD HH:mm:ss" (ionChange)="calcDays()" pickerFormat="YY-MM-DD HH:mm:ss" [(ngModel)]="leaveRequest.from"></ion-datetime>
+        </ion-item>
+        <ion-item>
+            <ion-label>To</ion-label>
+            <ion-datetime [(ngModel)]="leaveRequest.to" (ionChange)="calcDays()" displayFormat="YY-MM-DD HH:mm:ss" pickerFormat="YYYY-MM-DD HH:mm:ss"></ion-datetime>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Days</ion-label>
+            <ion-input type="text" [(ngModel)]="leaveRequest.days" disabled></ion-input>
+        </ion-item>
+    </ion-list>
+    <button ion-button color="primary" block (click)="submitLeaveRquest()">Submit</button>
 </ion-content>

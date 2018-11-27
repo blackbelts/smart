@@ -1,3 +1,4 @@
+import { LeaveToApprovePage } from './../pages/OdooPages/time-management/leaves/leave-to-approve/leave-to-approve';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -98,7 +99,8 @@ import { LeaveRequestPage } from '../pages/OdooPages/time-management/leaves/leav
     ProfileOrganizationChartPage,
     AttendancePage,
     LeavesPage,
-    LeaveRequestPage
+    LeaveRequestPage,
+    LeaveToApprovePage
   ],
   imports: [
     BrowserModule,
@@ -148,7 +150,8 @@ import { LeaveRequestPage } from '../pages/OdooPages/time-management/leaves/leav
     ProfileOrganizationChartPage,
     AttendancePage,
     LeavesPage,
-    LeaveRequestPage
+    LeaveRequestPage,
+    LeaveToApprovePage
   ],
   providers: [
     StatusBar,

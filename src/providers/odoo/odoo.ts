@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 
 /*
   Generated class for the OdooProvider provider.
-
   See https://angular.io/guide/dependency-injection for more info on providers
   and Angular DI.
 */
@@ -58,7 +57,7 @@ export class OdooProvider {
       "&password=" + password +
       "&modalname=" + modal +
       "&method=" + method +
-      this.makeDomainQuery(domains) +
+      (method == "create" ? this.makeDomainQueryForCreate(domains) : this.makeDomainQuery(domains)) +
       this.makeMappingList(mapList))
     return (
       odooUrl +
@@ -66,9 +65,23 @@ export class OdooProvider {
       "&password=" + password +
       "&modalname=" + modal +
       "&method=" + method +
-      this.makeDomainQuery(domains) +
+      (method == "create" ? this.makeDomainQueryForCreate(domains) : this.makeDomainQuery(domains)) +
       this.makeMappingList(mapList)
     );
+  }
+  makeDomainQueryForCreate(domains = []) {
+    let domainStr = "&parmlist[0]";
+    if (domains.length != 0) {
+      let i = 0;
+      domains.forEach(dom => {
+        domainStr += "[" + dom.filed + "]=" + dom.value
+        i++;
+        if (i < domains.length) domainStr += "&parmlist[0]";
+      });
+      return domainStr;
+    } else {
+      return "";
+    }
   }
   makeMappingList(mapList = []) {
     if (mapList.length != 0) {
@@ -107,15 +120,15 @@ export class OdooProvider {
       domains.forEach(dom => {
         domainStr += "[" + i + "]" + "[0]=" +
           dom.filed + "&parmlist[0]" + "[" +
-          i + "][1]=" + dom.experssion ;
+          i + "][1]=" + dom.experssion;
         if (Array.isArray(dom.value)) {
           let j = 0
           dom.value.forEach(element => {
-            domainStr +=  "&parmlist[0]"+"[" + i + "][2][" + j + "]=" + element
+            domainStr += "&parmlist[0]" + "[" + i + "][2][" + j + "]=" + element
             j++;
           });
         } else {
-          domainStr +=  "&parmlist[0][" + i + "][2]=" + dom.value
+          domainStr += "&parmlist[0][" + i + "][2]=" + dom.value
         }
         console.log(dom.value)
         i++;
