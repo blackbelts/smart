@@ -17,7 +17,7 @@ import { SectionContentPage } from '../section-content/section-content';
 })
 export class CourseSectionsPage {
   course;
-  sections = [{}];
+  sections ;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,

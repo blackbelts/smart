@@ -38,11 +38,11 @@ export class LeaveRequestPage {
     public odooProv: OdooProvider,
     public utils: UtilsProvider
   ) {
-    /* this.odooProv.getOdooData(this.odooProv.getUid(), this.odooProv.getPassword(), "hr.holidays.status", "search_read", [], [{ prop: "fields", prop_values: ["name", "remaining_leaves"] }])
+    this.odooProv.getOdooData(this.odooProv.getUid(), this.odooProv.getPassword(), "hr.holidays.status", "search_read", [], [{ prop: "fields", prop_values: ["name", "remaining_leaves"] }])
       .map(res => res)
       .subscribe(res => {
         this.leavesTypes = res
-      }) */
+      })
   }
 
   dismiss() {

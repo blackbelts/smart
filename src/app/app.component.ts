@@ -1,3 +1,4 @@
+import { AttendancePage } from './../pages/OdooPages/time-management/attendance/attendance';
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform, MenuController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';

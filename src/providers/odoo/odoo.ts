@@ -6,7 +6,8 @@ import { Injectable } from '@angular/core';
   See https://angular.io/guide/dependency-injection for more info on providers
   and Angular DI.
 */
-const odooUrl = "http://178.128.197.205/odooApi/index.php?";
+/* const odooUrl = "http://178.128.197.205/odooApi/index.php?"; */
+const odooUrl = "http://localhost/api/index.php?";
 @Injectable()
 export class OdooProvider {
   private uid;
