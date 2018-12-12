@@ -1,0 +1,37 @@
+<!--
+  Generated template for the PayslipDetailsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Payslips Details
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <div class="row header" text-center	>
+    <div class="col">Name</div>
+    <div class="col">Code</div>
+    <div class="col">QTY</div>
+    <div class="col">Rate<br>(%)</div>
+    <div class="col">Amount</div>
+    <div class="col">Total</div>
+
+  </div>
+  <div class="row" *ngFor="let item of lines" (click)="openLine(item)" >
+    <div class="col" text-center>{{item.name}}</div>
+    <div class="col" text-center	>{{item.code}}</div>
+    <div class="col" text-right>{{item.quantity}}</div>
+    <div class="col" text-right>{{item.rate}}</div>
+    <div class="col" text-right>{{item.amount}}</div>
+    <div class="col" text-right>{{item.total}}</div>
+  </div>
+</ion-content>

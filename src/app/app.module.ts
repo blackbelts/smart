@@ -1,3 +1,5 @@
+import { PayslipLinePage } from './../pages/OdooPages/payroll/payslips/payslip-line/payslip-line';
+import { PayslipDetailsPage } from './../pages/OdooPages/payroll/payslips/payslip-details/payslip-details';
 import { LeaveToApprovePage } from './../pages/OdooPages/time-management/leaves/leave-to-approve/leave-to-approve';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
@@ -55,6 +57,8 @@ import { ProfileOrganizationChartPage } from '../pages/OdooPages/odoo-profilr/pr
 import { AttendancePage } from '../pages/OdooPages/time-management/attendance/attendance';
 import { LeavesPage } from '../pages/OdooPages/time-management/leaves/leaves';
 import { LeaveRequestPage } from '../pages/OdooPages/time-management/leaves/leave-request/leave-request';
+import { LeaveBalancePage } from '../pages/OdooPages/time-management/leaves/leave-balance/leave-balance';
+import { PayslipsPage } from '../pages/OdooPages/payroll/payslips/payslips';
 
 
 @NgModule({
@@ -100,7 +104,11 @@ import { LeaveRequestPage } from '../pages/OdooPages/time-management/leaves/leav
     AttendancePage,
     LeavesPage,
     LeaveRequestPage,
-    LeaveToApprovePage
+    LeaveToApprovePage,
+    LeaveBalancePage,
+    PayslipsPage,
+    PayslipDetailsPage,
+    PayslipLinePage
   ],
   imports: [
     BrowserModule,
@@ -151,7 +159,11 @@ import { LeaveRequestPage } from '../pages/OdooPages/time-management/leaves/leav
     AttendancePage,
     LeavesPage,
     LeaveRequestPage,
-    LeaveToApprovePage
+    LeaveToApprovePage,
+    LeaveBalancePage,
+    PayslipsPage,
+    PayslipDetailsPage,
+    PayslipLinePage
   ],
   providers: [
     StatusBar,

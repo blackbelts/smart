@@ -5,6 +5,7 @@ import { TimeManagementPage } from '../OdooPages/time-management/time-management
 import { LogInPage } from '../log-in/log-in';
 import { OdooProvider } from '../../providers/odoo/odoo';
 import { OdooProfilrPage } from '../OdooPages/odoo-profilr/odoo-profilr';
+import { PayslipsPage } from '../OdooPages/payroll/payslips/payslips';
 
 /**
  * Generated class for the NewHomePage page.
@@ -42,5 +43,8 @@ export class NewHomePage {
   }
   goToProfile() {
     this.navCtrl.setRoot(OdooProfilrPage)
+  }
+  goToPayroll(){
+    this.navCtrl.push(PayslipsPage)
   }
 }

@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AttendancePage } from './attendance/attendance';
 import { LeavesPage } from './leaves/leaves';
+import { LeaveBalancePage } from './leaves/leave-balance/leave-balance';
 
 /**
  * Generated class for the TimeManagementPage page.
@@ -28,5 +29,8 @@ export class TimeManagementPage {
   }
   goToLeaves() {
     this.navCtrl.push(LeavesPage)
+  }
+  goToLeaveBalance() {
+    this.navCtrl.push(LeaveBalancePage)
   }
 }
