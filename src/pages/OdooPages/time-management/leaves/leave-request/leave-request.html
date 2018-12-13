@@ -11,8 +11,8 @@
         </ion-title>
         <ion-buttons right>
             <button ion-button (click)="dismiss()">
-        <ion-icon size="large" class="font-big" name="close-circle"></ion-icon>
-      </button>
+                <ion-icon size="large" class="font-big" name="close-circle"></ion-icon>
+            </button>
         </ion-buttons>
     </ion-navbar>
 </ion-header>
@@ -30,6 +30,14 @@
         </ion-item>
         <ion-item>
             <ion-label>From</ion-label>
+            <ion-datetime displayFormat="YY-MM-DD HH:mm:ss" pickerFormat="YY-MM-DD HH:mm:ss" [(ngModel)]="leaveRequest.from"></ion-datetime>
+        </ion-item>
+        <ion-item>
+            <ion-label>To</ion-label>
+            <ion-datetime [(ngModel)]="leaveRequest.to" displayFormat="YY-MM-DD HH:mm:ss" pickerFormat="YYYY-MM-DD HH:mm:ss"></ion-datetime>
+        </ion-item>
+        <!--  <ion-item>
+            <ion-label>From</ion-label>
             <ion-datetime displayFormat="YY-MM-DD HH:mm:ss" (ionChange)="calcDays()" pickerFormat="YY-MM-DD HH:mm:ss" [(ngModel)]="leaveRequest.from"></ion-datetime>
         </ion-item>
         <ion-item>
@@ -39,7 +47,8 @@
         <ion-item>
             <ion-label floating>Days</ion-label>
             <ion-input type="text" [(ngModel)]="leaveRequest.days" disabled></ion-input>
-        </ion-item>
+        </ion-item> -->
     </ion-list>
     <button ion-button color="primary" block (click)="submitLeaveRquest()">Submit</button>
+    <button ion-button color="primary" block (click)="submitLeaveRquest()" [hidden]="!leavesManager">Submit & Approve</button>
 </ion-content>

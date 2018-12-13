@@ -33,23 +33,28 @@ export class OdooLoginPage {
           this.setUser(res.userId)
           this.odooProv.getOdooData(this.odooProv.getUid(), this.odooProv.getPassword(), "res.users", "search_read", [{ experssion: "%3D", filed: "id", value: this.odooProv.getUid() }], [{ prop: "fields", prop_values: ["employee_ids"] }])
             .map(res2 => res2)
-            .subscribe(res2 => {
-              if (Object(res2).faultString == undefined) {
-                if (res2[0].employee_ids[0] == undefined) {
-                  this.utils.loading.dismiss()
-                  this.utils.showToast("You are not an employee", 3000, "top")
-                } else {
-                  this.odooProv.setEmployeeId(res2[0].employee_ids[0])
-                  this.utils.loading.dismiss()
-                  this.nav.setRoot(NewHomePage)
+            .subscribe(
+              res2 => {
+                if (Object(res2).faultString == undefined) {
+                  if (res2[0].employee_ids[0] == undefined) {
+                    this.utils.loading.dismiss()
+                    this.utils.showToast("You are not an employee", 3000, "top")
+                  } else {
+                    this.odooProv.setEmployeeId(res2[0].employee_ids[0])
+                    this.utils.loading.dismiss()
+                    this.nav.setRoot(NewHomePage)
+                  }
                 }
+                else {
+                  console.log(res2)
+                  this.utils.loading.dismiss()
+                  this.utils.showToast("error found", 3000, "top")
+                }
+              },
+              error => {
+                console.log(error)
               }
-              else {
-                console.log(res2)
-                this.utils.loading.dismiss()
-                this.utils.showToast("error found", 3000, "top")
-              }
-            })
+            )
         }
         else {
           this.utils.loading.dismiss()

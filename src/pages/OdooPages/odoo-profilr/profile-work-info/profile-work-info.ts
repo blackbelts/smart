@@ -19,7 +19,7 @@ import { UtilsProvider } from "../../../../providers/utils/utils";
 export class ProfileWorkInfoPage {
   private domains: Domain[] = [];
   private maps: Map[] = [];
-  public currentEmpInfo;
+  public currentEmpInfo:{}={};
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,

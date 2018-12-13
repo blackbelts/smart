@@ -115,7 +115,16 @@ export class OdooProvider {
   }
   /* make domain string */
   makeDomainQuery(domains = []) {
-    let domainStr = "&parmlist[0]";
+    let domainStr
+    if (typeof domains[0] === "string") {
+      let index = 0;
+      domains.forEach(dom => {
+        domainStr = "&parmlist[" + index + "]=" + dom
+        index++;
+      })
+      return domainStr
+    }
+    domainStr = "&parmlist[0]";
     if (domains.length != 0) {
       let i = 0;
       domains.forEach(dom => {
