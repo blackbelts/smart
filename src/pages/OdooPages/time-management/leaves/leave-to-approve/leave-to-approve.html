@@ -28,7 +28,7 @@
       Select Filter
     </ion-label>
     <ion-select interface="popover" [(ngModel)]="filterObj" (ionChange)="filterMethod()">
-      <ion-option *ngFor="let type of filters;let ind" [value]="ind">
+      <ion-option *ngFor="let type of filters;let ind" [value]="ind" [selected]="type.selected">
         {{type.name}}
       </ion-option>
     </ion-select>
@@ -75,13 +75,14 @@
           <ion-item>
             <h2>Actions:</h2>
             <!-- Edite button -->
-            <ion-icon name="create" color="primary" [hidden]="!(item.state=='draft'||item.state=='confirm')"></ion-icon>
+            <ion-icon name="create" color="primary" [hidden]="!(item.state=='draft'||item.state=='confirm')" (click)="leaveAction(item,'action_confirm')"></ion-icon>
             <!-- Approve button -->
-            <ion-icon name="checkbox" color="primary" [hidden]="!(item.state=='confirm')"></ion-icon>
+            <ion-icon name="checkbox" color="primary" [hidden]="!(item.state=='confirm')" (click)="leaveAction(item,'action_approve')"></ion-icon>
             <!-- refuse Button -->
-            <ion-icon name="close" color="primary" [hidden]="!(item.state=='validate'||item.state=='confirm')"></ion-icon>
+            <ion-icon name="close" color="primary" [hidden]="!(item.state=='validate'||item.state=='confirm')" (click)="leaveAction(item,'action_refuse')"></ion-icon>
             <!-- RESET to draft -->
-            <ion-icon name="document" color="primary" [hidden]="!((this.leaveManager || item.employee_id[0] == this.odooProv.getEmployeeId()) && (item.state == 'confirm' || item.state == 'refuse'))"></ion-icon>
+            <ion-icon name="document" color="primary" [hidden]="!((this.leaveManager || item.employee_id[0] == this.odooProv.getEmployeeId()) && (item.state == 'confirm' || item.state == 'refuse'))"
+              (click)="leaveAction(item,'action_draft')"></ion-icon>
           </ion-item>
         </ion-card-content>
       </ion-card>

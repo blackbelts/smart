@@ -33,6 +33,8 @@ export class LeaveRequestPage {
       to: '',
       /*   days: 0.00 */
     };
+  edit
+  edittingObj
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -41,15 +43,25 @@ export class LeaveRequestPage {
     public utils: UtilsProvider,
     private storage: Storage
   ) {
-    console.log(this.storage.get("LeavesManager"))
     this.storage.get("LeavesOfficer").then(res => {
       this.leavesManager = res
     })
-    this.odooProv.getOdooData(this.odooProv.getUid(), this.odooProv.getPassword(), "hr.holidays.status", "search_read", [], [{ prop: "fields", prop_values: ["name", "remaining_leaves"] }])
-      .map(res => res)
-      .subscribe(res => {
-        this.leavesTypes = res
-      })
+    console.log(this.navParams.get("leave"))
+    if (this.navParams.get("leave") == undefined) {
+      this.odooProv.getOdooData(this.odooProv.getUid(), this.odooProv.getPassword(), "hr.holidays.status", "search_read", [], [{ prop: "fields", prop_values: ["name", "remaining_leaves"] }])
+        .map(res => res)
+        .subscribe(res => {
+          this.leavesTypes = res
+        })
+    }
+    else {
+      this.edittingObj = this.navParams.get("leave")
+      this.leaveRequest.desc = this.edittingObj.name;
+      this.leaveRequest.from=this.edittingObj.date_from;
+      this.leaveRequest.to=this.edittingObj.date_to
+    }
+
+
   }
 
   dismiss() {

@@ -4,6 +4,7 @@ import { OdooProvider } from './../../../../../providers/odoo/odoo';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
+import { map } from 'rxjs/operator/map';
 
 /**
  * Generated class for the LeaveToApprovePage page.
@@ -21,12 +22,33 @@ export class LeaveToApprovePage {
   showSearchBar
   filters = [
     {
-      name: "To Approve",
+      name: "To Approve leaves",
       domains: [
         {
           filed: "state",
           experssion: "in",
           value: ['confirm', 'validate1']
+        },
+        {
+          filed: "type",
+          experssion: "%3D",
+          value: "remove"
+        }
+      ],
+      selected: true
+    },
+    {
+      name: "To Approve Allocations",
+      domains: [
+        {
+          filed: "state",
+          experssion: "in",
+          value: ['confirm', 'validate1']
+        },
+        {
+          filed: "type",
+          experssion: "%3D",
+          value: "add"
         }
       ]
     },
@@ -36,7 +58,27 @@ export class LeaveToApprovePage {
         {
           filed: "state",
           experssion: "%3D",
-          value: "validated1"
+          value: "validate"
+        },
+        {
+          filed: "type",
+          experssion: "%3D",
+          value: "remove"
+        }
+      ]
+    },
+    {
+      name: "Approved Allocation",
+      domains: [
+        {
+          filed: "state",
+          experssion: "%3D",
+          value: "validate"
+        },
+        {
+          filed: "type",
+          experssion: "%3D",
+          value: "add"
         }
       ]
     },
@@ -102,17 +144,23 @@ export class LeaveToApprovePage {
     public modalCtrl: ModalController,
     private storage: Storage
   ) {
+    this.utils.presentLoadingDefault();
     this.storage.get("LeavesManager").then(res => {
       this.leaveManager = res
-      console.log("leaveManager" + this.leaveManager)
     })
-    this.odooProv.getOdooData(this.odooProv.getUid(), this.odooProv.getPassword(), "hr.holidays", "search_read", [{ filed: "state", experssion: "in", value: ['confirm', 'validate1'] }], [])
+    this.initfun();
+  }
+  initfun() {
+    this.leaves = undefined
+    this.odooProv.getOdooData(this.odooProv.getUid(), this.odooProv.getPassword(), "hr.holidays", "search_read", [{ filed: "state", experssion: "in", value: ['confirm', 'validate1'] }, {
+      filed: "type", experssion: "%3D", value: "remove"
+    }], [])
       .map(res => res)
       .subscribe(res => {
-        this.leaves = res
+        this.leaves = res;
+        this.utils.loading.dismiss()
       })
   }
-
   toggleSection(i) {
     this.leaves[i].open = !this.leaves[i].open;
   }
@@ -121,12 +169,10 @@ export class LeaveToApprovePage {
   }
   filterMethod() {
     this.leaves = undefined
-    console.log(this.filterObj)
     this.utils.presentLoadingDefault()
     this.odooProv.getOdooData(this.odooProv.getUid(), this.odooProv.getPassword(), "hr.holidays", "search_read", this.filterObj.domains, [])
       .map(res => res)
       .subscribe(res => {
-        console.log(res)
         this.leaves = res;
         this.utils.loading.dismiss()
       })
@@ -137,9 +183,29 @@ export class LeaveToApprovePage {
       modal = this.modalCtrl.create(LeaveRequestPage, { "leave": leave })
     } else {
       modal = this.modalCtrl.create(LeaveRequestPage)
-      modal.present();
-      modal.onDidDismiss(() => {
-      })
+
+    }
+    modal.present();
+    modal.onDidDismiss(() => {
+    })
+  }
+  leaveAction(item, action) {
+    if (action == "action_confirm") {
+      this.addFun(true, item)
+    }
+    else {
+      this.utils.presentLoadingDefault();
+      this.odooProv.getOdooData(this.odooProv.getUid(), this.odooProv.getPassword(), "hr.holidays", action, [item.id], [])
+        .map(res => res)
+        .subscribe(res => {
+          if (Object(res).faultCode == undefined) {
+            this.utils.showAlert("Your action Done", "done");
+            this.initfun()
+          }
+          else {
+            this.utils.showAlert(Object(res).faultString, "error")
+          }
+        })
     }
   }
 }
