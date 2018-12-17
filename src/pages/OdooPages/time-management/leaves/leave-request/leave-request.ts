@@ -42,7 +42,7 @@ export class LeaveRequestPage {
     private storage: Storage
   ) {
     console.log(this.storage.get("LeavesManager"))
-    this.storage.get("LeavesManager").then(res => {
+    this.storage.get("LeavesOfficer").then(res => {
       this.leavesManager = res
     })
     this.odooProv.getOdooData(this.odooProv.getUid(), this.odooProv.getPassword(), "hr.holidays.status", "search_read", [], [{ prop: "fields", prop_values: ["name", "remaining_leaves"] }])

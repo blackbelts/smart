@@ -12,7 +12,79 @@
     <ion-title>
       Leaves To Approve
     </ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="clickedFilterIcon($event)">
+        <ion-icon name="funnel"></ion-icon>
+      </button>
+      <button ion-button (click)="addFun()">
+        <ion-icon name="add-circle"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 <ion-content padding>
+  <ion-item *ngIf="showSearchBar">
+    <ion-label>
+      Select Filter
+    </ion-label>
+    <ion-select interface="popover" [(ngModel)]="filterObj" (ionChange)="filterMethod()">
+      <ion-option *ngFor="let type of filters;let ind" [value]="ind">
+        {{type.name}}
+      </ion-option>
+    </ion-select>
+  </ion-item>
+  <ion-list class="accordion-list">
+    <!-- First Level -->
+    <ion-list-header *ngFor="let item of leaves; let i = index" no-lines no-padding>
+      <!-- Toggle Button -->
+      <button ion-item (click)="toggleSection(i)" detail-none [ngClass]="{'section-active': item.open, 'section': !item.open}">
+        <ion-icon item-left name="ios-arrow-dropdown" *ngIf="!item.open"></ion-icon>
+        <ion-icon item-left name="ios-arrow-dropup" *ngIf="item.open"></ion-icon>
+        {{ item.name }}
+      </button>
+      <ion-card [hidden]=!item.open>
+        <ion-card-content>
+          <ion-item>
+            <h2>Employee:</h2>
+            <p>{{utils.returnValueOfRelation(item.employee_id)}}</p>
+          </ion-item>
+          <ion-item>
+            <h2>Request Type:</h2>
+            <p>{{item.type}}</p>
+          </ion-item>
+          <ion-item>
+            <h2>Number Of Days:</h2>
+            <p>{{item.number_of_days}}</p>
+          </ion-item>
+          <ion-item>
+            <h2>Start Date:</h2>
+            <p>{{item.date_from}}</p>
+          </ion-item>
+          <ion-item>
+            <h2>End Date:</h2>
+            <p>{{item.date_to}}</p>
+          </ion-item>
+          <ion-item>
+            <h2>Leave Type:</h2>
+            <p>{{utils.returnValueOfRelation(item.holiday_status_id)}}</p>
+          </ion-item>
+          <ion-item>
+            <h2>Status:</h2>
+            <p>{{item.state}}</p>
+          </ion-item>
+          <ion-item>
+            <h2>Actions:</h2>
+            <!-- Edite button -->
+            <ion-icon name="create" color="primary" [hidden]="!(item.state=='draft'||item.state=='confirm')"></ion-icon>
+            <!-- Approve button -->
+            <ion-icon name="checkbox" color="primary" [hidden]="!(item.state=='confirm')"></ion-icon>
+            <!-- refuse Button -->
+            <ion-icon name="close" color="primary" [hidden]="!(item.state=='validate'||item.state=='confirm')"></ion-icon>
+            <!-- RESET to draft -->
+            <ion-icon name="document" color="primary" [hidden]="!((this.leaveManager || item.employee_id[0] == this.odooProv.getEmployeeId()) && (item.state == 'confirm' || item.state == 'refuse'))"></ion-icon>
+          </ion-item>
+        </ion-card-content>
+      </ion-card>
+    </ion-list-header>
+  </ion-list>
 </ion-content>

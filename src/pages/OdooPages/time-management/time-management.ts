@@ -34,7 +34,13 @@ export class TimeManagementPage {
       .subscribe(res => {
         console.log(res)
         this.officerOrmanager = res
-        this.storage.set("LeavesManager", res)
+        this.storage.set("LeavesOfficer", res)
+        this.odooProv.getOdooData(this.odooProv.getUid(), this.odooProv.getPassword(), "res.users", "has_group", ["hr_holidays.group_hr_holidays_manager"], [])
+          .map(res => res)
+          .subscribe(res => {
+            console.log(res)
+            this.storage.set("LeavesManager", res)
+          })
       })
   }
   goToLeavesToApprove() {
