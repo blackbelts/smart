@@ -1,3 +1,6 @@
+import { Storage } from '@ionic/storage';
+import { UtilsProvider } from './../../../providers/utils/utils';
+import { OdooProvider } from './../../../providers/odoo/odoo';
 import { LeaveToApprovePage } from './leaves/leave-to-approve/leave-to-approve';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
@@ -18,8 +21,27 @@ import { LeaveBalancePage } from './leaves/leave-balance/leave-balance';
   templateUrl: 'time-management.html',
 })
 export class TimeManagementPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  officerOrmanager: any
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public odooProv: OdooProvider,
+    public utils: UtilsProvider,
+    private storage: Storage
+  ) {
+    this.odooProv.getOdooData(this.odooProv.getUid(), this.odooProv.getPassword(), "res.users", "has_group", ["hr_holidays.group_hr_holidays_user"], [])
+      .map(res => res)
+      .subscribe(res => {
+        console.log(res)
+        this.officerOrmanager = res
+        this.storage.set("LeavesOfficer", res)
+        this.odooProv.getOdooData(this.odooProv.getUid(), this.odooProv.getPassword(), "res.users", "has_group", ["hr_holidays.group_hr_holidays_manager"], [])
+          .map(res => res)
+          .subscribe(res => {
+            console.log(res)
+            this.storage.set("LeavesManager", res)
+          })
+      })
   }
   goToLeavesToApprove() {
     this.navCtrl.push(LeaveToApprovePage)
