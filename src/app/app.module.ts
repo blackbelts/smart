@@ -59,6 +59,14 @@ import { LeavesPage } from '../pages/OdooPages/time-management/leaves/leaves';
 import { LeaveRequestPage } from '../pages/OdooPages/time-management/leaves/leave-request/leave-request';
 import { LeaveBalancePage } from '../pages/OdooPages/time-management/leaves/leave-balance/leave-balance';
 import { PayslipsPage } from '../pages/OdooPages/payroll/payslips/payslips';
+import { ExpensesPage } from '../pages/OdooPages/expenses/expenses';
+import { MyExpensesPage } from '../pages/OdooPages/expenses/my-expenses/my-expenses';
+import { AccountantPage } from '../pages/OdooPages/expenses/accountant/accountant';
+import { ExpensesToApprovePage } from '../pages/OdooPages/expenses/my-expenses/expenses-to-approve/expenses-to-approve';
+import { ExpensesToSubmitPage } from '../pages/OdooPages/expenses/my-expenses/expenses-to-submit/expenses-to-submit';
+import { MyRefusedReportsPage } from '../pages/OdooPages/expenses/my-expenses/my-refused-reports/my-refused-reports';
+import { MyReportsPage } from '../pages/OdooPages/expenses/my-expenses/my-reports/my-reports';
+import { CreateExpensePage } from '../pages/OdooPages/expenses/my-expenses/create-expense/create-expense';
 
 
 @NgModule({
@@ -108,7 +116,15 @@ import { PayslipsPage } from '../pages/OdooPages/payroll/payslips/payslips';
     LeaveBalancePage,
     PayslipsPage,
     PayslipDetailsPage,
-    PayslipLinePage
+    PayslipLinePage,
+    ExpensesPage,
+    MyExpensesPage,
+    ExpensesToApprovePage,
+    AccountantPage,
+    ExpensesToSubmitPage,
+    MyRefusedReportsPage,
+    MyReportsPage,
+    CreateExpensePage
   ],
   imports: [
     BrowserModule,
@@ -163,7 +179,15 @@ import { PayslipsPage } from '../pages/OdooPages/payroll/payslips/payslips';
     LeaveBalancePage,
     PayslipsPage,
     PayslipDetailsPage,
-    PayslipLinePage
+    PayslipLinePage,
+    ExpensesPage,
+    MyExpensesPage,
+    ExpensesToApprovePage,
+    AccountantPage,
+    ExpensesToSubmitPage,
+    MyRefusedReportsPage,
+    MyReportsPage,
+    CreateExpensePage
   ],
   providers: [
     StatusBar,

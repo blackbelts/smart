@@ -9,7 +9,7 @@ import { OdooProvider } from '../../../providers/odoo/odoo';
   templateUrl: 'odoo-login.html',
 })
 export class OdooLoginPage {
-  username = 'ant@g.com'; password = '123456';
+  username = 'info@blackbelts-egypt.com'; password = 'admin';
   error = ''; userId;
   constructor(
     public nav: NavController, public forgotCtrl: AlertController,
