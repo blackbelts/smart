@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
   and Angular DI.
 */
 /* const odooUrl = "http://178.128.197.205/odooApi/index.php?"; */
-const odooUrl = "http://178.128.197.205/odooApi/index.php?";
+const odooUrl = "http://localhost/api/index.php?";
 @Injectable()
 export class OdooProvider {
   private uid;
@@ -116,7 +116,7 @@ export class OdooProvider {
   /* make domain string */
   makeDomainQuery(domains = []) {
     let domainStr
-    if (typeof domains[0] == "string" || typeof domains[0]=="number") {
+    if (typeof domains[0] == "string" || typeof domains[0] == "number") {
       let index = 0;
       domains.forEach(dom => {
         domainStr = "&parmlist[" + index + "]=" + dom
