@@ -23,7 +23,7 @@ export class CreateExpensePage {
   unitPrice: any
   quantity: any
   tax: any
-  
+  employeeId: any
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, public odooProv: OdooProvider, public utils: UtilsProvider) {
     this.odooProv.getOdooData(this.odooProv.getUid(), this.odooProv.getPassword(), "product.product", "search_read", [{filed: "can_be_expensed", experssion: "%3D", value: "true"}], [{ prop: "fields", prop_values: ["name"] }])
       .map(res => res)
@@ -37,7 +37,7 @@ export class CreateExpensePage {
         this.taxes = res
         
       })
-      
+    this.employeeId = this.odooProv.getEmployeeId();
   }
 
   dismiss() {
@@ -45,8 +45,11 @@ export class CreateExpensePage {
   }
 
   submitExpense(){
+    console.log(this.quantity)
+    console.log(this.name)
+    console.log(this.tax)
     this.utils.presentLoadingDefault()
-    this.odooProv.getOdooData(this.odooProv.getUid(), this.odooProv.getPassword(), "hr.expense", "create", [{ filed: "name", value: this.description }, { filed: "product_id", value: this.name }, { filed: "unit_amount", value: this.unitPrice }, { filed: "quantity", value: this.quantity }, { filed: "tax_ids", value: this.tax }])
+    this.odooProv.getOdooData(this.odooProv.getUid(), this.odooProv.getPassword(), "hr.expense", "create", [{filed: "employee_id.id", value:this.employeeId},{ filed: "name", value: this.description }, { filed: "product_id", value: this.name.id }, { filed: "unit_amount", value: this.unitPrice }, { filed: "quantity", value: this.quantity }, { filed: "tax_ids", value: [this.tax.id] }])
       .map(res => res)
       .subscribe(res => {
         console.log(res)
