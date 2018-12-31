@@ -24,15 +24,19 @@ export class OdooProfilrPage {
   tab2Root = ProfilePrivteInfoPage;
   tab3Root = ProfileHrSettingsPage;
   tab4Root = ProfileAssetsPage
+  empId
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public odooProv: OdooProvider
   ) {
+    this.empId = this.navParams.data
+    this.navParams.get("empId");
+    console.log("empiddddddddddddddddddddddD", this.navParams.get("empId"))
   }
- 
+
   ionViewDidLoad() {
-    
+
   }
   ionChange() {
     console.log("change")

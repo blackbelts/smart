@@ -67,6 +67,7 @@ import { ExpensesToSubmitPage } from '../pages/OdooPages/expenses/my-expenses/ex
 import { MyRefusedReportsPage } from '../pages/OdooPages/expenses/my-expenses/my-refused-reports/my-refused-reports';
 import { MyReportsPage } from '../pages/OdooPages/expenses/my-expenses/my-reports/my-reports';
 import { CreateExpensePage } from '../pages/OdooPages/expenses/my-expenses/create-expense/create-expense';
+import { EmployessPage } from '../pages/OdooPages/employess/employess';
 
 
 @NgModule({
@@ -124,7 +125,8 @@ import { CreateExpensePage } from '../pages/OdooPages/expenses/my-expenses/creat
     ExpensesToSubmitPage,
     MyRefusedReportsPage,
     MyReportsPage,
-    CreateExpensePage
+    CreateExpensePage,
+    EmployessPage
   ],
   imports: [
     BrowserModule,
@@ -187,7 +189,8 @@ import { CreateExpensePage } from '../pages/OdooPages/expenses/my-expenses/creat
     ExpensesToSubmitPage,
     MyRefusedReportsPage,
     MyReportsPage,
-    CreateExpensePage
+    CreateExpensePage,
+    EmployessPage
   ],
   providers: [
     StatusBar,

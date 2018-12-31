@@ -1,0 +1,82 @@
+<!--
+  Generated template for the EmployessPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      {{title}}
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="clickedFilterIcon($event)">
+        <ion-icon name="funnel"></ion-icon>
+      </button>
+      <button ion-button>
+        <ion-icon name="add-circle"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item *ngIf="showSearchBar">
+    <ion-label>
+      Select
+    </ion-label>
+    <ion-select interface="popover" [(ngModel)]="filter" (ionChange)="filterMethod()">
+      <ion-option *ngFor="let option of filtersOptions" [value]="option">{{option}}</ion-option>
+    </ion-select>
+  </ion-item>
+  <ion-card *ngFor="let emp of empList">
+    <ion-item>
+      <ion-avatar item-start>
+        <img [src]="utils.srcFromBase64Images(emp.image_small)">
+      </ion-avatar>
+      <h2>{{emp.name}}</h2>
+      <p>{{utils.returnValueOfRelation(emp.job_id)}}</p>
+    </ion-item>
+    <ion-card-content (click)="openEmployeeProfile(emp.id)" >
+      <p [hidden]="emp.work_email==false">
+        <ion-icon name="mail"></ion-icon>
+        &nbsp;{{emp.work_email}}
+      </p>
+      <p [hidden]="emp.work_phone==false">
+        <ion-icon name="phone-portrait"></ion-icon>
+        &nbsp;{{emp.work_phone}}
+      </p>
+      <p [hidden]="emp.work_location==false">
+        <ion-icon name="locate"></ion-icon>
+        &nbsp;{{emp.work_location}}
+      </p>
+    </ion-card-content>
+    <ion-row>
+      <ion-col>
+        <button ion-button icon-start clear small>
+          <ion-icon name="chatbubbles"></ion-icon>
+          <div>{{emp.message_ids.length}}</div>
+        </button>
+      </ion-col>
+      <ion-col>
+        <button ion-button icon-start clear small>
+          <ion-icon name="contacts"></ion-icon>
+          <div>{{emp.message_follower_ids.length}}</div>
+        </button>
+      </ion-col>
+      <ion-col center text-center>
+        <button ion-button icon-start clear small>
+          <ion-icon name="contact" [color]="emp.attendance_state=='checked_out'?'danger':'secondary'"></ion-icon>
+          <div>active</div>
+        </button>
+      </ion-col>
+    </ion-row>
+    <!--  <button ion-button clear block>
+      <ion-icon name="person-add"></ion-icon>
+      <div>&nbsp;Follow</div>
+    </button> -->
+  </ion-card>
+</ion-content>
