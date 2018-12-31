@@ -1,3 +1,4 @@
+import { ExpensesToSubmitPage } from './../pages/OdooPages/expenses/expenses-to-submit/expenses-to-submit';
 import { ExpensesReportsToPayPage } from './../pages/OdooPages/expenses/accountant/expenses-reports-to-pay/expenses-reports-to-pay';
 import { ExpensesReportsToApprovePage } from './../pages/OdooPages/expenses/accountant/expenses-reports-to-approve/expenses-reports-to-approve';
 import { AddChildrenTaxesPage } from './../pages/OdooPages/expenses/expenses-to-submit/create-expense/add-product/create-cutomer-taxes/add-children-taxes/add-children-taxes';
@@ -69,10 +70,8 @@ import { LeaveBalancePage } from '../pages/OdooPages/time-management/leaves/leav
 import { PayslipsPage } from '../pages/OdooPages/payroll/payslips/payslips';
 import { ExpensesPage } from '../pages/OdooPages/expenses/expenses';
 import { AccountantPage } from '../pages/OdooPages/expenses/accountant/accountant';
-import { ExpensesToSubmitPage } from '../pages/OdooPages/expenses/expenses-to-submit/expenses-to-submit';
 import { CreateExpensePage } from '../pages/OdooPages/expenses/expenses-to-submit/create-expense/create-expense';
-
-
+import { EmployessPage } from '../pages/OdooPages/employess/employess';
 @NgModule({
   declarations: [
     MyApp,
@@ -132,7 +131,10 @@ import { CreateExpensePage } from '../pages/OdooPages/expenses/expenses-to-submi
     CreateVendorTaxesPage,
     AddChildrenTaxesPage,
     ExpensesReportsToApprovePage,
-    ExpensesReportsToPayPage
+    ExpensesReportsToPayPage,
+    CreateExpensePage,
+    EmployessPage
+
   ],
   imports: [
     BrowserModule,
@@ -199,7 +201,9 @@ import { CreateExpensePage } from '../pages/OdooPages/expenses/expenses-to-submi
     CreateVendorTaxesPage,
     AddChildrenTaxesPage,
     ExpensesReportsToApprovePage,
-    ExpensesReportsToPayPage
+    ExpensesReportsToPayPage,
+    CreateExpensePage,
+    EmployessPage
   ],
   providers: [
     StatusBar,

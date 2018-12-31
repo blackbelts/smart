@@ -9,11 +9,20 @@ import { OdooProvider } from '../../../providers/odoo/odoo';
   templateUrl: 'odoo-login.html',
 })
 export class OdooLoginPage {
+<<<<<<< HEAD
   username = 'admin'; password = 'admin';
   error = ''; userId;
+=======
+  username = 'ant@g.com';
+  password = '123456';
+  error = '';
+  userId;
+>>>>>>> 4969943f1e5accbc2c76633606896b84209c5530
   constructor(
-    public nav: NavController, public forgotCtrl: AlertController,
-    public menu: MenuController, public utils: UtilsProvider,
+    public nav: NavController,
+    public forgotCtrl: AlertController,
+    public menu: MenuController,
+    public utils: UtilsProvider,
     public odooProv: OdooProvider
   ) {
   }
@@ -98,9 +107,9 @@ export class OdooLoginPage {
     });
     forgot.present();
   } */
- /* this.odooProv.getOdooData(this.odooProv.getUid(), this.odooProv.getPassword(), "hr.employee", "search_read", [{ filed: "id", experssion: "%3D", value: res[0].employee_ids[0] }], [{ prop: "fields", prop_values: ["id"] }])
-                .map(res => res)
-                .subscribe(res => {
-                  this.odooProv.setEmployeeId(res[0].id)
-                  console.log(this.odooProv.getEmployeeId())
-                }) */
+/* this.odooProv.getOdooData(this.odooProv.getUid(), this.odooProv.getPassword(), "hr.employee", "search_read", [{ filed: "id", experssion: "%3D", value: res[0].employee_ids[0] }], [{ prop: "fields", prop_values: ["id"] }])
+               .map(res => res)
+               .subscribe(res => {
+                 this.odooProv.setEmployeeId(res[0].id)
+                 console.log(this.odooProv.getEmployeeId())
+               }) */

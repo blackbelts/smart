@@ -7,6 +7,7 @@ import { OdooProvider } from '../../providers/odoo/odoo';
 import { OdooProfilrPage } from '../OdooPages/odoo-profilr/odoo-profilr';
 import { PayslipsPage } from '../OdooPages/payroll/payslips/payslips';
 import { ExpensesPage } from '../OdooPages/expenses/expenses'
+import { EmployessPage } from '../OdooPages/employess/employess';
 
 /**
  * Generated class for the NewHomePage page.
@@ -45,10 +46,13 @@ export class NewHomePage {
   goToProfile() {
     this.navCtrl.setRoot(OdooProfilrPage)
   }
-  goToPayroll(){
+  goToPayroll() {
     this.navCtrl.push(PayslipsPage)
   }
-  goToExpenses(){
+  goToExpenses() {
     this.navCtrl.setRoot(ExpensesPage)
+  }
+  goToEmployee() {
+    this.navCtrl.setRoot(EmployessPage)
   }
 }

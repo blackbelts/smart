@@ -15,7 +15,7 @@
 </ion-header>
 <ion-content padding>
   <ion-row>
-    <ion-col  col-6>
+    <ion-col col-6>
       <ion-card class="tile" (click)="goToLearning()">
         <ion-card-content>
           <ion-item>
@@ -27,7 +27,7 @@
         </ion-card-content>
       </ion-card>
     </ion-col>
-    <ion-col  col-6>
+    <ion-col col-6>
       <ion-card class="tile">
         <ion-card-content (click)="goToTimeMgmt()">
           <ion-item>
@@ -39,9 +39,21 @@
         </ion-card-content>
       </ion-card>
     </ion-col>
-    <ion-col  col-6>
+    <ion-col col-6>
+      <ion-card class="tile" (click)="goToEmployee()">
+        <ion-card-content text-wrap>
+          <ion-item>
+            <h1>
+              <ion-icon color="primary" name="ios-people" size="large"></ion-icon>
+            </h1>
+            <h3>Emp & Deprt & Contracts</h3>
+          </ion-item>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+    <ion-col col-6>
       <ion-card class="tile">
-        <ion-card-content (click)="goToPayroll()" >
+        <ion-card-content (click)="goToPayroll()">
           <ion-item>
             <h1>
               <ion-icon color="primary" name="logo-usd" size="large"></ion-icon>
@@ -51,9 +63,9 @@
         </ion-card-content>
       </ion-card>
     </ion-col>
-    <ion-col  col-6>
+    <ion-col col-6>
       <ion-card class="tile">
-        <ion-card-content >
+        <ion-card-content>
           <ion-item>
             <h1>
               <ion-icon color="primary" name="ice-cream" size="large"></ion-icon>
@@ -63,7 +75,7 @@
         </ion-card-content>
       </ion-card>
     </ion-col>
-    <ion-col  col-6>
+    <ion-col col-6>
       <ion-card class="tile">
         <ion-card-content>
           <ion-item>
@@ -75,7 +87,7 @@
         </ion-card-content>
       </ion-card>
     </ion-col>
-    <ion-col  col-6>
+    <ion-col col-6>
       <ion-card class="tile">
         <ion-card-content>
           <ion-item>
@@ -87,7 +99,7 @@
         </ion-card-content>
       </ion-card>
     </ion-col>
-    <ion-col  col-6>
+    <ion-col col-6>
       <ion-card class="tile">
         <ion-card-content>
           <ion-item>
@@ -99,7 +111,7 @@
         </ion-card-content>
       </ion-card>
     </ion-col>
-    <ion-col  col-6>
+    <ion-col col-6>
       <ion-card class="tile">
         <ion-card-content>
           <ion-item>
@@ -111,7 +123,7 @@
         </ion-card-content>
       </ion-card>
     </ion-col>
-    <ion-col  col-6>
+    <ion-col col-6>
       <ion-card class="tile">
         <ion-card-content (click)="goToExpenses()">
           <ion-item>
@@ -123,7 +135,7 @@
         </ion-card-content>
       </ion-card>
     </ion-col>
-    <ion-col  col-6>
+    <ion-col col-6>
       <ion-card class="tile" (click)="goToProfile()">
         <ion-card-content>
           <ion-item>

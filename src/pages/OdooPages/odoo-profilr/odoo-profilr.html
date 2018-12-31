@@ -15,8 +15,8 @@
 <ion-content padding>
 
   <ion-tabs #myTabs tabsPlacement="top">
-    <ion-tab [root]="tab1Root" tabTitle="Work Info"></ion-tab>
-    <ion-tab [root]="tab2Root" tabTitle="Private Info"></ion-tab>
+    <ion-tab [root]="tab1Root" tabTitle="Work Info" [rootParams]="empId"></ion-tab>
+    <ion-tab [root]="tab2Root" tabTitle="Private Info" ></ion-tab>
     <!-- <ion-tab [root]="tab3Root" tabTitle="HR settings"></ion-tab>
     <ion-tab [root]="tab4Root" tabTitle="Assets"></ion-tab> -->
   </ion-tabs>
