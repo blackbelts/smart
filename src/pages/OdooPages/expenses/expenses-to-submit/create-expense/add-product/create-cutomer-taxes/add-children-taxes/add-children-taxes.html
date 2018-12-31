@@ -1,0 +1,69 @@
+<!--
+  Generated template for the AddChildrenTaxesPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>addChildrenTaxes</ion-title>
+    <ion-buttons right>
+      <button ion-button (click)="dismiss()">
+        <ion-icon size="large" class="font-big" name="close-circle"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <table>
+      <thead>
+        <tr>
+          <th class="small">Select</th>
+          <th class="small">Tax Name</th>
+          <th class="small">Tax Scope</th>
+          <th class="small">Label on Invoice</th>
+          <!--<th class="small">Active</th>-->
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let children of childrenTaxes;">
+          <td class="small">
+            <ion-checkbox color="dark" (ionChange)="select(children)"  value="children"
+              [checked]="checkIn(children)"></ion-checkbox>
+          </td>
+          <td class="small">
+            <ion-item>
+              {{children.name}}
+            </ion-item>
+          </td>
+          <td class="small">
+            <ion-item>
+              {{children.amount_type}}
+            </ion-item>
+          </td>
+          <td class="small">
+            <ion-item>
+              {{children.amount}}
+            </ion-item>
+          </td>
+          <!-- <td>
+              <ion-item>
+                <ion-toggle checked="true"></ion-toggle>
+              </ion-item> 
+            </td> -->
+        </tr>
+      </tbody>
+    </table>
+    <ion-row>
+      <ion-col col-6>
+        <button ion-button color="primary" block (click)="addChildrenTaxes()">Add</button>
+      </ion-col>
+      <ion-col col-6>
+        <button ion-button color="primary" block (click)="createChildrenTaxes()">Create</button>
+      </ion-col>
+    </ion-row>
+</ion-content>

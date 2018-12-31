@@ -6,7 +6,7 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="primary">
     <ion-title>Accountant</ion-title>
   </ion-navbar>
 
@@ -14,5 +14,30 @@
 
 
 <ion-content padding>
-
+  <ion-row>
+    <ion-col col-12>
+      <ion-card class="tile" (click)="goToExpensesToApprove()">
+        <ion-card-content>
+          <ion-item>
+            <h3 text-center>
+              <ion-icon color="primary" name="log-in" class="iconCustome" size="large"></ion-icon>
+            </h3>
+            <h3 text-center>Espenses Report To Approve</h3>
+          </ion-item>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+    <ion-col col-12>
+      <ion-card class="tile" (click)="goToExpensesToPay()">
+        <ion-card-content>
+          <ion-item>
+            <h3 text-center>
+              <ion-icon color="primary" name="log-in" class="iconCustome" size="large"></ion-icon>
+            </h3>
+            <h3 text-center>Expenses Report To Pay</h3>
+          </ion-item>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
 </ion-content>

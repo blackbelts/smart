@@ -1,3 +1,5 @@
+import { ExpensesReportsToPayPage } from './expenses-reports-to-pay/expenses-reports-to-pay';
+import { ExpensesReportsToApprovePage } from './expenses-reports-to-approve/expenses-reports-to-approve';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
@@ -18,8 +20,12 @@ export class AccountantPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad AccountantPage');
+  goToExpensesToApprove(){
+    this.navCtrl.push(ExpensesReportsToApprovePage)
+  }
+
+  goToExpensesToPay(){
+    this.navCtrl.push(ExpensesReportsToPayPage)
   }
 
 }

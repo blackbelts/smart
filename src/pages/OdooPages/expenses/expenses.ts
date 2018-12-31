@@ -1,6 +1,6 @@
+import { ExpensesToSubmitPage } from './expenses-to-submit/expenses-to-submit';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { MyExpensesPage } from '../../../pages/OdooPages/expenses/my-expenses/my-expenses';
 import { AccountantPage } from '../../../pages/OdooPages/expenses/accountant/accountant';
 
 
@@ -23,10 +23,12 @@ export class ExpensesPage {
   }
 
   goToMyExpenses() {
-    this.navCtrl.push(MyExpensesPage)
+    this.navCtrl.push(ExpensesToSubmitPage)
   }
   goToAccountant() {
     this.navCtrl.push(AccountantPage)
   }
-  
+  goToAllExpenses(){
+    this.navCtrl.push(ExpensesToSubmitPage)
+  }
 }

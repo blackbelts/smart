@@ -1,0 +1,142 @@
+<!--
+  Generated template for the AddProductPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>addProduct</ion-title>
+    <ion-buttons right>
+        <button ion-button (click)="dismiss()">
+            <ion-icon size="large" class="font-big" name="close-circle"></ion-icon>
+        </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-item>
+    <ion-label floating>Product Name</ion-label>
+    <ion-input type="text" [(ngModel)]="productName"></ion-input>
+  </ion-item> 
+    
+      <ion-card>
+            <ion-card-header>
+              General Information
+            </ion-card-header>
+        <ion-list>-
+          <ion-item>
+            <ion-label floating>Product Type</ion-label>
+            <ion-select interface="popover" [(ngModel)]="type">
+              <ion-option *ngFor="let product of products" [value]="product">{{product.type}}</ion-option>
+            </ion-select>
+          </ion-item>   
+          <ion-item>
+              <ion-label floating>internalReference</ion-label>
+              <ion-input type="text" [(ngModel)]="internalReference"></ion-input>
+          </ion-item>
+          <ion-item>
+              <ion-label floating>barcode</ion-label>
+              <ion-input type="text" [(ngModel)]="barcode"></ion-input>
+          </ion-item>
+          <ion-row>
+              <ion-col col-10>
+                  <ion-item>
+                      <ion-label floating>category</ion-label>
+                      <ion-select interface="popover" [(ngModel)]="category">
+                          <ion-option *ngFor="let category of categories" [value]="category">{{category.display_name}}</ion-option>
+                      </ion-select>
+                  </ion-item>
+              </ion-col>
+              <ion-col col-2 class="iconsPadding">
+                      <button ion-button (click)="addCategory()">
+                              <ion-icon name="add-circle"></ion-icon>
+                      </button>
+              </ion-col>
+          </ion-row>
+          <ion-item>
+              <ion-label floating>salePrice</ion-label>
+              <ion-input type="number" [(ngModel)]="salePrice"></ion-input>
+          </ion-item>
+          <ion-item>
+              <ion-label floating>cost</ion-label>
+              <ion-input type="number" [(ngModel)]="cost"></ion-input>
+          </ion-item>
+    </ion-list>
+      </ion-card>
+      <ion-card>
+            <ion-card-header>
+                Sales
+            </ion-card-header>
+      </ion-card>
+      <ion-card>
+        <ion-card-header>
+          Invoicing
+        </ion-card-header>
+    <ion-list>
+        <ion-row>
+            <ion-col col-10>
+                <ion-item>
+                    <ion-label floating>CustomerTax</ion-label>
+                    <ion-select interface="popover" [(ngModel)]="customerTax">
+                        <ion-option *ngFor="let customerTax of customerTaxes" [value]="customerTax">{{customerTax.name}}</ion-option>
+                    </ion-select>
+                </ion-item>
+            </ion-col>
+            <ion-col col-2 class="iconsPadding">
+                <button ion-button (click)="createCustomerTaxes()">
+                        <ion-icon name="add-circle"></ion-icon>
+                </button>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col col-10>
+                <ion-item>
+                    <ion-label floating>VendorTax</ion-label>
+                    <ion-select interface="popover" [(ngModel)]="vendorTax">
+                        <ion-option *ngFor="let vendorTax of vendorTaxes" [value]="vendorTax">{{vendorTax.name}}</ion-option>
+                    </ion-select>
+                </ion-item>
+            </ion-col>
+            <ion-col col-2 class="iconsPadding">
+                <button ion-button (click)="createVendorTaxes()">
+                        <ion-icon name="add-circle"></ion-icon>
+                </button>
+            </ion-col>
+        </ion-row>
+                <ion-item>
+                        <ion-label floating>Invoicing Policy</ion-label>
+                        <ion-select interface="popover" [(ngModel)]="typea">
+                          <ion-option *ngFor="let InvoicingPolicy of InvoicingPolicies" [value]="InvoicingPolicy">{{InvoicingPolicy.type}}</ion-option>
+                        </ion-select>
+                </ion-item>
+                <ion-item>
+                        <ion-label floating>Re-Invoice Expenses</ion-label>
+                        <ion-select interface="popover" [(ngModel)]="typee">
+                          <ion-option *ngFor="let ReInvoiceExpense of ReInvoiceExpenses" [value]="ReInvoiceExpense">{{ReInvoiceExpense.type}}</ion-option>
+                        </ion-select>
+                </ion-item>
+                
+            </ion-list>
+            </ion-card>
+            <ion-card>
+                    <ion-card-header>
+                        Notes
+                    </ion-card-header>
+                    <ion-list>
+                        <ion-item>
+                            <ion-label floating>Description for Internal</ion-label>
+                            <ion-input type="text" [(ngModel)]="internalDescription"></ion-input>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label floating>Description for Customers</ion-label>
+                            <ion-input type="text" [(ngModel)]="customerDescription"></ion-input>
+                        </ion-item>
+                    </ion-list>
+              </ion-card>
+            <button ion-button color="primary" block (click)="addProduct()">Add</button>
+</ion-content>

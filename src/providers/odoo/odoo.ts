@@ -7,14 +7,14 @@ import { Injectable } from '@angular/core';
   and Angular DI.
 */
 /* const odooUrl = "http://178.128.197.205/odooApi/index.php?"; */
-const odooUrl = "http://178.128.197.205/odooApi/index.php?";
+const odooUrl = "http://localhost/api/index.php?";
 @Injectable()
 export class OdooProvider {
   private uid;
   private password;
   private employeeId;
   constructor(public http: HttpClient) {
-    this.login("info@blackbelts-egypt.com", "admin");
+    this.login("admin", "admin");
   }
   login(userName, password) {
     return this.http.get(

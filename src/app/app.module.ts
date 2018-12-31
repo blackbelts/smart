@@ -1,3 +1,11 @@
+import { ExpensesReportsToPayPage } from './../pages/OdooPages/expenses/accountant/expenses-reports-to-pay/expenses-reports-to-pay';
+import { ExpensesReportsToApprovePage } from './../pages/OdooPages/expenses/accountant/expenses-reports-to-approve/expenses-reports-to-approve';
+import { AddChildrenTaxesPage } from './../pages/OdooPages/expenses/expenses-to-submit/create-expense/add-product/create-cutomer-taxes/add-children-taxes/add-children-taxes';
+import { CreateVendorTaxesPage } from './../pages/OdooPages/expenses/expenses-to-submit/create-expense/add-product/create-vendor-taxes/create-vendor-taxes';
+import { CreateCutomerTaxesPage } from './../pages/OdooPages/expenses/expenses-to-submit/create-expense/add-product/create-cutomer-taxes/create-cutomer-taxes';
+import { AddCategoryPage } from './../pages/OdooPages/expenses/expenses-to-submit/create-expense/add-product/add-category/add-category';
+import { AddTaxPage } from './../pages/OdooPages/expenses/expenses-to-submit/create-expense/add-tax/add-tax';
+import { AddProductPage } from './../pages/OdooPages/expenses/expenses-to-submit/create-expense/add-product/add-product';
 import { PayslipLinePage } from './../pages/OdooPages/payroll/payslips/payslip-line/payslip-line';
 import { PayslipDetailsPage } from './../pages/OdooPages/payroll/payslips/payslip-details/payslip-details';
 import { LeaveToApprovePage } from './../pages/OdooPages/time-management/leaves/leave-to-approve/leave-to-approve';
@@ -60,13 +68,9 @@ import { LeaveRequestPage } from '../pages/OdooPages/time-management/leaves/leav
 import { LeaveBalancePage } from '../pages/OdooPages/time-management/leaves/leave-balance/leave-balance';
 import { PayslipsPage } from '../pages/OdooPages/payroll/payslips/payslips';
 import { ExpensesPage } from '../pages/OdooPages/expenses/expenses';
-import { MyExpensesPage } from '../pages/OdooPages/expenses/my-expenses/my-expenses';
 import { AccountantPage } from '../pages/OdooPages/expenses/accountant/accountant';
-import { ExpensesToApprovePage } from '../pages/OdooPages/expenses/my-expenses/expenses-to-approve/expenses-to-approve';
-import { ExpensesToSubmitPage } from '../pages/OdooPages/expenses/my-expenses/expenses-to-submit/expenses-to-submit';
-import { MyRefusedReportsPage } from '../pages/OdooPages/expenses/my-expenses/my-refused-reports/my-refused-reports';
-import { MyReportsPage } from '../pages/OdooPages/expenses/my-expenses/my-reports/my-reports';
-import { CreateExpensePage } from '../pages/OdooPages/expenses/my-expenses/create-expense/create-expense';
+import { ExpensesToSubmitPage } from '../pages/OdooPages/expenses/expenses-to-submit/expenses-to-submit';
+import { CreateExpensePage } from '../pages/OdooPages/expenses/expenses-to-submit/create-expense/create-expense';
 
 
 @NgModule({
@@ -118,13 +122,17 @@ import { CreateExpensePage } from '../pages/OdooPages/expenses/my-expenses/creat
     PayslipDetailsPage,
     PayslipLinePage,
     ExpensesPage,
-    MyExpensesPage,
-    ExpensesToApprovePage,
     AccountantPage,
     ExpensesToSubmitPage,
-    MyRefusedReportsPage,
-    MyReportsPage,
-    CreateExpensePage
+    CreateExpensePage,
+    AddProductPage,
+    AddTaxPage,
+    AddCategoryPage,
+    CreateCutomerTaxesPage,
+    CreateVendorTaxesPage,
+    AddChildrenTaxesPage,
+    ExpensesReportsToApprovePage,
+    ExpensesReportsToPayPage
   ],
   imports: [
     BrowserModule,
@@ -181,13 +189,17 @@ import { CreateExpensePage } from '../pages/OdooPages/expenses/my-expenses/creat
     PayslipDetailsPage,
     PayslipLinePage,
     ExpensesPage,
-    MyExpensesPage,
-    ExpensesToApprovePage,
     AccountantPage,
     ExpensesToSubmitPage,
-    MyRefusedReportsPage,
-    MyReportsPage,
-    CreateExpensePage
+    CreateExpensePage,
+    AddProductPage,
+    AddTaxPage,
+    AddCategoryPage,
+    CreateCutomerTaxesPage,
+    CreateVendorTaxesPage,
+    AddChildrenTaxesPage,
+    ExpensesReportsToApprovePage,
+    ExpensesReportsToPayPage
   ],
   providers: [
     StatusBar,
@@ -200,7 +212,7 @@ import { CreateExpensePage } from '../pages/OdooPages/expenses/my-expenses/creat
     FileOpener,
     FileTransfer,
     File,
-    OdooProvider,
+    OdooProvider
   ]
 })
 export class AppModule { }
